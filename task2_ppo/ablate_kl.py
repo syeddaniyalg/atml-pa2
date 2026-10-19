@@ -9,6 +9,8 @@ from common.data import load_yaml, read_jsonl, repo_path
 from common.logging_utils import read_jsonl_safe, save_json
 from common.metrics import safe_corr
 from common.models import load_reward_model, load_tokenizer
+from common.progress import bar, postfix
+from common.resume import archive_file
 from common.rl_utils import evaluate_adapter_heldout
 from task2_ppo.analyze_clipping import stability_statistics
 from task2_ppo.continue_train import run_ppo
@@ -48,7 +50,7 @@ def first_divergence(df: pd.DataFrame, metric: str, ref_tag: str, tag: str, rel_
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/ppo.yaml")
-    ap.add_argument("--reuse", action="store_true", help="reuse existing fork adapters instead of retraining")
+    ap.add_argument("--restart", action="store_true", help="retrain and re-evaluate every fork (old logs and results are archived)")
     ap.add_argument("--max-prompts", type=int, help="number of held-out prompts for fork evaluation")
     args = ap.parse_args()
     cfg = load_yaml(args.config)
@@ -59,13 +61,17 @@ def main():
     reward_bundle = load_reward_model(cfg)
     tokenizer = load_tokenizer(cfg["base_model"])
     rows, logs = [], {}
-    for beta in [float(b) for b in cfg["kl_values"]]:
+    outer = bar([float(b) for b in cfg["kl_values"]], desc="kl-forks", unit="fork")
+    for beta in outer:
         tag = f"kl_{beta:g}"
         adapter = f"outputs/task2_ppo/{tag}"
-        if not (args.reuse and (repo_path(adapter) / "adapter_config.json").exists()):
-            run_ppo(args.config, output=adapter, updates=int(cfg["fork_updates"]),
-                    clip_epsilon=float(cfg["clip_epsilon"]), kl_beta=beta, run_name=tag, reward_bundle=reward_bundle)
-        ev = evaluate_adapter_heldout(cfg, adapter, tag, results_dir, args.max_prompts, reward_bundle, tokenizer)
+        outer.set_postfix(kl_beta=beta, stage="train")
+        run_ppo(args.config, output=adapter, updates=int(cfg["fork_updates"]),
+                clip_epsilon=float(cfg["clip_epsilon"]), kl_beta=beta, run_name=tag, reward_bundle=reward_bundle,
+                resume=not args.restart)
+        outer.set_postfix(kl_beta=beta, stage="eval")
+        ev = evaluate_adapter_heldout(cfg, adapter, tag, results_dir, args.max_prompts, reward_bundle, tokenizer,
+                                      resume=not args.restart)
         log = read_jsonl_safe(results_dir / f"{tag}_log.jsonl")
         logs[tag] = log
         m = ev["metrics"]
@@ -81,10 +87,17 @@ def main():
         }
         row.update({f"train_{k}": v for k, v in stability_statistics(log).items()})
         rows.append(row)
-        print(f"[{tag}] heldout reward {row['heldout_reward']:.3f} KL/tok {row['heldout_kl_per_token']:.4f} "
-              f"entropy {row['heldout_entropy']:.3f} len {row['heldout_length_mean']:.1f}")
+        outer.set_postfix(postfix(kl_beta=beta, reward=row["heldout_reward"], kl_tok=row["heldout_kl_per_token"],
+                                  ent=row["heldout_entropy"], len=row["heldout_length_mean"],
+                                  corr=row["heldout_corr_reward_length"]))
+        if len(rows) == 1 and args.restart:
+            archive_file(results_dir / "kl_pressure_summary.csv")
         pd.DataFrame(rows).to_csv(results_dir / "kl_pressure_summary.csv", index=False)
+    outer.close()
 
+    if args.restart:
+        archive_file(results_dir / "kl_pressure_trajectories.csv")
+        archive_file(results_dir / "kl_pressure_summary.json")
     traj = trajectory_table(logs)
     traj.to_csv(results_dir / "kl_pressure_trajectories.csv", index=False)
 

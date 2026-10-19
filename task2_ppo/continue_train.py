@@ -8,7 +8,7 @@ from torch.optim import AdamW
 
 from common.data import load_yaml, prompt_messages, read_jsonl, repo_path
 from common.generation import batch_generate
-from common.logging_utils import append_jsonl, save_json, set_seed, wall_timer
+from common.logging_utils import append_jsonl, set_seed, wall_timer
 from common.metrics import masked_mean, sample_entropy
 from common.models import (
     clear_gpu,
@@ -20,6 +20,16 @@ from common.models import (
     token_values,
     trainable_parameters,
     value_parameter_groups,
+)
+from common.progress import bar, postfix
+from common.resume import (
+    archive_file,
+    clear_checkpoint,
+    completed_summary,
+    load_checkpoint,
+    prepare_log,
+    save_checkpoint,
+    save_json_atomic,
 )
 from common.rl_utils import (
     finite,
@@ -102,15 +112,33 @@ def explained_variance(pred: torch.Tensor, target: torch.Tensor, mask: torch.Ten
     return float(1.0 - (t - p).var(unbiased=False) / t.var(unbiased=False))
 
 
-def run_ppo(config_path: str, output: str | None = None, updates: int | None = None, clip_epsilon: float | None = None, kl_beta: float | None = None, run_name: str = "standard", reward_bundle=None):
+def run_ppo(config_path: str, output: str | None = None, updates: int | None = None, clip_epsilon: float | None = None, kl_beta: float | None = None, run_name: str = "standard", reward_bundle=None, resume: bool = True):
     """PPO continuation from the supplied midpoint (policy LoRA + matched critic).
 
     One update = (1) sample `prompts_per_update` prompts with the shared deterministic schedule and roll out the
     current policy, (2) score with the frozen reward model (minus the missing-EOS penalty), (3) compute old and
     reference log-probs and critic values, build KL-shaped token rewards and GAE advantages/returns, (4) run
-    `ppo_epochs` clipped policy + critic steps on that batch. LoRA dropout is disabled so the importance ratio is
-    exactly 1 on the first epoch; all forks use the same seed, prompts and per-update RNG.
+    `ppo_epochs` clipped policy + critic steps on that batch. All forks use the same seed, prompts and per-update RNG.
+    Resumable: policy, critic and both optimizers are checkpointed after every update and the per-update log is kept.
     """
+    cfg0 = load_yaml(config_path)
+    out = repo_path(output or (cfg0["output"] if run_name == "standard" else f"outputs/task2_ppo/{run_name}"))
+    out.parent.mkdir(parents=True, exist_ok=True)
+    results_dir = repo_path(cfg0["results_dir"])
+    results_dir.mkdir(parents=True, exist_ok=True)
+    log_path = results_dir / f"{run_name}_log.jsonl"
+    summary_path = results_dir / f"{run_name}_summary.json"
+    ckpt_dir = out.parent / f"{out.name}_resume"
+
+    if resume:
+        done = completed_summary(summary_path, out)
+        if done is not None:
+            print(f"[ppo:{run_name}] already completed, loading saved summary")
+            return done
+    else:
+        archive_file(summary_path)
+        clear_checkpoint(ckpt_dir)
+
     bundle = prepare_ppo_continuation(config_path, reward_bundle=reward_bundle)
     cfg = bundle["cfg"]
     if updates is not None:
@@ -119,13 +147,6 @@ def run_ppo(config_path: str, output: str | None = None, updates: int | None = N
         cfg["clip_epsilon"] = float(clip_epsilon)
     if kl_beta is not None:
         cfg["kl_beta"] = float(kl_beta)
-    out = repo_path(output or (cfg["output"] if run_name == "standard" else f"outputs/task2_ppo/{run_name}"))
-    out.parent.mkdir(parents=True, exist_ok=True)
-    results_dir = repo_path(cfg["results_dir"])
-    results_dir.mkdir(parents=True, exist_ok=True)
-    log_path = results_dir / f"{run_name}_log.jsonl"
-    if log_path.exists():
-        log_path.unlink()
 
     policy, value_model = bundle["policy"], bundle["value_model"]
     tokenizer = bundle["tokenizer"]
@@ -144,16 +165,27 @@ def run_ppo(config_path: str, output: str | None = None, updates: int | None = N
     max_norm = float(cfg.get("max_grad_norm", 1.0))
     max_prompt_len = int(cfg["max_prompt_length"])
     max_resp_len = int(cfg["max_response_length"])
+    checkpoint_every = int(cfg.get("checkpoint_every", 1))
     gen_cfg = cfg.get("generation", {})
     seed = int(cfg["seed"])
     schedule = prompt_schedule(len(rows), seed, n_updates, per_update)
     device = next(policy.parameters()).device
 
+    models = {"policy": policy, "value": value_model}
+    optimizers = {"policy": popt, "value": vopt}
+    meta = load_checkpoint(ckpt_dir, models, optimizers) if resume else None
+    start = int(meta["update"]) if meta else 0
+    skipped = int(meta["skipped"]) if meta else 0
+    elapsed_before = float(meta["elapsed_s"]) if meta else 0.0
+    peak_before = float(meta["peak_vram_gb"] or 0.0) if meta else 0.0
+    history = prepare_log(log_path, "update", start if meta else None)
+    if meta:
+        print(f"[ppo:{run_name}] resuming after update {start}/{n_updates}")
+
     reset_peak_memory()
     elapsed = wall_timer()
-    history = []
-    skipped = 0
-    for u in range(n_updates):
+    progress = bar(total=n_updates, initial=start, desc=f"ppo:{run_name}", unit="update")
+    for u in range(start, n_updates):
         set_seed(seed + u)
         batch_rows = [rows[i] for i in schedule[u]]
         prompts = [prompt_messages(r) for r in batch_rows]
@@ -246,15 +278,22 @@ def run_ppo(config_path: str, output: str | None = None, updates: int | None = N
             "value_grad_norm": mean_or_nan(diag["value_grad_norm"]),
             "clip_epsilon": eps,
             "kl_beta": beta_kl,
-            "elapsed_s": elapsed(),
-            "peak_vram_gb": peak_vram_gb(),
+            "elapsed_s": elapsed_before + elapsed(),
+            "peak_vram_gb": max(peak_before, peak_vram_gb() or 0.0),
             "response_preview": gen["responses"][0][:300],
         }
         history.append(rec)
         append_jsonl(log_path, rec)
-        print(f"[ppo:{run_name}] update {u + 1}/{n_updates} reward {rec['reward_raw']:.3f} kl/tok {kl_tok:.4f} "
-              f"ent {ent_mean:.3f} len {rec['response_length']:.0f} clip {rec['clip_fraction']:.3f} "
-              f"vloss {rec['value_loss']:.3f}")
+        progress.update(1)
+        progress.set_postfix(postfix(
+            reward=rec["reward_raw"], kl=kl_tok, ent=ent_mean, len=rec["response_length"], clip=rec["clip_fraction"],
+            pl=rec["policy_loss"], vl=rec["value_loss"], ev=ev_before, pg=rec["policy_grad_norm"],
+            vg=rec["value_grad_norm"]))
+        if (u + 1) % checkpoint_every == 0 and u + 1 < n_updates:
+            save_checkpoint(ckpt_dir, models, optimizers, {
+                "update": u + 1, "skipped": skipped, "elapsed_s": elapsed_before + elapsed(),
+                "peak_vram_gb": max(peak_before, peak_vram_gb() or 0.0)})
+    progress.close()
 
     policy.save_pretrained(str(out))
     keys = ["reward_raw", "reward_effective", "kl_per_token", "entropy", "response_length", "policy_loss", "value_loss",
@@ -262,6 +301,7 @@ def run_ppo(config_path: str, output: str | None = None, updates: int | None = N
     half = max(len(history) // 2, 1)
     summary = {
         "run_name": run_name,
+        "completed": True,
         "adapter_path": str(out),
         "log_path": str(log_path),
         "hyperparameters": {k: cfg.get(k) for k in [
@@ -269,15 +309,16 @@ def run_ppo(config_path: str, output: str | None = None, updates: int | None = N
             "value_head_learning_rate", "clip_epsilon", "kl_beta", "gamma", "gae_lambda", "value_coef",
             "missing_eos_penalty", "max_prompt_length", "max_response_length", "value_train_mode", "seed"]},
         "prompt_schedule": [[rows[i].get("prompt_id") for i in idx] for idx in schedule],
-        "wall_clock_s": elapsed(),
-        "peak_vram_gb": peak_vram_gb(),
+        "wall_clock_s": elapsed_before + elapsed(),
+        "peak_vram_gb": max(peak_before, peak_vram_gb() or 0.0),
         "total_generated_tokens": int(sum(h["generated_tokens"] for h in history)),
         "skipped_nonfinite_steps": skipped,
         "first_half_mean": {k: mean_or_nan([h[k] for h in history[:half]]) for k in keys},
         "second_half_mean": {k: mean_or_nan([h[k] for h in history[half:]]) for k in keys},
         "final_update": history[-1] if history else None,
     }
-    save_json(results_dir / f"{run_name}_summary.json", summary)
+    save_json_atomic(summary_path, summary)
+    clear_checkpoint(ckpt_dir)
 
     del policy, value_model, popt, vopt, bundle
     clear_gpu()
@@ -292,8 +333,9 @@ def main():
     ap.add_argument("--clip-epsilon", type=float)
     ap.add_argument("--kl-beta", type=float)
     ap.add_argument("--run-name", default="standard")
+    ap.add_argument("--restart", action="store_true", help="ignore checkpoints and finished results; old logs are archived")
     args = ap.parse_args()
-    run_ppo(args.config, args.output, args.updates, args.clip_epsilon, args.kl_beta, args.run_name)
+    run_ppo(args.config, args.output, args.updates, args.clip_epsilon, args.kl_beta, args.run_name, resume=not args.restart)
 
 
 if __name__ == "__main__":

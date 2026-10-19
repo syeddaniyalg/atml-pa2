@@ -9,7 +9,10 @@ import torch
 import torch.nn.functional as F
 
 from common.generation import batch_generate, score_reward_pairs
+from common.logging_utils import set_seed
 from common.models import reference_mode
+from common.progress import bar, postfix
+from common.resume import append_partial, archive_file, read_partial, remove_file
 
 
 def position_ids_from_mask(attention_mask: torch.Tensor) -> torch.Tensor:
@@ -17,7 +20,6 @@ def position_ids_from_mask(attention_mask: torch.Tensor) -> torch.Tensor:
 
 
 def response_logprobs(model, sequences, attention_mask, prompt_width, response_ids, with_entropy: bool = False):
-    """Per-token log-probs of `response_ids` (and optional exact token entropy), shape [B, T]."""
     out = model(
         input_ids=sequences,
         attention_mask=attention_mask,
@@ -39,10 +41,6 @@ def response_logprobs(model, sequences, attention_mask, prompt_width, response_i
 
 @torch.no_grad()
 def rowwise_policy_and_reference_logprobs(model, gen: dict, with_entropy: bool = True):
-    """Policy and frozen-reference log-probs for a `batch_generate` output, one row at a time (memory safe).
-
-    Returns lists of 1-D CPU tensors trimmed to each row's valid response length.
-    """
     seq, attn = gen["sequences"], gen["attention_mask"]
     pw, resp = gen["prompt_width"], gen["response_ids"]
     mask = gen["response_mask"]
@@ -53,7 +51,9 @@ def rowwise_policy_and_reference_logprobs(model, gen: dict, with_entropy: bool =
         n = int(mask[i].sum().item())
         if n == 0:
             z = torch.zeros(0)
-            pol.append(z); ref.append(z); ent.append(z)
+            pol.append(z)
+            ref.append(z)
+            ent.append(z)
             continue
         s, a, r = seq[i:i + 1], attn[i:i + 1], resp[i:i + 1, :n]
         s = s[:, : pw + n]
@@ -75,7 +75,6 @@ def token_entropy_from_logits(logits: torch.Tensor) -> torch.Tensor:
 
 
 def prompt_schedule(num_rows: int, seed: int, num_updates: int, per_update: int) -> list[list[int]]:
-    """Row indices used at each update. Depends only on (num_rows, seed), so all forks share the same prefix."""
     rng = np.random.default_rng(seed)
     order = rng.permutation(num_rows).tolist()
     need = num_updates * per_update
@@ -153,10 +152,12 @@ def generate_and_measure(
     top_p: float = 0.9,
     compute_kl: bool = True,
     with_entropy: bool = True,
+    progress_desc: str | None = None,
 ) -> list[dict]:
-    """Generate one response per prompt and (optionally) measure policy/reference log-probs on it."""
     records: list[dict] = []
-    for start in range(0, len(prompts), batch_size):
+    starts = range(0, len(prompts), batch_size)
+    progress = bar(total=len(prompts), desc=progress_desc, unit="prompt") if progress_desc else None
+    for start in starts:
         chunk = prompts[start:start + batch_size]
         gen = batch_generate(
             model, tokenizer, chunk, max_prompt_length, max_new_tokens,
@@ -179,11 +180,15 @@ def generate_and_measure(
                 rec["entropy_sum"] = float(ent[j].sum().item())
                 rec["sampled_entropy_sum"] = float(-pol[j].sum().item())
             records.append(rec)
+        if progress is not None:
+            progress.update(len(chunk))
+            progress.set_postfix(postfix(len=float(np.mean([r["n_tokens"] for r in records]))))
+    if progress is not None:
+        progress.close()
     return records
 
 
 def summarize_generation_records(records: list[dict]) -> dict:
-    """Aggregate with ONE fixed convention: token-averaged and sequence-averaged variants are both reported."""
     lengths = [r["n_tokens"] for r in records]
     out: dict[str, Any] = {
         "n": len(records),
@@ -205,7 +210,6 @@ def summarize_generation_records(records: list[dict]) -> dict:
 
 
 def pick_examples(records: list[dict], k: int = 3, text_chars: int = 700) -> dict:
-    """Small, reproducible set of qualitative examples (extremes of reward and length)."""
     def slim(r):
         s = dict(r)
         s["response"] = s["response"][:text_chars]
@@ -239,22 +243,40 @@ def evaluate_policy_on_prompts(
     do_sample: bool = False,
     reward_max_length: int = 1280,
     compute_kl: bool = True,
+    cache_path=None,
+    desc: str = "eval",
 ) -> tuple[list[dict], dict]:
-    """The common held-out protocol: fixed prompts, fixed decoding, RM score + KL + entropy + length."""
     gen_cfg = cfg.get("generation", {})
+    seed = int(cfg.get("seed", 0))
     t0 = time.perf_counter()
-    records = generate_and_measure(
-        model, tokenizer, prompts, max_prompt_length, max_new_tokens,
-        batch_size=batch_size, do_sample=do_sample,
-        temperature=float(gen_cfg.get("temperature", 0.7)), top_p=float(gen_cfg.get("top_p", 0.9)),
-        compute_kl=compute_kl,
-    )
-    rewards = score_in_batches(reward_model, reward_tokenizer, prompts, [r["response"] for r in records],
-                               max_length=reward_max_length, batch_size=batch_size)
-    for row, rec, rew in zip(rows, records, rewards):
-        rec["reward"] = rew
-        rec["prompt_id"] = row.get("prompt_id")
-        rec["source_index"] = row.get("source_index")
+    records = read_partial(cache_path)[: len(prompts)] if cache_path else []
+    progress = bar(total=len(prompts), initial=len(records), desc=desc, unit="prompt")
+    for start in range(len(records), len(prompts), batch_size):
+        chunk_prompts = prompts[start:start + batch_size]
+        chunk_rows = rows[start:start + batch_size]
+        set_seed(seed + start)
+        recs = generate_and_measure(
+            model, tokenizer, chunk_prompts, max_prompt_length, max_new_tokens,
+            batch_size=len(chunk_prompts), do_sample=do_sample,
+            temperature=float(gen_cfg.get("temperature", 0.7)), top_p=float(gen_cfg.get("top_p", 0.9)),
+            compute_kl=compute_kl,
+        )
+        rewards = score_in_batches(reward_model, reward_tokenizer, chunk_prompts, [r["response"] for r in recs],
+                                   max_length=reward_max_length, batch_size=batch_size)
+        for row, rec, rew in zip(chunk_rows, recs, rewards):
+            rec["reward"] = rew
+            rec["prompt_id"] = row.get("prompt_id")
+            rec["source_index"] = row.get("source_index")
+        records.extend(recs)
+        if cache_path:
+            append_partial(cache_path, recs)
+        running = summarize_generation_records(records)
+        progress.update(len(recs))
+        progress.set_postfix(postfix(
+            reward=running.get("reward_mean"), kl_tok=running.get("kl_per_token"),
+            ent=running.get("entropy_per_token"), len=running["response_length"]["mean"],
+            trunc=running["frac_truncated"]))
+    progress.close()
     metrics = summarize_generation_records(records)
     metrics["decoding"] = {
         "do_sample": do_sample,
@@ -276,14 +298,23 @@ def evaluate_adapter_heldout(
     reward_bundle=None,
     tokenizer=None,
     batch_size: int = 4,
+    resume: bool = True,
 ) -> dict:
-    """Common held-out protocol for Tasks 2 and 3 (identical prompts, release decoding config, same seed for every condition).
-
-    Writes <results_dir>/eval_<name>.json and eval_<name>_generations.jsonl and returns the metrics dict.
-    """
     from common.data import prompt_messages, read_jsonl, repo_path, write_jsonl
-    from common.logging_utils import save_json, set_seed
+    from common.logging_utils import load_json, save_json
     from common.models import clear_gpu, load_policy, load_reward_model, load_tokenizer
+
+    out_dir = repo_path(results_dir)
+    final_path = out_dir / f"eval_{name}.json"
+    partial_path = out_dir / f"eval_{name}_generations.partial.jsonl"
+    if final_path.exists():
+        if resume:
+            return load_json(final_path)
+        archive_file(final_path)
+        archive_file(out_dir / f"eval_{name}_generations.jsonl")
+        remove_file(partial_path)
+    elif not resume:
+        remove_file(partial_path)
 
     set_seed(int(cfg["seed"]))
     tokenizer = tokenizer or load_tokenizer(cfg["base_model"])
@@ -299,14 +330,15 @@ def evaluate_adapter_heldout(
         max_new_tokens=max_new, max_prompt_length=int(cfg.get("max_prompt_length", 256)),
         batch_size=batch_size, do_sample=bool(cfg.get("generation", {}).get("do_sample", False)),
         reward_max_length=int(cfg.get("reward_max_length", 1280)),
+        cache_path=partial_path, desc=f"eval:{name}",
     )
     for rec, p in zip(records, prompts):
         rec["prompt"] = p[-1]["content"][:400]
-    out_dir = repo_path(results_dir)
     write_jsonl(out_dir / f"eval_{name}_generations.jsonl", records)
     result = {"name": name, "adapter": adapter, "seed": int(cfg["seed"]),
               "prompt_ids": [r.get("prompt_id") for r in rows], "metrics": metrics, "examples": pick_examples(records)}
-    save_json(out_dir / f"eval_{name}.json", result)
+    save_json(final_path, result)
+    remove_file(partial_path)
     del model
     if reward_bundle is None:
         del rm

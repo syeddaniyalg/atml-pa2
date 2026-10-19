@@ -8,13 +8,14 @@ import torch
 from torch.optim import AdamW
 
 from common.data import load_yaml, prompt_messages, read_jsonl, repo_path
-from common.logging_utils import read_jsonl_safe, save_json, set_seed
+from common.logging_utils import load_json, read_jsonl_safe, save_json, set_seed
 from common.metrics import masked_mean
 from common.models import clear_gpu, load_policy, load_reward_model, load_tokenizer, trainable_parameters
-from common.rl_utils import finite, response_logprobs
+from common.progress import bar, postfix
+from common.resume import archive_file, remove_file, save_json_atomic
+from common.rl_utils import evaluate_adapter_heldout, finite, response_logprobs
 from task2_ppo.continue_train import run_ppo
 from task2_ppo.ppo import compute_gae, normalize_advantages, ppo_policy_loss, shaped_rewards
-from common.rl_utils import evaluate_adapter_heldout
 
 
 def load_cached_rollouts(path):
@@ -128,7 +129,8 @@ def probe_epsilon(cfg, policy, init_state, batch, tokenizer, train_eps, probe_st
     items, old, adv, mask = batch["items"], batch["old"], batch["adv"], batch["mask"]
     total_tokens = mask.sum().clamp_min(1.0)
     trace = []
-    for step in range(probe_steps + 1):
+    progress = bar(range(probe_steps + 1), desc=f"clip-probe eps={train_eps:g}", unit="pass", leave=False)
+    for step in progress:
         new_lp = torch.zeros_like(old)
         opt.zero_grad(set_to_none=True)
         for i, it in enumerate(items):
@@ -154,22 +156,50 @@ def probe_epsilon(cfg, policy, init_state, batch, tokenizer, train_eps, probe_st
             rec["grad_norm"] = gn
             if finite(gn):
                 opt.step()
+        own = stats[f"{train_eps:g}"]
+        progress.set_postfix(postfix(clip=own["clip_fraction"], affected=own["affected_token_fraction"],
+                                     log_ratio=recon, gnorm=rec.get("grad_norm")))
         trace.append(rec)
+    progress.close()
     return trace
 
 
 def run_probe(cfg, args):
+    results_dir = repo_path(cfg["results_dir"])
+    partial_path = results_dir / "clipping_cached_probe.partial.json"
     set_seed(int(cfg["seed"]))
     tokenizer = load_tokenizer(cfg["base_model"])
-    policy = load_policy(cfg, adapter_path=cfg["paths"]["ppo_midpoint_policy"], trainable=True)
-    policy.eval()
-    device = next(policy.parameters()).device
     cached = load_cached_rollouts(cfg["cached_rollouts"])
+    device = "cuda" if torch.cuda.is_available() else "cpu"
     batch = reconstruct_batch(cfg, tokenizer, cached, device)
-    init_state = [p.detach().clone() for p in trainable_parameters(policy)]
     eps_values = [float(e) for e in cfg["clip_values"]]
     probe_lr = float(args.probe_lr or cfg.get("clip_probe_lr", cfg["policy_learning_rate"]))
     steps = int(args.probe_steps)
+    settings = {"probe_steps": steps, "probe_lr": probe_lr}
+    traces = {}
+    if args.restart:
+        archive_file(partial_path)
+    elif partial_path.exists():
+        saved = load_json(partial_path)
+        if saved.get("settings") == settings:
+            traces = saved["traces"]
+    todo = [e for e in eps_values if f"{e:g}" not in traces]
+    if todo:
+        policy = load_policy(cfg, adapter_path=cfg["paths"]["ppo_midpoint_policy"], trainable=True)
+        policy.eval()
+        init_state = [p.detach().clone() for p in trainable_parameters(policy)]
+        outer = bar(todo, desc="clip-probe", unit="eps", initial=0)
+        for eps in outer:
+            outer.set_postfix(eps=eps)
+            trace = probe_epsilon(cfg, policy, init_state, batch, tokenizer, eps, steps, probe_lr, eps_values)
+            traces[f"{eps:g}"] = trace
+            save_json_atomic(partial_path, {"settings": settings, "traces": traces})
+            last = trace[-1]["by_epsilon"][f"{eps:g}"]
+            outer.write(f"[clip-probe eps={eps:g}] pass0 |log-ratio| {trace[0]['mean_abs_logratio']:.2e} -> "
+                        f"last pass clip {last['clip_fraction']:.4f} affected {last['affected_token_fraction']:.4f}")
+        outer.close()
+        del policy
+        clear_gpu()
     result = {
         "n_rollouts": len(cached),
         "valid_tokens": int(batch["mask"].sum().item()),
@@ -178,16 +208,9 @@ def run_probe(cfg, args):
         "kl_beta": float(cfg["kl_beta"]),
         "source_index": [it["source_index"] for it in batch["items"]],
         "tokenisation_length_mismatch": [it["length_mismatch"] for it in batch["items"]],
-        "traces": {},
+        "traces": {f"{e:g}": traces[f"{e:g}"] for e in eps_values},
     }
-    for eps in eps_values:
-        trace = probe_epsilon(cfg, policy, init_state, batch, tokenizer, eps, steps, probe_lr, eps_values)
-        result["traces"][f"{eps:g}"] = trace
-        last = trace[-1]["by_epsilon"][f"{eps:g}"]
-        print(f"[clip-probe eps={eps:g}] pass0 |log-ratio| {trace[0]['mean_abs_logratio']:.2e} -> "
-              f"last pass clip {last['clip_fraction']:.4f} affected {last['affected_token_fraction']:.4f}")
-    del policy
-    clear_gpu()
+    remove_file(partial_path)
     return result
 
 
@@ -222,23 +245,31 @@ def run_forks(cfg, args):
     reward_bundle = load_reward_model(cfg)
     tokenizer = load_tokenizer(cfg["base_model"])
     rows = []
-    for eps in [float(e) for e in cfg["clip_values"]]:
+    outer = bar([float(e) for e in cfg["clip_values"]], desc="clip-forks", unit="fork")
+    for eps in outer:
         tag = f"clip_{eps:g}"
         adapter = f"outputs/task2_ppo/{tag}"
-        if not (args.reuse and (repo_path(adapter) / "adapter_config.json").exists()):
-            run_ppo(args.config, output=adapter, updates=int(cfg["fork_updates"]), clip_epsilon=eps,
-                    kl_beta=float(cfg["kl_beta"]), run_name=tag, reward_bundle=reward_bundle)
-        ev = evaluate_adapter_heldout(cfg, adapter, tag, results_dir, args.max_prompts, reward_bundle, tokenizer)
+        outer.set_postfix(eps=eps, stage="train")
+        run_ppo(args.config, output=adapter, updates=int(cfg["fork_updates"]), clip_epsilon=eps,
+                kl_beta=float(cfg["kl_beta"]), run_name=tag, reward_bundle=reward_bundle, resume=not args.restart)
+        outer.set_postfix(eps=eps, stage="eval")
+        ev = evaluate_adapter_heldout(cfg, adapter, tag, results_dir, args.max_prompts, reward_bundle, tokenizer,
+                                      resume=not args.restart)
         log = read_jsonl_safe(results_dir / f"{tag}_log.jsonl")
         m = ev["metrics"]
         row = {"epsilon": eps, "heldout_reward": m["reward_mean"], "heldout_kl_per_token": m["kl_per_token"],
                "heldout_kl_per_sequence": m["kl_per_sequence"], "heldout_entropy": m["entropy_per_token"],
+               "heldout_entropy_sampled": m["entropy_sampled_per_token"],
                "heldout_length_mean": m["response_length"]["mean"], "heldout_length_std": m["response_length"]["std"]}
         row.update({f"stability_{k}": v for k, v in stability_statistics(log).items()})
         rows.append(row)
-        print(f"[clip fork {tag}] heldout reward {row['heldout_reward']:.3f} KL/tok {row['heldout_kl_per_token']:.4f} "
-              f"reward-update-std {row['stability_reward_update_std']:.3f}")
+        outer.set_postfix(postfix(eps=eps, reward=row["heldout_reward"], kl_tok=row["heldout_kl_per_token"],
+                                  ent=row["heldout_entropy"], len=row["heldout_length_mean"],
+                                  rstd=row["stability_reward_update_std"]))
+        if len(rows) == 1 and args.restart:
+            archive_file(results_dir / "clipping_forks.csv")
         pd.DataFrame(rows).to_csv(results_dir / "clipping_forks.csv", index=False)
+    outer.close()
     return rows
 
 
@@ -249,7 +280,7 @@ def main():
     ap.add_argument("--probe-lr", type=float, help="defaults to cfg.clip_probe_lr or the PPO policy learning rate")
     ap.add_argument("--skip-probe", action="store_true")
     ap.add_argument("--skip-forks", action="store_true")
-    ap.add_argument("--reuse", action="store_true", help="reuse existing fork adapters instead of retraining")
+    ap.add_argument("--restart", action="store_true", help="redo everything (old logs and results are archived)")
     ap.add_argument("--max-prompts", type=int, help="number of held-out prompts for fork evaluation")
     args = ap.parse_args()
     cfg = load_yaml(args.config)
@@ -261,11 +292,21 @@ def main():
 
     summary = {"epsilons": cfg["clip_values"]}
     if not args.skip_probe:
-        summary["cached_rollout_probe"] = run_probe(cfg, args)
-        save_json(results_dir / "clipping_cached_probe.json", summary["cached_rollout_probe"])
+        probe_path = results_dir / "clipping_cached_probe.json"
+        if probe_path.exists() and not args.restart:
+            print("Cached-batch probe already finished, loading", probe_path)
+            summary["cached_rollout_probe"] = load_json(probe_path)
+        else:
+            archive_file(probe_path)
+            summary["cached_rollout_probe"] = run_probe(cfg, args)
+            save_json(probe_path, summary["cached_rollout_probe"])
     if not args.skip_forks:
+        if args.restart:
+            archive_file(results_dir / "clipping_forks.json")
         summary["forks"] = run_forks(cfg, args)
         save_json(results_dir / "clipping_forks.json", summary["forks"])
+    if args.restart:
+        archive_file(results_dir / "clipping_summary.json")
     save_json(results_dir / "clipping_summary.json", summary)
     print("Saved:", results_dir / "clipping_summary.json")
 

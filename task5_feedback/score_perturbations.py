@@ -7,7 +7,9 @@ import numpy as np
 import pandas as pd
 
 from common.data import load_yaml, read_jsonl, repo_path, write_jsonl
-from common.logging_utils import save_json
+from common.logging_utils import load_json, save_json
+from common.progress import bar, postfix
+from common.resume import archive_file
 from task5_feedback.rlvr import exact_reward
 from task5_feedback.rlaif import PairwiseAIJudge
 
@@ -69,6 +71,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/feedback.yaml")
     ap.add_argument("--skip-judge", action="store_true", help="only score with the exact verifier")
+    ap.add_argument("--restart", action="store_true", help="redo the scoring even if a finished result exists (old files are archived)")
     args = ap.parse_args()
     cfg = load_yaml(args.config)
     groups = load_diagnostic_groups(cfg["paths"]["task5_diagnostics"])
@@ -76,6 +79,13 @@ def main():
     print("Variants/problem:", sorted(EXPECTED_VARIANTS))
     out_dir = repo_path(cfg["results_dir"]) / "task5_feedback"
     out_dir.mkdir(parents=True, exist_ok=True)
+    final_path = out_dir / "diagnostic_summary.json"
+    if args.restart:
+        for name in ("diagnostic_summary.json", "diagnostic_summary.csv", "diagnostic_pair_results.jsonl"):
+            archive_file(out_dir / name)
+    elif final_path.exists() and (args.skip_judge or "ai" in load_json(final_path).get("mechanisms", {})):
+        print("Diagnostic scoring already finished:", final_path)
+        return
 
     mismatches = []
     for pid, variants in groups.items():
@@ -86,7 +96,8 @@ def main():
 
     judge = None if args.skip_judge else PairwiseAIJudge(cfg, out_dir / "judge_cache.json")
     detail, by_mech = [], {"exact": defaultdict(list), "ai": defaultdict(list)}
-    for pid, variants in sorted(groups.items()):
+    progress = bar(sorted(groups.items()), desc="diagnostics", unit="problem")
+    for pid, variants in progress:
         for name, better_v, worse_v, _ in PAIR_SPECS:
             better, worse = variants[better_v], variants[worse_v]
             row = {"problem_id": pid, "pair": name, "better_variant": better_v, "worse_variant": worse_v,
@@ -98,6 +109,12 @@ def main():
                 row["ai_outcome"] = judge_outcome(judge, better, worse)
                 by_mech["ai"][name].append(row["ai_outcome"])
             detail.append(row)
+        running = {"exact_better": np.mean([d["exact_outcome"] == "better" for d in detail])}
+        if judge is not None:
+            running["ai_better"] = np.mean([d["ai_outcome"] == "better" for d in detail])
+            running["disagree"] = np.mean([d["exact_outcome"] != d["ai_outcome"] for d in detail])
+        progress.set_postfix(postfix(**{k: float(v) for k, v in running.items()}))
+    progress.close()
     write_jsonl(out_dir / "diagnostic_pair_results.jsonl", detail)
 
     summary: dict = {"n_problems": len(groups), "verifier_expected_mismatches": mismatches,

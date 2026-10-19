@@ -9,6 +9,8 @@ from common.data import load_yaml, preference_responses, read_jsonl, repo_path
 from common.logging_utils import save_json
 from common.metrics import safe_corr, word_count
 from common.models import clear_gpu, load_reward_model, load_tokenizer
+from common.progress import bar
+from common.resume import archive_file
 from task1_dpo.evaluate import evaluate_adapter
 from task1_dpo.train import run_training
 
@@ -41,7 +43,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/dpo.yaml")
     ap.add_argument("--standard-adapter", help="defaults to the standard_output of the config")
-    ap.add_argument("--skip-train", action="store_true", help="reuse an existing length-balanced adapter")
+    ap.add_argument("--restart", action="store_true", help="retrain and re-evaluate from scratch (old logs and results are archived)")
     ap.add_argument("--max-gen-prompts", type=int)
     args = ap.parse_args()
     cfg = load_yaml(args.config)
@@ -59,23 +61,26 @@ def main():
         "length_balanced_train": dataset_length_profile(balanced, tokenizer),
         "length_stratified_eval": dataset_length_profile(stratified, tokenizer),
     }
+    if args.restart:
+        archive_file(results_dir / "length_dataset_profile.json")
     save_json(results_dir / "length_dataset_profile.json", profile)
     print("Dataset length profile saved (standard train: frac chosen longer = "
           f"{profile['standard_train']['frac_chosen_longer_tokens']:.3f})")
 
     bal_out = cfg["length_output"]
-    if args.skip_train and (repo_path(bal_out) / "adapter_config.json").exists():
-        print("Reusing existing length-balanced adapter")
-    else:
-        run_training(args.config, "length_balanced", cfg["paths"]["dpo_length_train"], bal_out)
-        clear_gpu()
+    run_training(args.config, "length_balanced", cfg["paths"]["dpo_length_train"], bal_out, resume=not args.restart)
+    clear_gpu()
 
     std_adapter = args.standard_adapter or cfg["standard_output"]
     reward_bundle = load_reward_model(cfg)
     summary = {}
-    for name, adapter in [("standard", std_adapter), ("length_balanced", bal_out)]:
+    conditions = [("standard", std_adapter), ("length_balanced", bal_out)]
+    outer = bar(conditions, desc="length-confounding", unit="model")
+    for name, adapter in outer:
+        outer.set_postfix(model=name)
         ev = evaluate_adapter(cfg, adapter, f"{name}_stratified", beta=float(cfg["beta"]), reward_bundle=reward_bundle,
-                              max_gen_prompts=args.max_gen_prompts, stratified=True, tokenizer=tokenizer)
+                              max_gen_prompts=args.max_gen_prompts, stratified=True, tokenizer=tokenizer,
+                              resume=not args.restart)
         strat = ev["length_stratified_preferences"]
         summary[name] = {
             "adapter": adapter,
@@ -87,10 +92,11 @@ def main():
             "kl_per_token": ev["generation"]["kl_per_token"],
             "word_limit": ev["word_limit"],
         }
-        print(f"[{name}] by-stratum accuracy:",
-              {k: round(v["preference_accuracy"], 3) for k, v in strat["by_stratum"].items()},
-              f"| gen len {ev['generation']['response_length']['mean']:.1f}"
-              f" | word-limit compliance {ev['word_limit']['compliance_rate']:.2f}")
+        outer.write(f"[{name}] by-stratum accuracy: " + str(
+            {k: round(v["preference_accuracy"], 3) for k, v in strat["by_stratum"].items()}) +
+            f" | gen len {ev['generation']['response_length']['mean']:.1f}"
+            f" | word-limit compliance {ev['word_limit']['compliance_rate']:.2f}")
+    outer.close()
     save_json(results_dir / "length_confounding_summary.json", {"dataset_profile": profile, "models": summary})
     print("Saved:", results_dir / "length_confounding_summary.json")
 

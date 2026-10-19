@@ -7,7 +7,9 @@ import numpy as np
 import pandas as pd
 
 from common.data import load_yaml, read_jsonl, repo_path
-from common.logging_utils import save_json
+from common.logging_utils import load_json, save_json
+from common.progress import bar, postfix
+from common.resume import archive_file
 
 STD_TOL = 1e-6
 
@@ -95,10 +97,12 @@ def analyze(by_prompt, group_sizes, n_partitions: int, seed: int):
     result = {"difficulty_rule": "rank prompts by mean reward of their 8 cached completions; tertiles hard/medium/easy",
               "prompt_difficulty": {pid: {"bin": bins[pid], "mean_reward": prompt_mean_reward[pid]} for pid in bins},
               "n_partitions": n_partitions, "by_k": {}}
-    for k in group_sizes:
+    outer = bar(group_sizes, desc="group-size", unit="K")
+    for k in outer:
         reps = 1 if k == 8 else n_partitions
         per_rep_all, per_rep_bin = [], defaultdict(list)
-        for rep in range(reps):
+        outer.set_postfix(K=k, partitions=reps)
+        for rep in bar(range(reps), desc=f"K={k}", unit="partition", leave=False):
             groups = regroup_equal_generation_budget(by_prompt, k, seed=None if k == 8 else seed + rep)
             per_rep_all.append(group_metrics(groups))
             for name in sorted(set(bins.values())):
@@ -111,6 +115,11 @@ def analyze(by_prompt, group_sizes, n_partitions: int, seed: int):
                 "num_groups": ms[0]["num_groups"], "num_completions": ms[0]["num_completions"]}
 
         result["by_k"][str(k)] = {"overall": agg(per_rep_all), "by_difficulty": {n: agg(v) for n, v in per_rep_bin.items()}}
+        overall = result["by_k"][str(k)]["overall"]
+        outer.set_postfix(postfix(K=k, informative=overall["informative_group_rate"]["mean"],
+                                  group_std=overall["mean_within_group_std"]["mean"],
+                                  var_signal=overall["var_centered_reward"]["mean"]))
+    outer.close()
     return result
 
 
@@ -133,8 +142,16 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/grpo.yaml")
     ap.add_argument("--partitions", type=int, default=50, help="random within-prompt partitions averaged for K=2,4")
+    ap.add_argument("--restart", action="store_true", help="recompute even if a finished result exists (old one is archived)")
     args = ap.parse_args()
     cfg = load_yaml(args.config)
+    final_path = repo_path(cfg["results_dir"]) / "group_size_study.json"
+    if final_path.exists() and not args.restart:
+        print("Group-size study already finished:", final_path)
+        flat_table(load_json(final_path)).to_csv(final_path.with_suffix(".csv"), index=False)
+        return
+    archive_file(final_path)
+    archive_file(final_path.with_suffix(".csv"))
     by_prompt = load_k8_cache(cfg["group_cache"])
     print("Cached prompts:", len(by_prompt))
     print("Group sizes to analyze:", cfg["group_sizes"])

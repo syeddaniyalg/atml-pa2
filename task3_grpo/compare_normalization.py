@@ -9,6 +9,8 @@ from common.data import load_yaml, repo_path
 from common.logging_utils import read_jsonl_safe, save_json
 from common.metrics import safe_corr
 from common.models import load_reward_model, load_tokenizer
+from common.progress import bar, postfix
+from common.resume import archive_file
 from common.rl_utils import evaluate_adapter_heldout
 from task3_grpo.continue_train import run_grpo
 
@@ -73,7 +75,7 @@ def length_trend(log: list[dict]) -> dict:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/grpo.yaml")
-    ap.add_argument("--reuse", action="store_true", help="reuse existing fork adapters/logs instead of retraining")
+    ap.add_argument("--restart", action="store_true", help="retrain and re-evaluate every fork (old logs and results are archived)")
     ap.add_argument("--no-grad-stats", action="store_true", help="skip per-completion gradient norms (cheaper)")
     ap.add_argument("--max-prompts", type=int, help="number of held-out prompts for fork evaluation")
     args = ap.parse_args()
@@ -85,13 +87,16 @@ def main():
     reward_bundle = load_reward_model(cfg)
     tokenizer = load_tokenizer(cfg["base_model"])
     rows, detail = [], {}
-    for lt in LOSS_TYPES:
+    outer = bar(LOSS_TYPES, desc="normalization", unit="fork")
+    for lt in outer:
         tag = f"norm_{lt}"
         adapter = f"outputs/task3_grpo/{tag}"
-        if not (args.reuse and (repo_path(adapter) / "adapter_config.json").exists()):
-            run_grpo(args.config, output=adapter, updates=int(cfg["fork_updates"]), loss_type=lt, run_name=tag,
-                     reward_bundle=reward_bundle, collect_grad_stats=not args.no_grad_stats)
-        ev = evaluate_adapter_heldout(cfg, adapter, tag, results_dir, args.max_prompts, reward_bundle, tokenizer)
+        outer.set_postfix(loss_type=lt, stage="train")
+        run_grpo(args.config, output=adapter, updates=int(cfg["fork_updates"]), loss_type=lt, run_name=tag,
+                 reward_bundle=reward_bundle, collect_grad_stats=not args.no_grad_stats, resume=not args.restart)
+        outer.set_postfix(loss_type=lt, stage="eval")
+        ev = evaluate_adapter_heldout(cfg, adapter, tag, results_dir, args.max_prompts, reward_bundle, tokenizer,
+                                      resume=not args.restart)
         log = read_jsonl_safe(results_dir / f"{tag}_log.jsonl")
         seq_stats = read_jsonl_safe(results_dir / f"{tag}_seq_stats.jsonl")
         m = ev["metrics"]
@@ -112,11 +117,16 @@ def main():
         row.update({f"lencond_{k}": v for k, v in lc.items() if not isinstance(v, dict)})
         rows.append(row)
         detail[lt] = {"length_conditioned": lc, "length_trend": trend, "eval_file": str(results_dir / f"eval_{tag}.json")}
-        print(f"[{tag}] heldout reward {row['heldout_reward']:.3f} KL/tok {row['heldout_kl_per_token']:.4f} "
-              f"len {row['heldout_length_mean']:.1f} | grad-norm short/long "
-              f"{lc.get('gradnorm_ratio_short_over_long', float('nan')):.2f}")
+        outer.set_postfix(postfix(loss_type=lt, reward=row["heldout_reward"], kl_tok=row["heldout_kl_per_token"],
+                                  ent=row["heldout_entropy"], len=row["heldout_length_mean"],
+                                  gn_ratio=lc.get("gradnorm_ratio_short_over_long")))
+        if len(rows) == 1 and args.restart:
+            archive_file(results_dir / "normalization_summary.csv")
         pd.DataFrame(rows).to_csv(results_dir / "normalization_summary.csv", index=False)
+    outer.close()
 
+    if args.restart:
+        archive_file(results_dir / "normalization_summary.json")
     save_json(results_dir / "normalization_summary.json", {"rows": rows, "detail": detail})
     print("Saved:", results_dir / "normalization_summary.json")
 

@@ -8,9 +8,19 @@ from torch.optim import AdamW
 
 from common.data import load_yaml, prompt_messages, read_jsonl, repo_path
 from common.generation import batch_generate
-from common.logging_utils import append_jsonl, save_json, set_seed, wall_timer
+from common.logging_utils import append_jsonl, set_seed, wall_timer
 from common.metrics import masked_mean, sample_entropy
 from common.models import clear_gpu, load_policy, load_reward_model, load_tokenizer, reference_mode, trainable_parameters
+from common.progress import bar, postfix
+from common.resume import (
+    archive_file,
+    clear_checkpoint,
+    completed_summary,
+    load_checkpoint,
+    prepare_log,
+    save_checkpoint,
+    save_json_atomic,
+)
 from common.rl_utils import (
     finite,
     grad_norm_of,
@@ -63,7 +73,7 @@ def group_reward_stats(rewards: torch.Tensor, group_ids: torch.Tensor) -> dict:
     }
 
 
-def run_grpo(config_path: str, output: str | None = None, updates: int | None = None, loss_type: str = "grpo", run_name: str = "standard", reward_bundle=None, collect_grad_stats: bool = False):
+def run_grpo(config_path: str, output: str | None = None, updates: int | None = None, loss_type: str = "grpo", run_name: str = "standard", reward_bundle=None, collect_grad_stats: bool = False, resume: bool = True):
     """GRPO continuation from the supplied midpoint adapter.
 
     Per update: sample `prompts_per_update` prompts, draw K=`num_generations` completions each, score them with
@@ -71,20 +81,31 @@ def run_grpo(config_path: str, output: str | None = None, updates: int | None = 
     length cap, and take `policy_epochs` clipped-ratio steps (loss_type 'grpo' = 1/T_k, 'dr_grpo' = 1/L_max).
     With `collect_grad_stats`, the gradient norm of every completion's own loss term is also recorded (extra
     forward/backward per completion) so the normalisation effect on gradient allocation can be measured.
+    Resumable: the adapter and optimizer are checkpointed after every update and the per-update log is kept.
     """
+    cfg0 = load_yaml(config_path)
+    out = repo_path(output or (cfg0["output"] if run_name == "standard" else f"outputs/task3_grpo/{run_name}"))
+    out.parent.mkdir(parents=True, exist_ok=True)
+    results_dir = repo_path(cfg0["results_dir"])
+    results_dir.mkdir(parents=True, exist_ok=True)
+    log_path = results_dir / f"{run_name}_log.jsonl"
+    seq_path = results_dir / f"{run_name}_seq_stats.jsonl"
+    summary_path = results_dir / f"{run_name}_summary.json"
+    ckpt_dir = out.parent / f"{out.name}_resume"
+
+    if resume:
+        done = completed_summary(summary_path, out)
+        if done is not None:
+            print(f"[grpo:{run_name}] already completed, loading saved summary")
+            return done
+    else:
+        archive_file(summary_path)
+        clear_checkpoint(ckpt_dir)
+
     bundle = prepare_grpo_continuation(config_path, reward_bundle=reward_bundle)
     cfg = bundle["cfg"]
     if updates is not None:
         cfg["updates"] = int(updates)
-    out = repo_path(output or (cfg["output"] if run_name == "standard" else f"outputs/task3_grpo/{run_name}"))
-    out.parent.mkdir(parents=True, exist_ok=True)
-    results_dir = repo_path(cfg["results_dir"])
-    results_dir.mkdir(parents=True, exist_ok=True)
-    log_path = results_dir / f"{run_name}_log.jsonl"
-    seq_path = results_dir / f"{run_name}_seq_stats.jsonl"
-    for p in (log_path, seq_path):
-        if p.exists():
-            p.unlink()
 
     policy, optimizer, tokenizer = bundle["policy"], bundle["optimizer"], bundle["tokenizer"]
     reward_model, reward_tokenizer = bundle["reward_model"], bundle["reward_tokenizer"]
@@ -100,16 +121,28 @@ def run_grpo(config_path: str, output: str | None = None, updates: int | None = 
     max_prompt_len = int(cfg["max_prompt_length"])
     max_comp = int(cfg["max_completion_length"])
     mask_trunc = bool(cfg.get("mask_truncated_completions", True))
+    checkpoint_every = int(cfg.get("checkpoint_every", 1))
     gen_cfg = cfg.get("generation", {})
     seed = int(cfg["seed"])
     schedule = prompt_schedule(len(rows), seed, n_updates, per_update)
     device = next(policy.parameters()).device
     params = trainable_parameters(policy)
 
+    meta = load_checkpoint(ckpt_dir, {"policy": policy}, {"policy": optimizer}) if resume else None
+    start = int(meta["update"]) if meta else 0
+    skipped = int(meta["skipped"]) if meta else 0
+    elapsed_before = float(meta["elapsed_s"]) if meta else 0.0
+    peak_before = float(meta["peak_vram_gb"] or 0.0) if meta else 0.0
+    history = prepare_log(log_path, "update", start if meta else None)
+    if collect_grad_stats:
+        prepare_log(seq_path, "update", start if meta else None)
+    if meta:
+        print(f"[grpo:{run_name}] resuming after update {start}/{n_updates}")
+
     reset_peak_memory()
     elapsed = wall_timer()
-    history, skipped = [], 0
-    for u in range(n_updates):
+    progress = bar(total=n_updates, initial=start, desc=f"grpo:{run_name}:{loss_type}", unit="update")
+    for u in range(start, n_updates):
         set_seed(seed + u)
         prompts, gids, batch_rows = [], [], []
         for g, ridx in enumerate(schedule[u]):
@@ -142,7 +175,6 @@ def run_grpo(config_path: str, output: str | None = None, updates: int | None = 
         gstats = group_reward_stats(rewards, group_ids)
 
         policy.train()
-        seq_stats = []
         if collect_grad_stats:
             for i in range(seq.shape[0]):
                 n_i = int(gen["response_lengths"][i])
@@ -158,7 +190,6 @@ def run_grpo(config_path: str, output: str | None = None, updates: int | None = 
                          "advantage": float(adv[i].item()), "reward": float(rewards[i].item()),
                          "truncated": bool(gen["truncated"][i]), "masked": bool(token_mask[i].sum().item() == 0),
                          "grad_norm": grad_norm_of(params), "loss_type": loss_type}
-                seq_stats.append(rec_i)
                 append_jsonl(seq_path, rec_i)
             optimizer.zero_grad(set_to_none=True)
 
@@ -207,15 +238,22 @@ def run_grpo(config_path: str, output: str | None = None, updates: int | None = 
             "grad_norm": mean_or_nan(diag_accum["grad_norm"]),
             "completion_lengths": [int(x) for x in lengths],
             "completion_rewards": [float(x) for x in rewards.cpu().tolist()],
-            "elapsed_s": elapsed(),
-            "peak_vram_gb": peak_vram_gb(),
+            "elapsed_s": elapsed_before + elapsed(),
+            "peak_vram_gb": max(peak_before, peak_vram_gb() or 0.0),
             "response_preview": gen["responses"][0][:300],
         }
         history.append(rec)
         append_jsonl(log_path, rec)
-        print(f"[grpo:{run_name}:{loss_type}] update {u + 1}/{n_updates} reward {rec['reward_mean']:.3f} "
-              f"grp-std {rec['group_reward_std_mean']:.3f} uninf {rec['frac_uninformative_groups']:.2f} "
-              f"kl/tok {kl_tok:.4f} len {rec['response_length']:.0f} gnorm {rec['grad_norm']:.2f}")
+        progress.update(1)
+        progress.set_postfix(postfix(
+            reward=rec["reward_mean"], gstd=rec["group_reward_std_mean"], uninf=rec["frac_uninformative_groups"],
+            kl=kl_tok, ent=ent_mean, len=rec["response_length"], clip=rec["clip_fraction"],
+            pl=rec["policy_loss"], gn=rec["grad_norm"], mask=rec["frac_masked_completions"]))
+        if (u + 1) % checkpoint_every == 0 and u + 1 < n_updates:
+            save_checkpoint(ckpt_dir, {"policy": policy}, {"policy": optimizer}, {
+                "update": u + 1, "skipped": skipped, "elapsed_s": elapsed_before + elapsed(),
+                "peak_vram_gb": max(peak_before, peak_vram_gb() or 0.0)})
+    progress.close()
 
     policy.save_pretrained(str(out))
     keys = ["reward_mean", "group_reward_std_mean", "frac_uninformative_groups", "kl_per_token", "entropy",
@@ -223,6 +261,7 @@ def run_grpo(config_path: str, output: str | None = None, updates: int | None = 
     half = max(len(history) // 2, 1)
     summary = {
         "run_name": run_name,
+        "completed": True,
         "loss_type": loss_type,
         "adapter_path": str(out),
         "log_path": str(log_path),
@@ -230,8 +269,8 @@ def run_grpo(config_path: str, output: str | None = None, updates: int | None = 
             "updates", "prompts_per_update", "policy_epochs", "learning_rate", "clip_epsilon", "kl_beta",
             "num_generations", "max_prompt_length", "max_completion_length", "mask_truncated_completions", "seed"]},
         "prompt_schedule": [[rows[i].get("prompt_id") for i in idx] for idx in schedule],
-        "wall_clock_s": elapsed(),
-        "peak_vram_gb": peak_vram_gb(),
+        "wall_clock_s": elapsed_before + elapsed(),
+        "peak_vram_gb": max(peak_before, peak_vram_gb() or 0.0),
         "total_generated_tokens": int(sum(h["generated_tokens"] for h in history)),
         "skipped_nonfinite_steps": skipped,
         "collect_grad_stats": collect_grad_stats,
@@ -240,7 +279,8 @@ def run_grpo(config_path: str, output: str | None = None, updates: int | None = 
         "overall_mean": {x: mean_or_nan([h[x] for h in history]) for x in keys},
         "final_update": {x: v for x, v in (history[-1].items() if history else []) if x not in ("completion_lengths", "completion_rewards")},
     }
-    save_json(results_dir / f"{run_name}_summary.json", summary)
+    save_json_atomic(summary_path, summary)
+    clear_checkpoint(ckpt_dir)
 
     del policy, optimizer, bundle
     clear_gpu()
@@ -255,8 +295,10 @@ def main():
     ap.add_argument("--loss-type", choices=["grpo", "dr_grpo"], default="grpo")
     ap.add_argument("--run-name", default="standard")
     ap.add_argument("--grad-stats", action="store_true", help="also log per-completion gradient norms (extra compute)")
+    ap.add_argument("--restart", action="store_true", help="ignore checkpoints and finished results; old logs are archived")
     args = ap.parse_args()
-    run_grpo(args.config, args.output, args.updates, args.loss_type, args.run_name, collect_grad_stats=args.grad_stats)
+    run_grpo(args.config, args.output, args.updates, args.loss_type, args.run_name,
+             collect_grad_stats=args.grad_stats, resume=not args.restart)
 
 
 if __name__ == "__main__":
