@@ -44,3 +44,11 @@ def load_json(path: str | Path) -> Any:
 def wall_timer():
     start = time.perf_counter()
     return lambda: time.perf_counter() - start
+
+
+def read_jsonl_safe(path: str | Path) -> list[dict]:
+    """Read a JSONL log written by `append_jsonl`; returns [] if the file does not exist."""
+    p = repo_path(path)
+    if not p.exists():
+        return []
+    return [json.loads(line) for line in p.read_text(encoding="utf-8").splitlines() if line.strip()]

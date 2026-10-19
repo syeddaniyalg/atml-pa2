@@ -28,7 +28,6 @@ for key in required_data + required_cached + required_ckpt:
 if missing:
     raise SystemExit("Missing course assets:\n" + "\n".join(missing))
 
-# Fixed small datasets.
 word_rows = read_jsonl(cfg["paths"]["word_limit_prompts"])
 if len(word_rows) != 10:
     raise SystemExit(f"Expected 10 word-limit prompts; found {len(word_rows)}")
@@ -44,7 +43,6 @@ if len(t5) != 100:
 if any(not bool(r.get("manual_validation", False)) for r in t5):
     raise SystemExit("Task-5 diagnostic set contains a row not marked manual_validation=true")
 
-# GRPO cache: one row per completion, 8 rows/prompt in the released diagnostic cache.
 grows = read_jsonl(cfg["paths"]["grpo_k_cache"])
 if not grows:
     raise SystemExit("GRPO K-cache is empty")
@@ -55,7 +53,6 @@ counts = Counter(str(r["source_index"]) for r in grows)
 if not counts or min(counts.values()) < 8:
     raise SystemExit(f"GRPO K-cache must contain at least 8 completions/prompt; min={min(counts.values()) if counts else 0}")
 
-# PPO cache: tolerate either equivalent field naming convention from staff preparation.
 try:
     import torch
     ppo = torch.load(repo_path(cfg["paths"]["ppo_rollout_cache"]), map_location="cpu", weights_only=False)

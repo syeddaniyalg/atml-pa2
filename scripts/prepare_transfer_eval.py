@@ -7,7 +7,6 @@ from pathlib import Path
 
 from common.data import REPO_ROOT
 
-# Official SVAMP challenge-set source from the authors' repository.
 SVAMP_URL = "https://raw.githubusercontent.com/arkilpatel/SVAMP/main/SVAMP.json"
 DEFAULT_OUTPUT = REPO_ROOT / "data" / "math_transfer_eval.jsonl"
 DEFAULT_N = 100
@@ -26,7 +25,6 @@ def build_transfer_rows(records: list[dict], n: int = DEFAULT_N) -> list[dict]:
         raise ValueError(f"SVAMP source contains {len(records)} rows; need at least {n}")
 
     rows = []
-    # Fixed course subset: first N entries in the official SVAMP challenge-set order.
     for rec in records[:n]:
         body = str(rec["Body"]).strip()
         question = str(rec["Question"]).strip()

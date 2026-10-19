@@ -3,9 +3,10 @@ from __future__ import annotations
 import argparse
 import pandas as pd
 
-from common.data import load_yaml, repo_path
+from common.data import load_yaml, repo_path, write_jsonl
 from common.generation import batch_generate
-from common.models import load_policy, load_tokenizer
+from common.logging_utils import set_seed
+from common.models import clear_gpu, load_policy, load_tokenizer
 
 
 def policy_specs(cfg):
@@ -56,16 +57,39 @@ def generate_for_policy(cfg, policy_name: str, batch_size: int = 4):
     return records
 
 
+def output_path(cfg, policy_name: str):
+    return repo_path(cfg["results_dir"]) / "task4_safety" / f"generated_{policy_name}.jsonl"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/feedback.yaml")
+    ap.add_argument("--policies", nargs="*", help="subset of sft/dpo/ppo/grpo (default: all four frozen policies)")
+    ap.add_argument("--batch-size", type=int, default=4)
+    ap.add_argument("--overwrite", action="store_true")
     args = ap.parse_args()
     cfg = load_yaml(args.config)
-    print("Policies:", list(policy_specs(cfg)))
-    print("XSTest rows:", len(load_xstest(cfg)))
-    raise NotImplementedError(
-        "TODO(student): call generate_for_policy for SFT/DPO/PPO/GRPO, save common deterministic responses, and preserve the fixed prompt order."
-    )
+    specs = policy_specs(cfg)
+    names = args.policies or list(specs)
+    print("Policies:", names)
+    df = load_xstest(cfg)
+    print("XSTest rows:", len(df))
+    set_seed(int(cfg["seed"]))
+
+    for name in names:
+        dst = output_path(cfg, name)
+        if dst.exists() and not args.overwrite:
+            print(f"[{name}] exists, skipping: {dst}")
+            continue
+        adapter = specs[name]
+        if adapter is not None and not (repo_path(adapter) / "adapter_config.json").exists():
+            raise FileNotFoundError(f"Adapter for {name} not found: {repo_path(adapter)} (run its standard training first)")
+        records = generate_for_policy(cfg, name, args.batch_size)
+        assert [r["xstest_id"] for r in records] == [int(x) for x in df["xstest_id"].tolist()], "prompt order changed"
+        write_jsonl(dst, records)
+        print(f"[{name}] wrote {len(records)} responses -> {dst}; mean tokens "
+              f"{sum(r['response_tokens'] for r in records) / len(records):.1f}")
+        clear_gpu()
 
 
 if __name__ == "__main__":

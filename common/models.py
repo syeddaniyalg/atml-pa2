@@ -139,8 +139,6 @@ def load_reward_model(cfg: dict):
     if qcfg is None and torch.cuda.is_available():
         model = model.cuda()
 
-    # The RM repository tokenizer was incompatible with the pinned Transformers build during
-    # instructor preparation. Use the canonical base-policy tokenizer intentionally.
     tok = load_tokenizer(cfg.get("reward_tokenizer", cfg["base_model"]), padding_side="left")
     model.config.pad_token_id = tok.pad_token_id
     model.eval()
@@ -162,9 +160,6 @@ def load_value_model(cfg: dict, checkpoint: str, train_mode: str = "lora_head"):
     model.config.use_cache = False
 
     if train_mode == "lora_head":
-        # The released critic is a full merged checkpoint. Wrapping it with a fresh,
-        # zero-initialized LoRA adapter preserves the exact starting value function while
-        # giving the continuation run critic capacity comparable to instructor preparation.
         model = get_peft_model(model, make_value_lora_config(cfg))
     elif train_mode == "head_only":
         for name, p in model.named_parameters():

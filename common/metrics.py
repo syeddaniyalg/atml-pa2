@@ -22,8 +22,11 @@ def mean_response_length(mask: torch.Tensor):
     return float(mask.sum(-1).float().mean().item())
 
 
-def preference_accuracy(chosen_logp, rejected_logp):
-    return float((chosen_logp > rejected_logp).float().mean().item())
+def preference_accuracy(chosen_logp, rejected_logp, ref_chosen_logp, ref_rejected_logp):
+    """Fraction of pairs with DPO margin m > 0, where
+    m = [log pi(y+|x) - log ref(y+|x)] - [log pi(y-|x) - log ref(y-|x)] (sequence log-probs, response tokens only)."""
+    margin = (chosen_logp - ref_chosen_logp) - (rejected_logp - ref_rejected_logp)
+    return float((margin > 0).float().mean().item())
 
 
 def word_count(text: str) -> int:

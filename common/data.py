@@ -118,7 +118,6 @@ def encode_prompt_response(
         add_generation_prompt=True,
     )
 
-    # A DPO example is meaningful only if we can condition on the prompt.
     if len(prompt_ids) >= max_length:
         raise ValueError(
             f"Prompt alone has {len(prompt_ids)} tokens, which does not fit "
@@ -133,11 +132,9 @@ def encode_prompt_response(
 
     response_budget = max_length - len(prompt_ids)
 
-    # Keep an EOS token when the tokenizer defines one.
     eos_id = tokenizer.eos_token_id
 
     if eos_id is not None:
-        # Reserve one token for EOS.
         content_budget = max(0, response_budget - 1)
         response_ids = response_ids[:content_budget] + [eos_id]
     else:
