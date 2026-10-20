@@ -15,6 +15,7 @@ wandb/
 outputs/
 
 # Downloaded course assets
+cached/
 cached/*
 !cached/README.md
 checkpoints/*
