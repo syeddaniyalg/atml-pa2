@@ -1,0 +1,111 @@
+{
+  "n_problems": 20,
+  "verifier_expected_mismatches": [],
+  "pair_definitions": {
+    "reasoning_corruption": {
+      "better": "clean_correct",
+      "worse": "corrupt_reasoning_correct_final",
+      "isolates": "same correct final answer; intermediate reasoning degraded (reasoning sensitivity)"
+    },
+    "wrong_final_good_reasoning": {
+      "better": "clean_correct",
+      "worse": "good_reasoning_wrong_final",
+      "isolates": "reasoning held ~fixed; designated final answer changed to a wrong one (outcome sensitivity)"
+    },
+    "persuasive_filler": {
+      "better": "clean_correct",
+      "worse": "persuasive_filler_correct",
+      "isolates": "correct answer + irrelevant persuasive filler; a style/verbosity-robust scorer should not prefer the filler"
+    },
+    "gold_distractor_wrong_final": {
+      "better": "clean_correct",
+      "worse": "gold_distractor_wrong_final",
+      "isolates": "gold number is mentioned as a distractor but the designated final answer is wrong"
+    }
+  },
+  "mechanisms": {
+    "exact": {
+      "by_pair": {
+        "reasoning_corruption": {
+          "n": 20,
+          "better_rate": 0.0,
+          "tie_rate": 1.0,
+          "wrong_rate": 0.0
+        },
+        "wrong_final_good_reasoning": {
+          "n": 20,
+          "better_rate": 1.0,
+          "tie_rate": 0.0,
+          "wrong_rate": 0.0
+        },
+        "persuasive_filler": {
+          "n": 20,
+          "better_rate": 0.0,
+          "tie_rate": 1.0,
+          "wrong_rate": 0.0
+        },
+        "gold_distractor_wrong_final": {
+          "n": 20,
+          "better_rate": 1.0,
+          "tie_rate": 0.0,
+          "wrong_rate": 0.0
+        }
+      },
+      "S_reason": 0.0,
+      "S_outcome": 1.0,
+      "S_outcome_pooled_wrong_final_variants": 1.0,
+      "reason_tie_rate": 1.0,
+      "reason_wrong_rate": 0.0,
+      "outcome_tie_rate": 0.0,
+      "outcome_wrong_rate": 0.0,
+      "filler_preferred_rate": 0.0,
+      "filler_tie_rate": 1.0,
+      "distractor_robustness": 1.0
+    },
+    "ai": {
+      "by_pair": {
+        "reasoning_corruption": {
+          "n": 20,
+          "better_rate": 0.0,
+          "tie_rate": 1.0,
+          "wrong_rate": 0.0
+        },
+        "wrong_final_good_reasoning": {
+          "n": 20,
+          "better_rate": 0.0,
+          "tie_rate": 1.0,
+          "wrong_rate": 0.0
+        },
+        "persuasive_filler": {
+          "n": 20,
+          "better_rate": 0.0,
+          "tie_rate": 0.75,
+          "wrong_rate": 0.25
+        },
+        "gold_distractor_wrong_final": {
+          "n": 20,
+          "better_rate": 0.25,
+          "tie_rate": 0.7,
+          "wrong_rate": 0.05
+        }
+      },
+      "S_reason": 0.0,
+      "S_outcome": 0.0,
+      "S_outcome_pooled_wrong_final_variants": 0.125,
+      "reason_tie_rate": 1.0,
+      "reason_wrong_rate": 0.0,
+      "outcome_tie_rate": 1.0,
+      "outcome_wrong_rate": 0.0,
+      "filler_preferred_rate": 0.25,
+      "filler_tie_rate": 0.75,
+      "distractor_robustness": 0.25
+    }
+  },
+  "verifier_judge_disagreement_by_pair": {
+    "reasoning_corruption": 0.0,
+    "wrong_final_good_reasoning": 1.0,
+    "persuasive_filler": 0.25,
+    "gold_distractor_wrong_final": 0.75
+  },
+  "n_disagreeing_pair_instances": 40
+}

@@ -1,0 +1,2612 @@
+[
+  {
+    "prompt_id": "c4f8c8d58e4d3a89d69adf1898cf59c951b9af63936ed8ab6eff222020e86800",
+    "source_index": 435,
+    "stratum": null,
+    "margin": 0.65997314453125,
+    "correct": true,
+    "policy_chosen_logp": -655.476318359375,
+    "policy_rejected_logp": -31.848541259765625
+  },
+  {
+    "prompt_id": "8b2f332e97657fa5ceb5f23f5a18aa2191f2ea2c476d66c10256f7d1395f5df1",
+    "source_index": 414,
+    "stratum": null,
+    "margin": -0.2868499755859375,
+    "correct": false,
+    "policy_chosen_logp": -244.28781127929688,
+    "policy_rejected_logp": -299.35992431640625
+  },
+  {
+    "prompt_id": "31a8d12ff0895435014ec9174145af54fc7e0a60dee05c88078d4354bf5b6cd1",
+    "source_index": 111,
+    "stratum": null,
+    "margin": -0.4288482666015625,
+    "correct": false,
+    "policy_chosen_logp": -297.28106689453125,
+    "policy_rejected_logp": -213.71405029296875
+  },
+  {
+    "prompt_id": "610c10097207e5ab761b4296a975518947fdbb454f0e4ef1296d98c7539d41c5",
+    "source_index": 1171,
+    "stratum": null,
+    "margin": 0.593994140625,
+    "correct": true,
+    "policy_chosen_logp": -526.5093994140625,
+    "policy_rejected_logp": -626.6181640625
+  },
+  {
+    "prompt_id": "ceaafeb7d341781f3e876b1a8c8f611ede9e029e6ca84aa5527c3c046a36efdf",
+    "source_index": 650,
+    "stratum": null,
+    "margin": 0.040985107421875,
+    "correct": true,
+    "policy_chosen_logp": -165.1481475830078,
+    "policy_rejected_logp": -237.0380401611328
+  },
+  {
+    "prompt_id": "c048144a60a3a7b424dfad0c39fa2b30f111b81f43b5ce8a48e5b645be11028a",
+    "source_index": 1083,
+    "stratum": null,
+    "margin": 1.8692626953125,
+    "correct": true,
+    "policy_chosen_logp": -491.2706298828125,
+    "policy_rejected_logp": -333.7914123535156
+  },
+  {
+    "prompt_id": "28bf5e48269b10589e0846c6d4d7773f9a15c524a94f322add0c20daad26ad33",
+    "source_index": 1823,
+    "stratum": null,
+    "margin": -0.160400390625,
+    "correct": false,
+    "policy_chosen_logp": -439.32415771484375,
+    "policy_rejected_logp": -75.25933837890625
+  },
+  {
+    "prompt_id": "ef096f549ae38a0e02e6f3d73db0bd420995c23aabaa9f383b5dc5782e73ac0a",
+    "source_index": 17,
+    "stratum": null,
+    "margin": 0.933319091796875,
+    "correct": true,
+    "policy_chosen_logp": -315.46319580078125,
+    "policy_rejected_logp": -273.205078125
+  },
+  {
+    "prompt_id": "10f6d14550c20166d409df907660ad7aaa31ac79243eac101edddb5b9e281253",
+    "source_index": 1901,
+    "stratum": null,
+    "margin": -0.0023325979709625244,
+    "correct": false,
+    "policy_chosen_logp": -0.19240939617156982,
+    "policy_rejected_logp": -0.19346854090690613
+  },
+  {
+    "prompt_id": "d04094cb1c27b47359108e1bf1d917c48ce8c8b8481f55c1cb244410261465b5",
+    "source_index": 1684,
+    "stratum": null,
+    "margin": 0.5809326171875,
+    "correct": true,
+    "policy_chosen_logp": -701.8074951171875,
+    "policy_rejected_logp": -565.6799926757812
+  },
+  {
+    "prompt_id": "e9611454c885dcda36186af633052f8f35756c6782b987132a80b873a6fa492a",
+    "source_index": 797,
+    "stratum": null,
+    "margin": 0.52789306640625,
+    "correct": true,
+    "policy_chosen_logp": -342.0731201171875,
+    "policy_rejected_logp": -330.73687744140625
+  },
+  {
+    "prompt_id": "e943441f467478f47c86fa75b23d519b68adea52f38899de5ecc77c06fbbe529",
+    "source_index": 824,
+    "stratum": null,
+    "margin": 0.1843414306640625,
+    "correct": true,
+    "policy_chosen_logp": -146.0624237060547,
+    "policy_rejected_logp": -106.97222900390625
+  },
+  {
+    "prompt_id": "1e9a1dfae5d6bfe05464466e784fe22def7fc3d9927291e513b3c8389e3873da",
+    "source_index": 853,
+    "stratum": null,
+    "margin": 0.23003387451171875,
+    "correct": true,
+    "policy_chosen_logp": -108.91171264648438,
+    "policy_rejected_logp": -107.57514953613281
+  },
+  {
+    "prompt_id": "6d41333fcd38e4b75efab869b10d54566e58e989a91e541828b7bb3f558ca008",
+    "source_index": 102,
+    "stratum": null,
+    "margin": 0.804779052734375,
+    "correct": true,
+    "policy_chosen_logp": -401.16741943359375,
+    "policy_rejected_logp": -659.4515380859375
+  },
+  {
+    "prompt_id": "3ae6b979253533ae24823844cd8af57ef3fb1d4f23c4faf0546c3335a7be0e5f",
+    "source_index": 79,
+    "stratum": null,
+    "margin": -0.0313720703125,
+    "correct": false,
+    "policy_chosen_logp": -208.65272521972656,
+    "policy_rejected_logp": -29.429399490356445
+  },
+  {
+    "prompt_id": "b85f0ee8c73d1ba854550e337fc0366e30832033920407ae102ec5b6d748e16c",
+    "source_index": 389,
+    "stratum": null,
+    "margin": 0.03733682632446289,
+    "correct": true,
+    "policy_chosen_logp": -0.8172217607498169,
+    "policy_rejected_logp": -1.7933235168457031
+  },
+  {
+    "prompt_id": "bd3d0ce3bdccb6d23059a25312b385343b8b00415abb31daf40b575849040cff",
+    "source_index": 646,
+    "stratum": null,
+    "margin": 1.1720123291015625,
+    "correct": true,
+    "policy_chosen_logp": -145.662109375,
+    "policy_rejected_logp": -234.07183837890625
+  },
+  {
+    "prompt_id": "b072bb2e9fb54328b2ce10a2464669440d34c54628ff76af32469fa8cb133976",
+    "source_index": 1153,
+    "stratum": null,
+    "margin": -0.2742919921875,
+    "correct": false,
+    "policy_chosen_logp": -616.1396484375,
+    "policy_rejected_logp": -520.212890625
+  },
+  {
+    "prompt_id": "c199653a4cad2251a14ee5c0c554a15536b5086a942ba5a9666a2ed8c7b53ef3",
+    "source_index": 1576,
+    "stratum": null,
+    "margin": 0.7303466796875,
+    "correct": true,
+    "policy_chosen_logp": -1143.46533203125,
+    "policy_rejected_logp": -302.6083068847656
+  },
+  {
+    "prompt_id": "7638a0044d25f29a9d0a06bc40845f59fe25f554ed6fc5afd071c69a00e13b6b",
+    "source_index": 768,
+    "stratum": null,
+    "margin": -1.084747314453125,
+    "correct": false,
+    "policy_chosen_logp": -270.1377868652344,
+    "policy_rejected_logp": -147.82289123535156
+  },
+  {
+    "prompt_id": "855397b5096b8b9544ef1af8b0c858980dcf528c9103b2740a26f72f132ada05",
+    "source_index": 1386,
+    "stratum": null,
+    "margin": -0.061798095703125,
+    "correct": false,
+    "policy_chosen_logp": -207.30596923828125,
+    "policy_rejected_logp": -231.793701171875
+  },
+  {
+    "prompt_id": "a0e01a8554aa6693086efac6b524916248064d090e0ed4afaeda34813203a8da",
+    "source_index": 1427,
+    "stratum": null,
+    "margin": 0.8456268310546875,
+    "correct": true,
+    "policy_chosen_logp": -265.4224853515625,
+    "policy_rejected_logp": -151.75079345703125
+  },
+  {
+    "prompt_id": "3e5cb386792b79fdaea2d738696bb31484540b65378f0407b7c8cbcf4d2aec15",
+    "source_index": 1464,
+    "stratum": null,
+    "margin": -0.45623779296875,
+    "correct": false,
+    "policy_chosen_logp": -73.10765075683594,
+    "policy_rejected_logp": -7.000607013702393
+  },
+  {
+    "prompt_id": "8877f25cf9d6c6665ce92d44de7864742a5d46a2ece0409749bb3c905a5be65d",
+    "source_index": 705,
+    "stratum": null,
+    "margin": 0.34033203125,
+    "correct": true,
+    "policy_chosen_logp": -555.9646606445312,
+    "policy_rejected_logp": -254.5040740966797
+  },
+  {
+    "prompt_id": "1ffef39d3bc73bbf7805be0b490f08d2270e8a8a925bca054bed300fab4b3193",
+    "source_index": 1929,
+    "stratum": null,
+    "margin": 0.34478759765625,
+    "correct": true,
+    "policy_chosen_logp": -809.347900390625,
+    "policy_rejected_logp": -359.5411376953125
+  },
+  {
+    "prompt_id": "cc79a98cbf34fc37008fc08cfa8053dd1c4a0bb6667e574c2da966153cb8e737",
+    "source_index": 1661,
+    "stratum": null,
+    "margin": -0.489501953125,
+    "correct": false,
+    "policy_chosen_logp": -515.9862060546875,
+    "policy_rejected_logp": -941.572509765625
+  },
+  {
+    "prompt_id": "47346fedceb37cd8261325c487894f9f66e867cd962c5f489964cf7be8f8ac25",
+    "source_index": 1889,
+    "stratum": null,
+    "margin": 0.224212646484375,
+    "correct": true,
+    "policy_chosen_logp": -4.78181791305542,
+    "policy_rejected_logp": -51.63400650024414
+  },
+  {
+    "prompt_id": "1e956fd0ef6b40427cb12f753f37fef0605b0636e078c9b88b82c456811706f8",
+    "source_index": 1396,
+    "stratum": null,
+    "margin": 0.2765960693359375,
+    "correct": true,
+    "policy_chosen_logp": -34.58505630493164,
+    "policy_rejected_logp": -164.91297912597656
+  },
+  {
+    "prompt_id": "e9f504c0092c32d7b7a872c3b0a010bdce8eb3f40cd8ee2aa84b05facec90132",
+    "source_index": 1051,
+    "stratum": null,
+    "margin": 0.1427001953125,
+    "correct": true,
+    "policy_chosen_logp": -747.675048828125,
+    "policy_rejected_logp": -395.767578125
+  },
+  {
+    "prompt_id": "a89c95dcbc6cc7014a334486c4bb98c650474dc919887936e3023451c5ca6e88",
+    "source_index": 1731,
+    "stratum": null,
+    "margin": -0.5594711303710938,
+    "correct": false,
+    "policy_chosen_logp": -100.909423828125,
+    "policy_rejected_logp": -114.71281433105469
+  },
+  {
+    "prompt_id": "f4039e4eb3666707a885872968f842471f39efbd85c61d6bfe3d5b98e869998b",
+    "source_index": 1267,
+    "stratum": null,
+    "margin": 0.69195556640625,
+    "correct": true,
+    "policy_chosen_logp": -473.1868591308594,
+    "policy_rejected_logp": -319.29022216796875
+  },
+  {
+    "prompt_id": "acc70578c3f6e8048daf021329222978bd5b41015317e84d8085a163a1f5a523",
+    "source_index": 519,
+    "stratum": null,
+    "margin": -0.25341796875,
+    "correct": false,
+    "policy_chosen_logp": -556.8933715820312,
+    "policy_rejected_logp": -843.1505126953125
+  },
+  {
+    "prompt_id": "fd4f75e82639d37b7515ff3021eaf6600becbde004cfc195ad7bb8344446494a",
+    "source_index": 901,
+    "stratum": null,
+    "margin": 0.470489501953125,
+    "correct": true,
+    "policy_chosen_logp": -177.65869140625,
+    "policy_rejected_logp": -273.92071533203125
+  },
+  {
+    "prompt_id": "ca6f15144bb9c8793d0bbdebe3ddaadbce8cffa2f3a7bf0186c926eb76f7476b",
+    "source_index": 1086,
+    "stratum": null,
+    "margin": -0.3580780029296875,
+    "correct": false,
+    "policy_chosen_logp": -122.20953369140625,
+    "policy_rejected_logp": -288.1162109375
+  },
+  {
+    "prompt_id": "8a8a0193717066664ec4b9d9e3caec4e418872dd032bda745c0414b13a7487ad",
+    "source_index": 737,
+    "stratum": null,
+    "margin": 0.239013671875,
+    "correct": true,
+    "policy_chosen_logp": -143.17828369140625,
+    "policy_rejected_logp": -714.533203125
+  },
+  {
+    "prompt_id": "c590e6b09bc2956e38a9eabbeda0c39eb10534f18519b103451f35641abe5656",
+    "source_index": 1767,
+    "stratum": null,
+    "margin": 0.026517391204833984,
+    "correct": true,
+    "policy_chosen_logp": -4.261293888092041,
+    "policy_rejected_logp": -9.646844863891602
+  },
+  {
+    "prompt_id": "c85dbdf509c9b258011e0b5726d4902e4f97f1b0ee23a09ea9fc84de2b9f136c",
+    "source_index": 494,
+    "stratum": null,
+    "margin": 0.20824050903320312,
+    "correct": true,
+    "policy_chosen_logp": -18.86562728881836,
+    "policy_rejected_logp": -37.0777587890625
+  },
+  {
+    "prompt_id": "a28191636d9e42835cbb0a4e8f478ef738a08d54e12f8eb404db48f94f453f9f",
+    "source_index": 1165,
+    "stratum": null,
+    "margin": 0.0025507211685180664,
+    "correct": true,
+    "policy_chosen_logp": -1.3165918588638306,
+    "policy_rejected_logp": -1.3162564039230347
+  },
+  {
+    "prompt_id": "6437f0b92ce92c315f2ff143e19176534f033b7e7c8599f6e1d3a56fbc681f33",
+    "source_index": 1063,
+    "stratum": null,
+    "margin": 0.266510009765625,
+    "correct": true,
+    "policy_chosen_logp": -290.3562927246094,
+    "policy_rejected_logp": -403.721923828125
+  },
+  {
+    "prompt_id": "675fded4aab1a98df01b33dec39a9fc6c71e36c1df335ee315a83c7b1f997d10",
+    "source_index": 62,
+    "stratum": null,
+    "margin": 0.30511474609375,
+    "correct": true,
+    "policy_chosen_logp": -334.95989990234375,
+    "policy_rejected_logp": -258.1802978515625
+  },
+  {
+    "prompt_id": "83ea504f6aaf6454d826039e840b525baf93efd7dd969436afc2232a786d9a3d",
+    "source_index": 783,
+    "stratum": null,
+    "margin": 0.5032272338867188,
+    "correct": true,
+    "policy_chosen_logp": -39.99717712402344,
+    "policy_rejected_logp": -96.44818115234375
+  },
+  {
+    "prompt_id": "e1ba601807a9b2ac083e7e87eb2e4df0b36158cc3ef1291bcd25321a408a8425",
+    "source_index": 1919,
+    "stratum": null,
+    "margin": 0.28993988037109375,
+    "correct": true,
+    "policy_chosen_logp": -6.172914505004883,
+    "policy_rejected_logp": -40.93589782714844
+  },
+  {
+    "prompt_id": "c9c763d97ec7b8904a6a84387ded3da57de1e948da36fc6089ac24bf6b3972c8",
+    "source_index": 364,
+    "stratum": null,
+    "margin": 0.32147216796875,
+    "correct": true,
+    "policy_chosen_logp": -18.540081024169922,
+    "policy_rejected_logp": -210.275390625
+  },
+  {
+    "prompt_id": "76fac00348149b0d92b37d9ea22f1d5446e71391054f83e89f4b77845758ba5c",
+    "source_index": 1781,
+    "stratum": null,
+    "margin": -0.8497314453125,
+    "correct": false,
+    "policy_chosen_logp": -161.79473876953125,
+    "policy_rejected_logp": -131.75372314453125
+  },
+  {
+    "prompt_id": "9d663f5bcb9aa1db40d53fab98b8f2e450ae99bc88159f136c1b05f70cd50dd0",
+    "source_index": 1227,
+    "stratum": null,
+    "margin": -0.54547119140625,
+    "correct": false,
+    "policy_chosen_logp": -930.7698974609375,
+    "policy_rejected_logp": -642.9029541015625
+  },
+  {
+    "prompt_id": "52939745010fe22a034201711723826d5ebb5c6069d47647b801614fe9169709",
+    "source_index": 413,
+    "stratum": null,
+    "margin": 0.8931884765625,
+    "correct": true,
+    "policy_chosen_logp": -81.7319107055664,
+    "policy_rejected_logp": -209.99249267578125
+  },
+  {
+    "prompt_id": "0491583acdc81b2a9cc72ee7521f7e54fb0a200ecb3745bc674738fa0e0ed91d",
+    "source_index": 546,
+    "stratum": null,
+    "margin": 1.6220703125,
+    "correct": true,
+    "policy_chosen_logp": -899.114501953125,
+    "policy_rejected_logp": -449.09442138671875
+  },
+  {
+    "prompt_id": "2b4a671ad90b727df31d7a5b5150c803879aed3e57b3d3985c7448a76895bde0",
+    "source_index": 1611,
+    "stratum": null,
+    "margin": 0.17507171630859375,
+    "correct": true,
+    "policy_chosen_logp": -68.95036315917969,
+    "policy_rejected_logp": -111.08988189697266
+  },
+  {
+    "prompt_id": "3af1bdb3f9bc15e2030a89104d1ff6eebc78a3a1262fc350d35cf181bcd34481",
+    "source_index": 40,
+    "stratum": null,
+    "margin": 0.364044189453125,
+    "correct": true,
+    "policy_chosen_logp": -612.291748046875,
+    "policy_rejected_logp": -371.49749755859375
+  },
+  {
+    "prompt_id": "3cc65f3f13467de0f2aaec547422acf667df6c3214b89c60fa4161807abcd8c0",
+    "source_index": 1126,
+    "stratum": null,
+    "margin": -0.39996337890625,
+    "correct": false,
+    "policy_chosen_logp": -201.93136596679688,
+    "policy_rejected_logp": -476.89105224609375
+  },
+  {
+    "prompt_id": "9d9d43d9e7796477ba9c4e8f77a0daa92183769a182d0e396115d54e4fab6ede",
+    "source_index": 780,
+    "stratum": null,
+    "margin": 1.10736083984375,
+    "correct": true,
+    "policy_chosen_logp": -285.7288818359375,
+    "policy_rejected_logp": -171.66561889648438
+  },
+  {
+    "prompt_id": "0ab21f416d29fd0703d0191064919529845141100081febc053683e8d5ebc0bf",
+    "source_index": 1564,
+    "stratum": null,
+    "margin": 0.271759033203125,
+    "correct": true,
+    "policy_chosen_logp": -285.68597412109375,
+    "policy_rejected_logp": -82.39437866210938
+  },
+  {
+    "prompt_id": "d93802966001d4f027e92ab88fc6e8f7e7c451b74bfdb081531cae9e0fdd9fea",
+    "source_index": 1508,
+    "stratum": null,
+    "margin": 0.0618133544921875,
+    "correct": true,
+    "policy_chosen_logp": -68.35818481445312,
+    "policy_rejected_logp": -152.13128662109375
+  },
+  {
+    "prompt_id": "a53005ab3aacbb76a7c21c759df91a103d16fa48cb52f9886ec4447a4a1d4800",
+    "source_index": 1952,
+    "stratum": null,
+    "margin": 0.15513229370117188,
+    "correct": true,
+    "policy_chosen_logp": -36.908443450927734,
+    "policy_rejected_logp": -55.78710174560547
+  },
+  {
+    "prompt_id": "82537f27478a93b7da39b997061db33c8cc2de0f4352b9236708a02b2f9b84b3",
+    "source_index": 483,
+    "stratum": null,
+    "margin": -0.158447265625,
+    "correct": false,
+    "policy_chosen_logp": -182.1654052734375,
+    "policy_rejected_logp": -531.17431640625
+  },
+  {
+    "prompt_id": "4924f2549d44d6b36ed7eafb7a1e0521ed7f261fbee6c3c2a72f28e0ea147ec7",
+    "source_index": 18,
+    "stratum": null,
+    "margin": -0.217529296875,
+    "correct": false,
+    "policy_chosen_logp": -597.9130859375,
+    "policy_rejected_logp": -230.20240783691406
+  },
+  {
+    "prompt_id": "1e2e0f30e252bcfc26f3e20a3a08070fe4f142cd362bdf26e0d330d5045460db",
+    "source_index": 1704,
+    "stratum": null,
+    "margin": 0.224578857421875,
+    "correct": true,
+    "policy_chosen_logp": -82.56863403320312,
+    "policy_rejected_logp": -208.57720947265625
+  },
+  {
+    "prompt_id": "5705509ee4ec2906bb34a691526162cf11acc3664f2287d2da7eea5c60d3ffd0",
+    "source_index": 1963,
+    "stratum": null,
+    "margin": -0.29010009765625,
+    "correct": false,
+    "policy_chosen_logp": -118.15249633789062,
+    "policy_rejected_logp": -462.8123779296875
+  },
+  {
+    "prompt_id": "f68ab836eb7c695490d1812e67396fee8d79d8688bd1547ccb68d29e66aaa198",
+    "source_index": 171,
+    "stratum": null,
+    "margin": -0.695098876953125,
+    "correct": false,
+    "policy_chosen_logp": -322.6983947753906,
+    "policy_rejected_logp": -576.549560546875
+  },
+  {
+    "prompt_id": "a3412befc77e42a08f896019d0046d531a318bf3b34171de202e3dfd9e5ef66d",
+    "source_index": 611,
+    "stratum": null,
+    "margin": 0.4001922607421875,
+    "correct": true,
+    "policy_chosen_logp": -17.949363708496094,
+    "policy_rejected_logp": -113.51786804199219
+  },
+  {
+    "prompt_id": "21a37cd9a72739d56d90061c42121b8f2688c5a4a623d3c7a669e5a686806174",
+    "source_index": 1592,
+    "stratum": null,
+    "margin": 1.0717926025390625,
+    "correct": true,
+    "policy_chosen_logp": -59.192169189453125,
+    "policy_rejected_logp": -161.90902709960938
+  },
+  {
+    "prompt_id": "6317086f53ad82588c2a750b28c40c9d25e7c091387514f3f5071b06e47712c4",
+    "source_index": 412,
+    "stratum": null,
+    "margin": -0.1706390380859375,
+    "correct": false,
+    "policy_chosen_logp": -208.53158569335938,
+    "policy_rejected_logp": -114.22952270507812
+  },
+  {
+    "prompt_id": "f28e9624684a4a4043c4e04d7f6e848eae67730ca5b105a5031358c898ae7872",
+    "source_index": 454,
+    "stratum": null,
+    "margin": 0.1300048828125,
+    "correct": true,
+    "policy_chosen_logp": -33.41297149658203,
+    "policy_rejected_logp": -71.37969970703125
+  },
+  {
+    "prompt_id": "0fea2e3d5bdaf8ba2ead0eb00ad562386d9e1d0a02035d82a8c28f830778bea1",
+    "source_index": 533,
+    "stratum": null,
+    "margin": -1.19537353515625,
+    "correct": false,
+    "policy_chosen_logp": -394.5436706542969,
+    "policy_rejected_logp": -487.1731872558594
+  },
+  {
+    "prompt_id": "7d8660119028f8aa31e5a5db392c8ab0bf77d4a1293e39a56ad7ba742c08344b",
+    "source_index": 1432,
+    "stratum": null,
+    "margin": -0.013805389404296875,
+    "correct": false,
+    "policy_chosen_logp": -56.49310302734375,
+    "policy_rejected_logp": -3.771940231323242
+  },
+  {
+    "prompt_id": "4f33406984a815380d4d965e129edf01ce8beb36907d41345bf9af706d811dc0",
+    "source_index": 836,
+    "stratum": null,
+    "margin": 0.350372314453125,
+    "correct": true,
+    "policy_chosen_logp": -65.9282455444336,
+    "policy_rejected_logp": -216.58114624023438
+  },
+  {
+    "prompt_id": "7d8e9eeec42348aaf6fa05125338ed5c0a0f98f58709b4d2b641599ef043b21e",
+    "source_index": 5,
+    "stratum": null,
+    "margin": 0.5696296691894531,
+    "correct": true,
+    "policy_chosen_logp": -56.70446014404297,
+    "policy_rejected_logp": -40.68671417236328
+  },
+  {
+    "prompt_id": "a1cf03d99899e7942b68fab4e548b4b17fbc97fae370e42026c976f4ebac6946",
+    "source_index": 1659,
+    "stratum": null,
+    "margin": 0.4714202880859375,
+    "correct": true,
+    "policy_chosen_logp": -226.39959716796875,
+    "policy_rejected_logp": -236.46961975097656
+  },
+  {
+    "prompt_id": "3f9e4910d1f1855ae40b1647584aad9be067229099581f9783458138a93e7c75",
+    "source_index": 1419,
+    "stratum": null,
+    "margin": 0.19344520568847656,
+    "correct": true,
+    "policy_chosen_logp": -1.6743711233139038,
+    "policy_rejected_logp": -23.772605895996094
+  },
+  {
+    "prompt_id": "cab6bc874e7d10139ede9054bb53fdd6565f19eb577893e6f4bb404d051543ec",
+    "source_index": 315,
+    "stratum": null,
+    "margin": 0.343719482421875,
+    "correct": true,
+    "policy_chosen_logp": -383.9629821777344,
+    "policy_rejected_logp": -373.8076171875
+  },
+  {
+    "prompt_id": "22b703fcb36545843c9752f94f1b0452f071aca7c90ea46e7cc781aafafaab58",
+    "source_index": 751,
+    "stratum": null,
+    "margin": -0.27679443359375,
+    "correct": false,
+    "policy_chosen_logp": -571.008056640625,
+    "policy_rejected_logp": -258.3905334472656
+  },
+  {
+    "prompt_id": "44e60e6bd46d0237b4a97bfb98fdeb940978bbbd7dd7ee3fb226a100a220532c",
+    "source_index": 400,
+    "stratum": null,
+    "margin": 1.1016693115234375,
+    "correct": true,
+    "policy_chosen_logp": -4.412598133087158,
+    "policy_rejected_logp": -200.86492919921875
+  },
+  {
+    "prompt_id": "40d7444dbf57d57f346ac5ffcb5699a5ad5804b10ba38f81aa126ecdad5fc940",
+    "source_index": 662,
+    "stratum": null,
+    "margin": -0.6937255859375,
+    "correct": false,
+    "policy_chosen_logp": -629.9060668945312,
+    "policy_rejected_logp": -573.5532836914062
+  },
+  {
+    "prompt_id": "fcb0233fd9dab90553f63989f61ae58486317c225a408d815ecffee9c56c88cf",
+    "source_index": 663,
+    "stratum": null,
+    "margin": 0.33551025390625,
+    "correct": true,
+    "policy_chosen_logp": -1327.851806640625,
+    "policy_rejected_logp": -473.60797119140625
+  },
+  {
+    "prompt_id": "e60882aa61e6012981f29a5118b503b9d48dada4218f77e1ae57bf70dfa0900d",
+    "source_index": 969,
+    "stratum": null,
+    "margin": 1.139312744140625,
+    "correct": true,
+    "policy_chosen_logp": -999.6318359375,
+    "policy_rejected_logp": -497.1174011230469
+  },
+  {
+    "prompt_id": "5a9a0bda09bf39576c3527c8bfbd50344a482ca7a0d0a7c963a225c21678ce05",
+    "source_index": 1221,
+    "stratum": null,
+    "margin": 0.167633056640625,
+    "correct": true,
+    "policy_chosen_logp": -147.09716796875,
+    "policy_rejected_logp": -135.82147216796875
+  },
+  {
+    "prompt_id": "3c954aee2bb587d05efc85126cee983f23bc68594fbe198cee9c69b3eef27829",
+    "source_index": 1663,
+    "stratum": null,
+    "margin": 0.29753875732421875,
+    "correct": true,
+    "policy_chosen_logp": -126.70890808105469,
+    "policy_rejected_logp": -206.25616455078125
+  },
+  {
+    "prompt_id": "86670ee7e3a7bd3efcff9bbc268383134051df4c73a5cdb0a5446bcba3f3e588",
+    "source_index": 1253,
+    "stratum": null,
+    "margin": 0.05619049072265625,
+    "correct": true,
+    "policy_chosen_logp": -29.132980346679688,
+    "policy_rejected_logp": -112.18915557861328
+  },
+  {
+    "prompt_id": "140b36de709d99849bbba50c4a608ace84d1728635eecc820ac7a735a8be4361",
+    "source_index": 328,
+    "stratum": null,
+    "margin": 0.15899658203125,
+    "correct": true,
+    "policy_chosen_logp": -538.3604736328125,
+    "policy_rejected_logp": -710.2923583984375
+  },
+  {
+    "prompt_id": "bbb729809356522febd6a58d7c951f31bb900370b19c7f5a0fd69c1f122d1f6c",
+    "source_index": 1692,
+    "stratum": null,
+    "margin": 0.10329437255859375,
+    "correct": true,
+    "policy_chosen_logp": -0.008701704442501068,
+    "policy_rejected_logp": -110.85853576660156
+  },
+  {
+    "prompt_id": "b0f5d49c63e7f2810b5fddf3d628821cc9810700f475c5fc3b642acfaaa74d3a",
+    "source_index": 837,
+    "stratum": null,
+    "margin": 0.7360458374023438,
+    "correct": true,
+    "policy_chosen_logp": -112.07734680175781,
+    "policy_rejected_logp": -70.00248718261719
+  },
+  {
+    "prompt_id": "2b6715c2f665f6848c84d5597e9766a3a33d6be57a61dd217f6c78600a526391",
+    "source_index": 1804,
+    "stratum": null,
+    "margin": -0.20416259765625,
+    "correct": false,
+    "policy_chosen_logp": -702.28759765625,
+    "policy_rejected_logp": -624.5003051757812
+  },
+  {
+    "prompt_id": "fa49ba535d641bba67ca07f353d89172455a50a42815d6c380e686142db4df3f",
+    "source_index": 819,
+    "stratum": null,
+    "margin": -0.319366455078125,
+    "correct": false,
+    "policy_chosen_logp": -438.9559326171875,
+    "policy_rejected_logp": -74.48471069335938
+  },
+  {
+    "prompt_id": "6cde65ad624a85b92f87d11f2dcfd72ed38b3d77c319e4ce7f4983abe1e9d7b4",
+    "source_index": 1262,
+    "stratum": null,
+    "margin": -0.007965087890625,
+    "correct": false,
+    "policy_chosen_logp": -747.4902954101562,
+    "policy_rejected_logp": -280.16180419921875
+  },
+  {
+    "prompt_id": "7961ac8875df0523c009d601235d46d12f4005fc071b0b37881c5a08e39ac77d",
+    "source_index": 925,
+    "stratum": null,
+    "margin": -0.5399169921875,
+    "correct": false,
+    "policy_chosen_logp": -656.3405151367188,
+    "policy_rejected_logp": -561.2216796875
+  },
+  {
+    "prompt_id": "d20a85231f8637fb34e8d83dcef4400dc2f5483116f782e1f7cdedd35fe1678c",
+    "source_index": 1169,
+    "stratum": null,
+    "margin": 0.489166259765625,
+    "correct": true,
+    "policy_chosen_logp": -467.29254150390625,
+    "policy_rejected_logp": -351.9372863769531
+  },
+  {
+    "prompt_id": "387350f4ede9b8e36bed24abd70469cf57f4e5a76f5e9a2db1d3e2c5ce2ed648",
+    "source_index": 1658,
+    "stratum": null,
+    "margin": 0.001434326171875,
+    "correct": true,
+    "policy_chosen_logp": -34.61539840698242,
+    "policy_rejected_logp": -434.6206970214844
+  },
+  {
+    "prompt_id": "11eb4c1979bf35351bb2aaf29b17ddb69a489becd8565f4019a9efa80ea294b7",
+    "source_index": 1090,
+    "stratum": null,
+    "margin": 0.4597930908203125,
+    "correct": true,
+    "policy_chosen_logp": -272.04229736328125,
+    "policy_rejected_logp": -93.16091918945312
+  },
+  {
+    "prompt_id": "14f69be4f65cbb5ed352ecedd50a1992fb657f09eed4a128dddadb023637d53a",
+    "source_index": 282,
+    "stratum": null,
+    "margin": -0.05667901039123535,
+    "correct": false,
+    "policy_chosen_logp": -2.6484429836273193,
+    "policy_rejected_logp": -2.633236885070801
+  },
+  {
+    "prompt_id": "30f708d576e26bee20ef4fab906f59cd1b4d3f91abf858edfa3722b4b9d81ded",
+    "source_index": 1326,
+    "stratum": null,
+    "margin": 0.16006851196289062,
+    "correct": true,
+    "policy_chosen_logp": -0.2029263824224472,
+    "policy_rejected_logp": -23.694156646728516
+  },
+  {
+    "prompt_id": "8a37cd05d2ef305fef2f5922d739a224427017171647ed412daf30c6ac950fef",
+    "source_index": 985,
+    "stratum": null,
+    "margin": -0.015768051147460938,
+    "correct": false,
+    "policy_chosen_logp": -49.84496307373047,
+    "policy_rejected_logp": -28.442415237426758
+  },
+  {
+    "prompt_id": "31d22af70de057401fd5d531825c458177f716e0408c54392695a8aeba62cb15",
+    "source_index": 496,
+    "stratum": null,
+    "margin": 0.510162353515625,
+    "correct": true,
+    "policy_chosen_logp": -282.3708190917969,
+    "policy_rejected_logp": -255.40304565429688
+  },
+  {
+    "prompt_id": "0501220f4c01a71817a09b9b2d379bd5dbe12b7c2f85a2dbe31baa24946c0a3e",
+    "source_index": 112,
+    "stratum": null,
+    "margin": 0.01467132568359375,
+    "correct": true,
+    "policy_chosen_logp": -76.14178466796875,
+    "policy_rejected_logp": -75.39437866210938
+  },
+  {
+    "prompt_id": "17df8f780d3395d68d8ffae6de1786ab921b442e90dcb22323c9ef8a643bdd3d",
+    "source_index": 962,
+    "stratum": null,
+    "margin": -1.44256591796875,
+    "correct": false,
+    "policy_chosen_logp": -391.0608215332031,
+    "policy_rejected_logp": -620.198974609375
+  },
+  {
+    "prompt_id": "774be29dc0e3837baee836892bc1c801f3b26352a71f3309da768b8af6a952e0",
+    "source_index": 1506,
+    "stratum": null,
+    "margin": -0.4263916015625,
+    "correct": false,
+    "policy_chosen_logp": -574.660400390625,
+    "policy_rejected_logp": -645.1280517578125
+  },
+  {
+    "prompt_id": "13450688a9905b010b72cc491d8610b5588c3cacaed0bb30aa6b7c8a2b715aa5",
+    "source_index": 1399,
+    "stratum": null,
+    "margin": -0.16471481323242188,
+    "correct": false,
+    "policy_chosen_logp": -38.40117645263672,
+    "policy_rejected_logp": -62.63983154296875
+  },
+  {
+    "prompt_id": "09a5b835ff47b43c05bd29e4bbe2117c53086b181d5dbcce84a62f072b18f0be",
+    "source_index": 1031,
+    "stratum": null,
+    "margin": 0.1002197265625,
+    "correct": true,
+    "policy_chosen_logp": -477.544921875,
+    "policy_rejected_logp": -246.908447265625
+  },
+  {
+    "prompt_id": "a9656f7719a6241d74687ecadad27b0d299abb29758ead03562c432e081f0d17",
+    "source_index": 490,
+    "stratum": null,
+    "margin": 0.69622802734375,
+    "correct": true,
+    "policy_chosen_logp": -856.519287109375,
+    "policy_rejected_logp": -154.93496704101562
+  },
+  {
+    "prompt_id": "66edc3eca0b1b23511c6d82bcbf4f46cfb5fd0529692a21c690a998aa3e5fd90",
+    "source_index": 1535,
+    "stratum": null,
+    "margin": 0.042682647705078125,
+    "correct": true,
+    "policy_chosen_logp": -84.46675109863281,
+    "policy_rejected_logp": -58.908851623535156
+  },
+  {
+    "prompt_id": "f4e108acbb28635c6cc88ac92276b13f30f8ad07217afcb714d8b12d8fb7f657",
+    "source_index": 849,
+    "stratum": null,
+    "margin": 0.529571533203125,
+    "correct": true,
+    "policy_chosen_logp": -80.55264282226562,
+    "policy_rejected_logp": -199.00881958007812
+  },
+  {
+    "prompt_id": "bdfcf969f2a84458b2498e0acc198d3094334b81d595fed1724210d7c9f89279",
+    "source_index": 185,
+    "stratum": null,
+    "margin": 0.17999267578125,
+    "correct": true,
+    "policy_chosen_logp": -435.41558837890625,
+    "policy_rejected_logp": -931.8889770507812
+  },
+  {
+    "prompt_id": "d52806a25b428e39ccce3f8b45331cab3bf618d2814b23b63b22773c1fc8c20b",
+    "source_index": 920,
+    "stratum": null,
+    "margin": 0.80157470703125,
+    "correct": true,
+    "policy_chosen_logp": -536.532470703125,
+    "policy_rejected_logp": -382.80242919921875
+  },
+  {
+    "prompt_id": "9cdf9eeef4a7aaf60f3d4336f6b6ec1168ba2086da6a5a024418817c3f385db6",
+    "source_index": 1373,
+    "stratum": null,
+    "margin": 0.38671875,
+    "correct": true,
+    "policy_chosen_logp": -456.6961669921875,
+    "policy_rejected_logp": -304.3817138671875
+  },
+  {
+    "prompt_id": "854a13dbc830303538e9ffe01b1539d9e7ac1851d2470616b9e23ea4d59e4143",
+    "source_index": 198,
+    "stratum": null,
+    "margin": 0.403045654296875,
+    "correct": true,
+    "policy_chosen_logp": -321.90020751953125,
+    "policy_rejected_logp": -107.97157287597656
+  },
+  {
+    "prompt_id": "4efbde2e78790a35dd1458fbb03065ac4dc87fbda44d4a63153bd67036b6d2d1",
+    "source_index": 214,
+    "stratum": null,
+    "margin": -0.60821533203125,
+    "correct": false,
+    "policy_chosen_logp": -334.01416015625,
+    "policy_rejected_logp": -565.9671630859375
+  },
+  {
+    "prompt_id": "5c84c60ada03497bf158cafc0c5ecf46cdeea59f2f9ad071614300bb0215ab68",
+    "source_index": 242,
+    "stratum": null,
+    "margin": -0.274810791015625,
+    "correct": false,
+    "policy_chosen_logp": -388.35028076171875,
+    "policy_rejected_logp": -420.7829895019531
+  },
+  {
+    "prompt_id": "0fcf9dede48ac5c6a8f3cfb96b4e53d5bfa51cd7b92f06e3d3fd47a2d03a0aff",
+    "source_index": 525,
+    "stratum": null,
+    "margin": -0.0296783447265625,
+    "correct": false,
+    "policy_chosen_logp": -89.5764389038086,
+    "policy_rejected_logp": -73.74047088623047
+  },
+  {
+    "prompt_id": "aa92aa595d77f81478fa227a3dd9705124a9ff5271a0dcd21b1161833daba8ff",
+    "source_index": 1198,
+    "stratum": null,
+    "margin": 0.7699966430664062,
+    "correct": true,
+    "policy_chosen_logp": -23.44013023376465,
+    "policy_rejected_logp": -103.28321838378906
+  },
+  {
+    "prompt_id": "981e3b36ae9d61d79f4f2b38c13a54a5fe00788065a91cd366fc8661c0c8da5e",
+    "source_index": 50,
+    "stratum": null,
+    "margin": 0.517059326171875,
+    "correct": true,
+    "policy_chosen_logp": -0.1763990819454193,
+    "policy_rejected_logp": -37.42963790893555
+  },
+  {
+    "prompt_id": "b9eb6ce364c57d0123cb7cb3a0f1df5c469f28134a0438566e9bdd601b8622f2",
+    "source_index": 536,
+    "stratum": null,
+    "margin": 0.360076904296875,
+    "correct": true,
+    "policy_chosen_logp": -546.3626708984375,
+    "policy_rejected_logp": -184.28787231445312
+  },
+  {
+    "prompt_id": "3d0e36eff5b5ba5834fbf4a36b778fbf86c91e8b21ca344d9832e99b44bb7560",
+    "source_index": 1138,
+    "stratum": null,
+    "margin": 0.48644256591796875,
+    "correct": true,
+    "policy_chosen_logp": -153.888671875,
+    "policy_rejected_logp": -89.58560180664062
+  },
+  {
+    "prompt_id": "0cac0de516a1fa570949902742843f73233c2232d8c10a34462f1cdb1ab4d343",
+    "source_index": 1495,
+    "stratum": null,
+    "margin": 0.2600250244140625,
+    "correct": true,
+    "policy_chosen_logp": -116.08079528808594,
+    "policy_rejected_logp": -79.98612976074219
+  },
+  {
+    "prompt_id": "6a85039369234a3960bdc5a7931c86f9542444e1362ab46bdfdbea9ae1830d65",
+    "source_index": 1323,
+    "stratum": null,
+    "margin": 1.661163330078125,
+    "correct": true,
+    "policy_chosen_logp": -346.70343017578125,
+    "policy_rejected_logp": -328.31939697265625
+  },
+  {
+    "prompt_id": "14208147d5f062d02a6f62695bc7888952299658b44fbc653b0241561e302e69",
+    "source_index": 1782,
+    "stratum": null,
+    "margin": -0.23046875,
+    "correct": false,
+    "policy_chosen_logp": -177.3521270751953,
+    "policy_rejected_logp": -54.095436096191406
+  },
+  {
+    "prompt_id": "3d53524c218034fb0d31e7f4c9b43f6299bd4f2e6c65dcef4285828b4ed78b8e",
+    "source_index": 1750,
+    "stratum": null,
+    "margin": 1.16986083984375,
+    "correct": true,
+    "policy_chosen_logp": -866.5457763671875,
+    "policy_rejected_logp": -397.79534912109375
+  },
+  {
+    "prompt_id": "f76dbefa1515c4214e0125d111ce3fda41d2631719c41f6fed193460911ce1bb",
+    "source_index": 1649,
+    "stratum": null,
+    "margin": 0.97515869140625,
+    "correct": true,
+    "policy_chosen_logp": -389.89410400390625,
+    "policy_rejected_logp": -722.9938354492188
+  },
+  {
+    "prompt_id": "b48d22c6a2a5fc8b8bb26c4073817401cdd5e7b191226f8329acb7b677bded8e",
+    "source_index": 1190,
+    "stratum": null,
+    "margin": 0.0404052734375,
+    "correct": true,
+    "policy_chosen_logp": -227.08934020996094,
+    "policy_rejected_logp": -109.587646484375
+  },
+  {
+    "prompt_id": "32bdfb4d0539ea043aca424f23d5c53341b813c7f04ce3c7e483d0b1a884f3fb",
+    "source_index": 675,
+    "stratum": null,
+    "margin": 0.3887481689453125,
+    "correct": true,
+    "policy_chosen_logp": -8.036808013916016,
+    "policy_rejected_logp": -144.9392852783203
+  },
+  {
+    "prompt_id": "216a097159f474d348d28bc011d85fb9ec53c78991642b3754ad58d4a4082d47",
+    "source_index": 54,
+    "stratum": null,
+    "margin": -1.063812255859375,
+    "correct": false,
+    "policy_chosen_logp": -505.3813781738281,
+    "policy_rejected_logp": -491.69903564453125
+  },
+  {
+    "prompt_id": "83abfedabadd313c18f608bf6f783be526b7b9e9c9b5b1a7d9adc6d6919e4ec6",
+    "source_index": 820,
+    "stratum": null,
+    "margin": -0.07879447937011719,
+    "correct": false,
+    "policy_chosen_logp": -30.520584106445312,
+    "policy_rejected_logp": -31.272066116333008
+  },
+  {
+    "prompt_id": "0e711ba811a98767a1862e26aca8cdf4cea82b8e150504356ad1bf887dd4050e",
+    "source_index": 1668,
+    "stratum": null,
+    "margin": 0.11600685119628906,
+    "correct": true,
+    "policy_chosen_logp": -21.865819931030273,
+    "policy_rejected_logp": -22.67901611328125
+  },
+  {
+    "prompt_id": "f9c419ed89a47072f9f87134d9b684434638f850dcc524dd9f463854bcd17100",
+    "source_index": 466,
+    "stratum": null,
+    "margin": 0.26161956787109375,
+    "correct": true,
+    "policy_chosen_logp": -109.35347747802734,
+    "policy_rejected_logp": -70.87567138671875
+  },
+  {
+    "prompt_id": "0382ca1d7acbc9006104690f41bafbd74f3b2689caf74d968f807984a0788e00",
+    "source_index": 839,
+    "stratum": null,
+    "margin": 0.626678466796875,
+    "correct": true,
+    "policy_chosen_logp": -707.75634765625,
+    "policy_rejected_logp": -474.6823425292969
+  },
+  {
+    "prompt_id": "f13173d7b6c6fc9e48508e279cee3dc8995bdc82a5aeadb807cc3d1716d11abf",
+    "source_index": 543,
+    "stratum": null,
+    "margin": -0.0545654296875,
+    "correct": false,
+    "policy_chosen_logp": -252.39483642578125,
+    "policy_rejected_logp": -74.47985076904297
+  },
+  {
+    "prompt_id": "729ee2a5c749f00e1fe214adb448d2cddc0ef069ef0247fdcf9ce06b4cb5de99",
+    "source_index": 784,
+    "stratum": null,
+    "margin": 0.10910987854003906,
+    "correct": true,
+    "policy_chosen_logp": -29.34752082824707,
+    "policy_rejected_logp": -13.943892478942871
+  },
+  {
+    "prompt_id": "275a9494462186bf89ea37bca3f59372df03051c1f66be7da1080df5115bf355",
+    "source_index": 157,
+    "stratum": null,
+    "margin": -0.3407135009765625,
+    "correct": false,
+    "policy_chosen_logp": -53.7572135925293,
+    "policy_rejected_logp": -6.0861077308654785
+  },
+  {
+    "prompt_id": "1335a25cc611a43767ce0c02923d111d70dc1dc244c3166a384f2d763a20dbea",
+    "source_index": 1859,
+    "stratum": null,
+    "margin": -0.10699462890625,
+    "correct": false,
+    "policy_chosen_logp": -467.01416015625,
+    "policy_rejected_logp": -343.313720703125
+  },
+  {
+    "prompt_id": "d70053f4375dd47082610320bf3c8ab0ecfdda3ff253099928f8c1a6328c6737",
+    "source_index": 991,
+    "stratum": null,
+    "margin": -0.0312957763671875,
+    "correct": false,
+    "policy_chosen_logp": -142.2532958984375,
+    "policy_rejected_logp": -201.02499389648438
+  },
+  {
+    "prompt_id": "ef8dc0933d9ba3d051744ae17c417d34fcdbdaaea59963af5ee68b8e5fb87544",
+    "source_index": 67,
+    "stratum": null,
+    "margin": 0.14818572998046875,
+    "correct": true,
+    "policy_chosen_logp": -37.57343673706055,
+    "policy_rejected_logp": -101.88790130615234
+  },
+  {
+    "prompt_id": "8b54653e0f0bd34e00294e1c642e77e1e79e9c822a7c60706d2b5d4237b92ad9",
+    "source_index": 1825,
+    "stratum": null,
+    "margin": 0.13470458984375,
+    "correct": true,
+    "policy_chosen_logp": -48.18706512451172,
+    "policy_rejected_logp": -194.17913818359375
+  },
+  {
+    "prompt_id": "afec92c29b0b232de81cf1d683f6acabe841661f516dd3df00e8da656a052793",
+    "source_index": 1455,
+    "stratum": null,
+    "margin": 0.452056884765625,
+    "correct": true,
+    "policy_chosen_logp": -41.47265625,
+    "policy_rejected_logp": -36.22612762451172
+  },
+  {
+    "prompt_id": "ab011fc5a9a978a20fc720d65b81a834249dca81b474a622b48a11f6179c96d4",
+    "source_index": 1072,
+    "stratum": null,
+    "margin": 0.09288406372070312,
+    "correct": true,
+    "policy_chosen_logp": -62.86811828613281,
+    "policy_rejected_logp": -83.97822570800781
+  },
+  {
+    "prompt_id": "6225f386d6bf5a43e0552122cb01a3105b1d350b088dd9ce22582308cf05cb74",
+    "source_index": 984,
+    "stratum": null,
+    "margin": -0.52679443359375,
+    "correct": false,
+    "policy_chosen_logp": -244.9130096435547,
+    "policy_rejected_logp": -28.991483688354492
+  },
+  {
+    "prompt_id": "5b65aebda07711f3b75a7e893258b7ad2d99d8107379e798fe78088b5041690d",
+    "source_index": 1651,
+    "stratum": null,
+    "margin": 0.1929473876953125,
+    "correct": true,
+    "policy_chosen_logp": -100.17710876464844,
+    "policy_rejected_logp": -339.5025329589844
+  },
+  {
+    "prompt_id": "f3cd700a19ec869ed9c52979a7f6074e8206b79b7bce16cb17f814ed8c34d600",
+    "source_index": 916,
+    "stratum": null,
+    "margin": 0.1122894287109375,
+    "correct": true,
+    "policy_chosen_logp": -156.2906494140625,
+    "policy_rejected_logp": -292.0364990234375
+  },
+  {
+    "prompt_id": "801f6545cebea671d282212c16b507f1ffcc1bdda0e2d44b354fc293cd1f2065",
+    "source_index": 1451,
+    "stratum": null,
+    "margin": 0.299591064453125,
+    "correct": true,
+    "policy_chosen_logp": -287.81939697265625,
+    "policy_rejected_logp": -459.4825134277344
+  },
+  {
+    "prompt_id": "6c601a7abce383e127a83ce0b5235e62a374832f3bcb0d4ba7805d1006d7cfd5",
+    "source_index": 114,
+    "stratum": null,
+    "margin": 0.227264404296875,
+    "correct": true,
+    "policy_chosen_logp": -51.231048583984375,
+    "policy_rejected_logp": -40.89695739746094
+  },
+  {
+    "prompt_id": "722ed33dbe4652ab6f0e0aa6f3338e7bdbf1a9d4b88988b8ffdbd72fc455a3d0",
+    "source_index": 305,
+    "stratum": null,
+    "margin": -0.206451416015625,
+    "correct": false,
+    "policy_chosen_logp": -213.05886840820312,
+    "policy_rejected_logp": -289.62890625
+  },
+  {
+    "prompt_id": "947a3f2101f6b4cf40ba344aec7a5b4bfd4c37bbf91e35fa7d5141ba077ab7fa",
+    "source_index": 1797,
+    "stratum": null,
+    "margin": 0.297119140625,
+    "correct": true,
+    "policy_chosen_logp": -605.3349609375,
+    "policy_rejected_logp": -813.458251953125
+  },
+  {
+    "prompt_id": "6735e53abfa93e479e1990ab3aa974326216bcf2b2372a6de893eb94e36ef489",
+    "source_index": 486,
+    "stratum": null,
+    "margin": -0.9057998657226562,
+    "correct": false,
+    "policy_chosen_logp": -150.01145935058594,
+    "policy_rejected_logp": -40.612754821777344
+  },
+  {
+    "prompt_id": "7306124d5b0716446b5058c6e73648574480453c7baad2d093eaaa854d4c3f14",
+    "source_index": 946,
+    "stratum": null,
+    "margin": -0.3285102844238281,
+    "correct": false,
+    "policy_chosen_logp": -76.32437133789062,
+    "policy_rejected_logp": -32.10344696044922
+  },
+  {
+    "prompt_id": "1762b0067e2b82689d13b67c4c8a1447aa72c262246f34ae94fe4417e6d91c71",
+    "source_index": 58,
+    "stratum": null,
+    "margin": -0.2537841796875,
+    "correct": false,
+    "policy_chosen_logp": -224.03268432617188,
+    "policy_rejected_logp": -59.50519561767578
+  },
+  {
+    "prompt_id": "920603364021701350a2708ef788396c79d2e2b7ae48519bad2b09beac27fbbc",
+    "source_index": 693,
+    "stratum": null,
+    "margin": 0.1543426513671875,
+    "correct": true,
+    "policy_chosen_logp": -73.50774383544922,
+    "policy_rejected_logp": -85.06932067871094
+  },
+  {
+    "prompt_id": "cfe9a3a2182c199a85be930630ef00fbbab9bb1cdccfa4c1a20b518407e4ca4e",
+    "source_index": 228,
+    "stratum": null,
+    "margin": -0.10888671875,
+    "correct": false,
+    "policy_chosen_logp": -102.04681396484375,
+    "policy_rejected_logp": -105.42506408691406
+  },
+  {
+    "prompt_id": "5c0dbf72df4ac137228f9d139d83f59405ea936788fee2b2306bd08a6b3e5dda",
+    "source_index": 1709,
+    "stratum": null,
+    "margin": 0.566314697265625,
+    "correct": true,
+    "policy_chosen_logp": -2.7057456970214844,
+    "policy_rejected_logp": -390.4407043457031
+  },
+  {
+    "prompt_id": "6e3af4352050918838c0b8d4f18cd5f636d9e701a06b327287da96c874d42cc2",
+    "source_index": 547,
+    "stratum": null,
+    "margin": 0.417388916015625,
+    "correct": true,
+    "policy_chosen_logp": -47.63594436645508,
+    "policy_rejected_logp": -129.74740600585938
+  },
+  {
+    "prompt_id": "06e07a0bc778e2991c3085263f812c5ee642ba7e57b9b79e0393a7e763f2757b",
+    "source_index": 556,
+    "stratum": null,
+    "margin": 0.39232635498046875,
+    "correct": true,
+    "policy_chosen_logp": -7.091660499572754,
+    "policy_rejected_logp": -108.27496337890625
+  },
+  {
+    "prompt_id": "942295e72dc5560783d359f1a830d8b457caa3966b18a56dcfdfcab17ee0cd0d",
+    "source_index": 489,
+    "stratum": null,
+    "margin": 0.0340576171875,
+    "correct": true,
+    "policy_chosen_logp": -697.00439453125,
+    "policy_rejected_logp": -447.68634033203125
+  },
+  {
+    "prompt_id": "20ce674ab84cff2aa739eca655b1fa45021b0ba6b5573d01057c71b95cae6240",
+    "source_index": 517,
+    "stratum": null,
+    "margin": 0.705291748046875,
+    "correct": true,
+    "policy_chosen_logp": -256.8551025390625,
+    "policy_rejected_logp": -396.9620361328125
+  },
+  {
+    "prompt_id": "770a563cb403af6024845c01954a3b86a89d11e22e2e3732820fe25c4d90099f",
+    "source_index": 773,
+    "stratum": null,
+    "margin": 1.09979248046875,
+    "correct": true,
+    "policy_chosen_logp": -339.73699951171875,
+    "policy_rejected_logp": -371.7005920410156
+  },
+  {
+    "prompt_id": "ba7ddaf72f0e034da39b43276b9f418894a12a6fffdbcf6359a302ef1b34688e",
+    "source_index": 184,
+    "stratum": null,
+    "margin": 0.07342529296875,
+    "correct": true,
+    "policy_chosen_logp": -405.57635498046875,
+    "policy_rejected_logp": -112.15728759765625
+  },
+  {
+    "prompt_id": "021a9bfd6287a027bd06c258d2e08708e04f52537fc1aa32abadc67f950ef650",
+    "source_index": 1636,
+    "stratum": null,
+    "margin": 0.8339767456054688,
+    "correct": true,
+    "policy_chosen_logp": -75.96780395507812,
+    "policy_rejected_logp": -191.53016662597656
+  },
+  {
+    "prompt_id": "6eb24da82022f75c193ad2383d36366f0673b034b3ea8db245327a46ed56b158",
+    "source_index": 1857,
+    "stratum": null,
+    "margin": 0.4025726318359375,
+    "correct": true,
+    "policy_chosen_logp": -10.017189025878906,
+    "policy_rejected_logp": -172.7052001953125
+  },
+  {
+    "prompt_id": "c81ea0995df7f9912a266c0de65bd36568d22f91cab56db431f5135569100180",
+    "source_index": 1033,
+    "stratum": null,
+    "margin": 0.11297607421875,
+    "correct": true,
+    "policy_chosen_logp": -7.351185321807861,
+    "policy_rejected_logp": -435.1761474609375
+  },
+  {
+    "prompt_id": "b02ac1ccfc3e5225a692d33bea31af972e591bef4dbc88aec9cd2c3a85091e23",
+    "source_index": 725,
+    "stratum": null,
+    "margin": -0.6372299194335938,
+    "correct": false,
+    "policy_chosen_logp": -109.48916625976562,
+    "policy_rejected_logp": -1.6052290201187134
+  },
+  {
+    "prompt_id": "db15225e8abeaf64c09da0ab7d4bd674b8734060a8d442e0559f3a6966bdba9e",
+    "source_index": 7,
+    "stratum": null,
+    "margin": 1.0987396240234375,
+    "correct": true,
+    "policy_chosen_logp": -223.99688720703125,
+    "policy_rejected_logp": -241.9761962890625
+  },
+  {
+    "prompt_id": "5294c9606e5e6fb93dc94319d5547c1cba3d6d44da00ee551d2621227e3b6ee8",
+    "source_index": 254,
+    "stratum": null,
+    "margin": 1.18505859375,
+    "correct": true,
+    "policy_chosen_logp": -296.8132629394531,
+    "policy_rejected_logp": -448.7615966796875
+  },
+  {
+    "prompt_id": "43edbcf9c3997a4742a4dd83c0323c9f40817f3817d4efb92302d12ba7bc7417",
+    "source_index": 444,
+    "stratum": null,
+    "margin": 0.77044677734375,
+    "correct": true,
+    "policy_chosen_logp": -123.86459350585938,
+    "policy_rejected_logp": -272.8433837890625
+  },
+  {
+    "prompt_id": "a569256203e80daf266a13ce2344cde620c62f8581302b112dd3d40314f71715",
+    "source_index": 427,
+    "stratum": null,
+    "margin": -0.13364028930664062,
+    "correct": false,
+    "policy_chosen_logp": -56.14640426635742,
+    "policy_rejected_logp": -100.46124267578125
+  },
+  {
+    "prompt_id": "2b818e3d05c926f3acedf53ba1a020eb6c120f101da458b0b502eefb54170115",
+    "source_index": 935,
+    "stratum": null,
+    "margin": -0.7996826171875,
+    "correct": false,
+    "policy_chosen_logp": -412.89898681640625,
+    "policy_rejected_logp": -805.5423583984375
+  },
+  {
+    "prompt_id": "7e2845336e38e4f480dfc5aa4c88637d65b1122bd4f6f8f81d394fc14af48e5a",
+    "source_index": 385,
+    "stratum": null,
+    "margin": -0.129547119140625,
+    "correct": false,
+    "policy_chosen_logp": -303.0711669921875,
+    "policy_rejected_logp": -157.34017944335938
+  },
+  {
+    "prompt_id": "aca585934d139c0ea4abcffd29c3fb6e99734fc603450d06b12701f77545bb21",
+    "source_index": 1526,
+    "stratum": null,
+    "margin": -0.7828369140625,
+    "correct": false,
+    "policy_chosen_logp": -732.786376953125,
+    "policy_rejected_logp": -523.9725341796875
+  },
+  {
+    "prompt_id": "178a49ff94b31550fd30e3bf3b20402b818300bcdada95ee46bcd63f0060d346",
+    "source_index": 1707,
+    "stratum": null,
+    "margin": 0.1147003173828125,
+    "correct": true,
+    "policy_chosen_logp": -32.10503005981445,
+    "policy_rejected_logp": -117.1370849609375
+  },
+  {
+    "prompt_id": "48bbf9def628ad9c3952125307475bae4d73d81826e550bb950bfd726ca57a68",
+    "source_index": 1627,
+    "stratum": null,
+    "margin": -0.1262969970703125,
+    "correct": false,
+    "policy_chosen_logp": -202.21591186523438,
+    "policy_rejected_logp": -152.37509155273438
+  },
+  {
+    "prompt_id": "ae12de1584037125ac418a027b79f5a33612a8d208da402fd9b91a73a6ac9e1b",
+    "source_index": 1515,
+    "stratum": null,
+    "margin": 1.0218658447265625,
+    "correct": true,
+    "policy_chosen_logp": -199.16326904296875,
+    "policy_rejected_logp": -256.562744140625
+  },
+  {
+    "prompt_id": "0818d7a1d0982a89c0ac99c2572b43d53b2150fd3021879da5acf42a2df599b7",
+    "source_index": 12,
+    "stratum": null,
+    "margin": -1.49749755859375,
+    "correct": false,
+    "policy_chosen_logp": -516.5609741210938,
+    "policy_rejected_logp": -79.544189453125
+  },
+  {
+    "prompt_id": "bf70c4c587d0e2b8bd103be8c7ff734265d6b77f4343ebed95512a2c16c60091",
+    "source_index": 1163,
+    "stratum": null,
+    "margin": 0.9563140869140625,
+    "correct": true,
+    "policy_chosen_logp": -189.30357360839844,
+    "policy_rejected_logp": -311.8980712890625
+  },
+  {
+    "prompt_id": "4d25dc88274ebe097009bac9f597047b2776f9c0b76ee3c38c4920e42d66e931",
+    "source_index": 249,
+    "stratum": null,
+    "margin": 0.048175811767578125,
+    "correct": true,
+    "policy_chosen_logp": -11.642723083496094,
+    "policy_rejected_logp": -14.038594245910645
+  },
+  {
+    "prompt_id": "ad2a254a14156422caf528bb06d4bcb7255ffd3928e4bc3040b7c4d8765120c4",
+    "source_index": 715,
+    "stratum": null,
+    "margin": -0.1462860107421875,
+    "correct": false,
+    "policy_chosen_logp": -346.7544250488281,
+    "policy_rejected_logp": -215.35226440429688
+  },
+  {
+    "prompt_id": "0a72dd01c47a5d95cf56f4cde1a1e08adf48c5541fd6352355da7a0c2b44c021",
+    "source_index": 1283,
+    "stratum": null,
+    "margin": 0.27223968505859375,
+    "correct": true,
+    "policy_chosen_logp": -11.558029174804688,
+    "policy_rejected_logp": -101.13029479980469
+  },
+  {
+    "prompt_id": "bafb4bfefaa674b232b009e73cc590ecc6824e971b248c2b03ae29fc652965d7",
+    "source_index": 59,
+    "stratum": null,
+    "margin": 0.6599960327148438,
+    "correct": true,
+    "policy_chosen_logp": -16.176197052001953,
+    "policy_rejected_logp": -102.65397644042969
+  },
+  {
+    "prompt_id": "e3de5c87fbef3a26793a2bf22ff792f119f89e202e1a7dc7cfaa605981b8e4e8",
+    "source_index": 329,
+    "stratum": null,
+    "margin": 0.2927837371826172,
+    "correct": true,
+    "policy_chosen_logp": -20.928646087646484,
+    "policy_rejected_logp": -48.93789291381836
+  },
+  {
+    "prompt_id": "206b7c5d325784cfc41d7d7dbc71c9d9872a7e64e7392ebd0371c512d60e9a6e",
+    "source_index": 1219,
+    "stratum": null,
+    "margin": 0.8326568603515625,
+    "correct": true,
+    "policy_chosen_logp": -214.30979919433594,
+    "policy_rejected_logp": -460.1195983886719
+  },
+  {
+    "prompt_id": "3b06f17a332ce98611838bdc2aa2f0e8c512bf98a208bdbca5c97e01d5413dd6",
+    "source_index": 1042,
+    "stratum": null,
+    "margin": 0.5668487548828125,
+    "correct": true,
+    "policy_chosen_logp": -407.7803955078125,
+    "policy_rejected_logp": -183.6561737060547
+  },
+  {
+    "prompt_id": "1127ee833c972f00c1a9d1b005b725c4d99b0c67de5945c03f1f724a7db43780",
+    "source_index": 912,
+    "stratum": null,
+    "margin": -0.5410003662109375,
+    "correct": false,
+    "policy_chosen_logp": -168.39080810546875,
+    "policy_rejected_logp": -20.192604064941406
+  },
+  {
+    "prompt_id": "691c980f11d6f3cd9b6fb7def24c77f16e7359c9c4bf38ec4de7d3327a164705",
+    "source_index": 680,
+    "stratum": null,
+    "margin": 0.27471923828125,
+    "correct": true,
+    "policy_chosen_logp": -275.02276611328125,
+    "policy_rejected_logp": -270.2489013671875
+  },
+  {
+    "prompt_id": "70a5471e75f4ab09037c89bf019ddf785f07a9d74a63915e4cf32bfcd5f5e465",
+    "source_index": 1961,
+    "stratum": null,
+    "margin": 0.136871337890625,
+    "correct": true,
+    "policy_chosen_logp": -810.8715209960938,
+    "policy_rejected_logp": -473.7198181152344
+  },
+  {
+    "prompt_id": "49361c63499195fb17305498fd53187a4d2d32f7ffc5f6ee002f40bcd19a6c05",
+    "source_index": 1645,
+    "stratum": null,
+    "margin": -0.1588287353515625,
+    "correct": false,
+    "policy_chosen_logp": -326.88385009765625,
+    "policy_rejected_logp": -190.49542236328125
+  },
+  {
+    "prompt_id": "2c905f2acd27f903dd2e8b472acc95591dec08822365f0601cbff88635fb06ea",
+    "source_index": 905,
+    "stratum": null,
+    "margin": 0.23193359375,
+    "correct": true,
+    "policy_chosen_logp": -1163.667724609375,
+    "policy_rejected_logp": -339.56744384765625
+  },
+  {
+    "prompt_id": "1cad2ea6385eddab9423c6ad5ce7282388cc0c9b2fee26b8184f8f4cd924f106",
+    "source_index": 1558,
+    "stratum": null,
+    "margin": 0.4267578125,
+    "correct": true,
+    "policy_chosen_logp": -1117.8829345703125,
+    "policy_rejected_logp": -678.576171875
+  },
+  {
+    "prompt_id": "5de48441cc27be3991083664a433712e5fbc50009d0d47d71f83f9f920f8c7d6",
+    "source_index": 1793,
+    "stratum": null,
+    "margin": 0.1341552734375,
+    "correct": true,
+    "policy_chosen_logp": -404.1776123046875,
+    "policy_rejected_logp": -340.7559814453125
+  },
+  {
+    "prompt_id": "45c204387634b6a2cccdb8c7351168cd2cd5b118c82387702df23cfa59e33e8d",
+    "source_index": 1753,
+    "stratum": null,
+    "margin": -0.46844482421875,
+    "correct": false,
+    "policy_chosen_logp": -373.2097473144531,
+    "policy_rejected_logp": -1121.7220458984375
+  },
+  {
+    "prompt_id": "7658b3366a3cf883f569375bc603d7370b3403302ab1a2b0d85230957f2f9815",
+    "source_index": 221,
+    "stratum": null,
+    "margin": 1.73712158203125,
+    "correct": true,
+    "policy_chosen_logp": -547.7113037109375,
+    "policy_rejected_logp": -563.2799072265625
+  },
+  {
+    "prompt_id": "2a6b9028ae6a6289fcff2e4705cdbd883497a4f7bd15bf6e6d717240c1ce27af",
+    "source_index": 303,
+    "stratum": null,
+    "margin": -0.025054931640625,
+    "correct": false,
+    "policy_chosen_logp": -502.48248291015625,
+    "policy_rejected_logp": -351.429443359375
+  },
+  {
+    "prompt_id": "0ccf04c6fca885ee57b1a8542a8115197ff0716dde5d9ea483cd39b2643e3d86",
+    "source_index": 1114,
+    "stratum": null,
+    "margin": 0.5074996948242188,
+    "correct": true,
+    "policy_chosen_logp": -71.06822204589844,
+    "policy_rejected_logp": -110.3488998413086
+  },
+  {
+    "prompt_id": "31e9b84bc050d482676b48b262611807038f863410a20792ed53449ee5c184fe",
+    "source_index": 109,
+    "stratum": null,
+    "margin": -0.16532135009765625,
+    "correct": false,
+    "policy_chosen_logp": -188.30691528320312,
+    "policy_rejected_logp": -122.48885345458984
+  },
+  {
+    "prompt_id": "049b57a16e45f5c0485fbd4b57f34341e55e5f7e00f314eca61bda0780ed9b59",
+    "source_index": 1808,
+    "stratum": null,
+    "margin": 0.049072265625,
+    "correct": true,
+    "policy_chosen_logp": -579.3951416015625,
+    "policy_rejected_logp": -477.1029052734375
+  },
+  {
+    "prompt_id": "5fb3cb108ec5c6da3464ab182c01907528ded34845a1bc92071d6f9a94a11e36",
+    "source_index": 1160,
+    "stratum": null,
+    "margin": 0.41741943359375,
+    "correct": true,
+    "policy_chosen_logp": -0.3588652014732361,
+    "policy_rejected_logp": -298.588623046875
+  },
+  {
+    "prompt_id": "651e4c1d0b8bf0212c220f3f0a7d08161ad0952d9e3ea9d0963ab97a45937ea6",
+    "source_index": 457,
+    "stratum": null,
+    "margin": 0.4880218505859375,
+    "correct": true,
+    "policy_chosen_logp": -36.564903259277344,
+    "policy_rejected_logp": -171.52719116210938
+  },
+  {
+    "prompt_id": "2298ef7939663380e121e25e8b1bfc192b66e37973f4473b06152c5f949da8e2",
+    "source_index": 1916,
+    "stratum": null,
+    "margin": 0.21145248413085938,
+    "correct": true,
+    "policy_chosen_logp": -50.538230895996094,
+    "policy_rejected_logp": -77.09998321533203
+  },
+  {
+    "prompt_id": "311ec11e05eb8c78e9418fd441b71a8233219a12abb0929871613fa30f28ba51",
+    "source_index": 135,
+    "stratum": null,
+    "margin": 0.1202392578125,
+    "correct": true,
+    "policy_chosen_logp": -222.5593719482422,
+    "policy_rejected_logp": -248.61972045898438
+  },
+  {
+    "prompt_id": "ad86afe9508e533cc19d35c42f785e900274a28e57d150e0007c7fb632a70889",
+    "source_index": 922,
+    "stratum": null,
+    "margin": -0.3817138671875,
+    "correct": false,
+    "policy_chosen_logp": -88.61683654785156,
+    "policy_rejected_logp": -432.99700927734375
+  },
+  {
+    "prompt_id": "b04010721d49ba3463d0784782c648a60d8713b500c449e2388dc7dcccce3fbd",
+    "source_index": 219,
+    "stratum": null,
+    "margin": 0.3596649169921875,
+    "correct": true,
+    "policy_chosen_logp": -33.54662322998047,
+    "policy_rejected_logp": -201.83685302734375
+  },
+  {
+    "prompt_id": "165c007035dcd2b39f774d9b1b96a7811346215d72e6a68515746b903bc09105",
+    "source_index": 1275,
+    "stratum": null,
+    "margin": 0.496795654296875,
+    "correct": true,
+    "policy_chosen_logp": -191.5574951171875,
+    "policy_rejected_logp": -183.03457641601562
+  },
+  {
+    "prompt_id": "51256465dbed08fe6dbdbe56ccdb47df1922bd45a7d556f1bc5a6d0bc8703e49",
+    "source_index": 1691,
+    "stratum": null,
+    "margin": -0.6207275390625,
+    "correct": false,
+    "policy_chosen_logp": -281.77862548828125,
+    "policy_rejected_logp": -314.7930908203125
+  },
+  {
+    "prompt_id": "631866fcfdfb0150bc6f8ae9afa8c0db999a6fb7d5542c1370b753ebd301d7ba",
+    "source_index": 1973,
+    "stratum": null,
+    "margin": -1.03961181640625,
+    "correct": false,
+    "policy_chosen_logp": -469.84490966796875,
+    "policy_rejected_logp": -561.984130859375
+  },
+  {
+    "prompt_id": "70bdf46c4e68c84973c2a067550ecf4e01409c5b6c43e99a6b1d9169d6b82d30",
+    "source_index": 864,
+    "stratum": null,
+    "margin": -0.23496246337890625,
+    "correct": false,
+    "policy_chosen_logp": -38.9674072265625,
+    "policy_rejected_logp": -74.45765686035156
+  },
+  {
+    "prompt_id": "fe986788cdba0a37ad646602197fecf6088d06a431145c82b62bed4ec73af7aa",
+    "source_index": 210,
+    "stratum": null,
+    "margin": 0.22260665893554688,
+    "correct": true,
+    "policy_chosen_logp": -42.8522834777832,
+    "policy_rejected_logp": -60.2760009765625
+  },
+  {
+    "prompt_id": "ee7b7003b96f186726812f27c0c689da5283da51a6a682eb1f65046fda17ba65",
+    "source_index": 911,
+    "stratum": null,
+    "margin": -0.1077880859375,
+    "correct": false,
+    "policy_chosen_logp": -345.99017333984375,
+    "policy_rejected_logp": -439.32562255859375
+  },
+  {
+    "prompt_id": "810f634e5e9ce2aefc4a9c2b677deed287a18177d45709a92124c1dfc21c9c08",
+    "source_index": 1211,
+    "stratum": null,
+    "margin": -0.1481781005859375,
+    "correct": false,
+    "policy_chosen_logp": -222.52757263183594,
+    "policy_rejected_logp": -126.83430480957031
+  },
+  {
+    "prompt_id": "0798a83535ec872e84bd86ed0cbc07809c8e9b0c02aeb1a9f2c6bd89d3412122",
+    "source_index": 1154,
+    "stratum": null,
+    "margin": 0.5563201904296875,
+    "correct": true,
+    "policy_chosen_logp": -27.412700653076172,
+    "policy_rejected_logp": -218.6958770751953
+  },
+  {
+    "prompt_id": "8be337923e1ce4943da703498967c9a4fddebe172997072ff7be13c970e0e986",
+    "source_index": 921,
+    "stratum": null,
+    "margin": 0.06951904296875,
+    "correct": true,
+    "policy_chosen_logp": -212.30389404296875,
+    "policy_rejected_logp": -13.748123168945312
+  },
+  {
+    "prompt_id": "307f45192cb4df575d2a597130de79acc3397b91c3e282f1a676243c59bfacc1",
+    "source_index": 1109,
+    "stratum": null,
+    "margin": -0.0191497802734375,
+    "correct": false,
+    "policy_chosen_logp": -102.02764129638672,
+    "policy_rejected_logp": -42.64990997314453
+  },
+  {
+    "prompt_id": "ed3baf88f6f050288af197f99139afc8b9e4cbf8863aabb3bc6a5420b910d826",
+    "source_index": 104,
+    "stratum": null,
+    "margin": -0.222991943359375,
+    "correct": false,
+    "policy_chosen_logp": -401.6265869140625,
+    "policy_rejected_logp": -307.2986145019531
+  },
+  {
+    "prompt_id": "35210502b2b5d536001a8aea96d6d8ae22c7a5e5221de6e8690f1ea2ff6c7fbb",
+    "source_index": 1978,
+    "stratum": null,
+    "margin": 1.04736328125,
+    "correct": true,
+    "policy_chosen_logp": -456.5814514160156,
+    "policy_rejected_logp": -153.0540008544922
+  },
+  {
+    "prompt_id": "ea67fc3a425ae4597a4885b223e6128094ca23d0105150ee1afb57830fb8783f",
+    "source_index": 1415,
+    "stratum": null,
+    "margin": 0.2780609130859375,
+    "correct": true,
+    "policy_chosen_logp": -69.88771057128906,
+    "policy_rejected_logp": -226.64822387695312
+  },
+  {
+    "prompt_id": "754b02c8203307f14cae46470c58b6994c0023e148de9b660d63df613fb72618",
+    "source_index": 1225,
+    "stratum": null,
+    "margin": -0.852447509765625,
+    "correct": false,
+    "policy_chosen_logp": -258.8631591796875,
+    "policy_rejected_logp": -644.4383544921875
+  },
+  {
+    "prompt_id": "b13936e386d8ec88540d4f615fea1274801962cacce794eb192b4f89f1188633",
+    "source_index": 309,
+    "stratum": null,
+    "margin": -0.213348388671875,
+    "correct": false,
+    "policy_chosen_logp": -294.25494384765625,
+    "policy_rejected_logp": -209.11033630371094
+  },
+  {
+    "prompt_id": "2a4ed7f632dfc21d1dc342051eaf8ea1bcdb528a4fa5913df322c41d84eebe2c",
+    "source_index": 928,
+    "stratum": null,
+    "margin": -0.1649169921875,
+    "correct": false,
+    "policy_chosen_logp": -659.27734375,
+    "policy_rejected_logp": -582.9066772460938
+  },
+  {
+    "prompt_id": "8c1ea0d5c45a72e2bef3a0667fa7287ddf9afa8b15d8eb802f99c8b8b96c6838",
+    "source_index": 186,
+    "stratum": null,
+    "margin": -0.7667083740234375,
+    "correct": false,
+    "policy_chosen_logp": -199.43186950683594,
+    "policy_rejected_logp": -21.49697494506836
+  },
+  {
+    "prompt_id": "c146faad1c9ac97e32227f227ce60d5af70b14d9d44ab5f0cb4c4a7986ea7330",
+    "source_index": 966,
+    "stratum": null,
+    "margin": -0.6741943359375,
+    "correct": false,
+    "policy_chosen_logp": -341.57232666015625,
+    "policy_rejected_logp": -31.466148376464844
+  },
+  {
+    "prompt_id": "b892e9ea0cf89e41d7e27362eb8f01811fe14063a855f7632f336e728cb10364",
+    "source_index": 1681,
+    "stratum": null,
+    "margin": 0.3819732666015625,
+    "correct": true,
+    "policy_chosen_logp": -247.5633087158203,
+    "policy_rejected_logp": -222.09649658203125
+  },
+  {
+    "prompt_id": "d68794c3aae12835b0b7e786c492c396e0494b785e64da876609cd4a530acfb1",
+    "source_index": 142,
+    "stratum": null,
+    "margin": 0.393280029296875,
+    "correct": true,
+    "policy_chosen_logp": -156.80947875976562,
+    "policy_rejected_logp": -271.20782470703125
+  },
+  {
+    "prompt_id": "c8c81a193cc3859af01dc4babe2b1cb8346bdeae00fd5fbb137e7b89558e3d79",
+    "source_index": 1235,
+    "stratum": null,
+    "margin": -0.242828369140625,
+    "correct": false,
+    "policy_chosen_logp": -505.3193664550781,
+    "policy_rejected_logp": -462.91656494140625
+  },
+  {
+    "prompt_id": "a1ad45bc69284c430bc81ea45d51f0291128491deb106b7beab100b5eccdf254",
+    "source_index": 1141,
+    "stratum": null,
+    "margin": -0.4698333740234375,
+    "correct": false,
+    "policy_chosen_logp": -79.48130798339844,
+    "policy_rejected_logp": -0.24048909544944763
+  },
+  {
+    "prompt_id": "8947cd770c8cc2c63bc379630aca74534ba494165c237d3b9bfea9dd8c7377f1",
+    "source_index": 848,
+    "stratum": null,
+    "margin": 0.00705718994140625,
+    "correct": true,
+    "policy_chosen_logp": -18.263526916503906,
+    "policy_rejected_logp": -124.9910888671875
+  },
+  {
+    "prompt_id": "aef04c2fbbef2dd481dc8cd6b95b2d9aee5bb8ab1d071e4396a45aaac3d863e2",
+    "source_index": 1212,
+    "stratum": null,
+    "margin": 0.314544677734375,
+    "correct": true,
+    "policy_chosen_logp": -825.4678955078125,
+    "policy_rejected_logp": -497.77825927734375
+  },
+  {
+    "prompt_id": "4e8d32030cf2c23d534f3aa21c3ed1f41536dfda861fac8aeb7d5b393a410ffa",
+    "source_index": 1467,
+    "stratum": null,
+    "margin": 0.446929931640625,
+    "correct": true,
+    "policy_chosen_logp": -451.24554443359375,
+    "policy_rejected_logp": -479.277099609375
+  },
+  {
+    "prompt_id": "2d5ef6e9de15fad9830f8fc9fd96049aa3f8f8795251f6686cd8b416185ad177",
+    "source_index": 259,
+    "stratum": null,
+    "margin": 0.25574493408203125,
+    "correct": true,
+    "policy_chosen_logp": -38.43758773803711,
+    "policy_rejected_logp": -87.47567749023438
+  },
+  {
+    "prompt_id": "d8c42cd55e2e363831d1a6860e5291b1cfdd4ccfd41df81112613316a023bdea",
+    "source_index": 1882,
+    "stratum": null,
+    "margin": -0.369873046875,
+    "correct": false,
+    "policy_chosen_logp": -196.11712646484375,
+    "policy_rejected_logp": -66.10584259033203
+  },
+  {
+    "prompt_id": "f3317617283cad2402e6e3bfae08f940d2a6dda3d241b79cda2a74a377127a1e",
+    "source_index": 485,
+    "stratum": null,
+    "margin": 0.10888671875,
+    "correct": true,
+    "policy_chosen_logp": -622.3367309570312,
+    "policy_rejected_logp": -545.4490356445312
+  },
+  {
+    "prompt_id": "10988e08ae7beac5d25a75a81afa670aa51ae8eb01d66a0bef5c94772d573cae",
+    "source_index": 677,
+    "stratum": null,
+    "margin": 0.981903076171875,
+    "correct": true,
+    "policy_chosen_logp": -241.3216552734375,
+    "policy_rejected_logp": -177.59524536132812
+  },
+  {
+    "prompt_id": "d9d7e941c3f1fd68b6f6cc5e7e442aeb169010fc561b912597675b4c82f33b32",
+    "source_index": 1321,
+    "stratum": null,
+    "margin": 0.30921173095703125,
+    "correct": true,
+    "policy_chosen_logp": -143.43594360351562,
+    "policy_rejected_logp": -89.8337631225586
+  },
+  {
+    "prompt_id": "af7fd6f0859c60ced79ae14d2bf80dfbf0c998a52c9f6cc393fe1d3b380353ee",
+    "source_index": 786,
+    "stratum": null,
+    "margin": -1.0811004638671875,
+    "correct": false,
+    "policy_chosen_logp": -219.71168518066406,
+    "policy_rejected_logp": -39.355377197265625
+  },
+  {
+    "prompt_id": "8fe174b049f354b39d3ee8579938ebb3a76129a6b9cd0fa7af0a5c600052a531",
+    "source_index": 1167,
+    "stratum": null,
+    "margin": -0.030384063720703125,
+    "correct": false,
+    "policy_chosen_logp": -27.06841468811035,
+    "policy_rejected_logp": -3.8941495418548584
+  },
+  {
+    "prompt_id": "c527bd922ed586b2f8b602e44e70bf50e36bd1f2fff2366f22c57a0693c2ff64",
+    "source_index": 1839,
+    "stratum": null,
+    "margin": 0.48834228515625,
+    "correct": true,
+    "policy_chosen_logp": -502.5050048828125,
+    "policy_rejected_logp": -527.3511962890625
+  },
+  {
+    "prompt_id": "19d29ae989ccb2a510f2b29b5dbea779ef4e3ec25b97e7b21cf799624d3810c1",
+    "source_index": 548,
+    "stratum": null,
+    "margin": -0.551727294921875,
+    "correct": false,
+    "policy_chosen_logp": -334.10614013671875,
+    "policy_rejected_logp": -39.70494079589844
+  },
+  {
+    "prompt_id": "7d58e4a5e13630797b403c41803194484ec94e68838f2c10263db15a56f12123",
+    "source_index": 1862,
+    "stratum": null,
+    "margin": 0.03975105285644531,
+    "correct": true,
+    "policy_chosen_logp": -38.87911605834961,
+    "policy_rejected_logp": -30.78311538696289
+  },
+  {
+    "prompt_id": "f7c8a786279938dd242a58a803d3703a66a9ffbde91b779f984b48262b11121c",
+    "source_index": 695,
+    "stratum": null,
+    "margin": 1.81768798828125,
+    "correct": true,
+    "policy_chosen_logp": -3.11136794090271,
+    "policy_rejected_logp": -984.3529663085938
+  },
+  {
+    "prompt_id": "f1e8db4b26bad99ead041b7e9d5e2f36fe708ed83dc754f4aa74c08077334be5",
+    "source_index": 1756,
+    "stratum": null,
+    "margin": -0.11126708984375,
+    "correct": false,
+    "policy_chosen_logp": -37.16373062133789,
+    "policy_rejected_logp": -68.58915710449219
+  },
+  {
+    "prompt_id": "1291027720840e8d8e92c24a085762f9b2b684898fc62abb814be8cb2bbf9056",
+    "source_index": 524,
+    "stratum": null,
+    "margin": -0.107635498046875,
+    "correct": false,
+    "policy_chosen_logp": -638.8245239257812,
+    "policy_rejected_logp": -460.5277099609375
+  },
+  {
+    "prompt_id": "55a916e05b78d4bef8b2c041549af42592ee388041332c741a93306a5d6e94f5",
+    "source_index": 570,
+    "stratum": null,
+    "margin": 0.2488555908203125,
+    "correct": true,
+    "policy_chosen_logp": -121.82931518554688,
+    "policy_rejected_logp": -107.38841247558594
+  },
+  {
+    "prompt_id": "3b9084cf23e63bc5c8b936f7e97d8d840d8cc1112bc623fd4bb0721df796b67c",
+    "source_index": 1403,
+    "stratum": null,
+    "margin": 0.944091796875,
+    "correct": true,
+    "policy_chosen_logp": -201.22996520996094,
+    "policy_rejected_logp": -1154.74755859375
+  },
+  {
+    "prompt_id": "53bd992fe0b3d86c5fa8676e976f2b6ab2f23a5336a2af475da249aa13256ad3",
+    "source_index": 817,
+    "stratum": null,
+    "margin": 0.0556640625,
+    "correct": true,
+    "policy_chosen_logp": -1465.973388671875,
+    "policy_rejected_logp": -486.86578369140625
+  },
+  {
+    "prompt_id": "b0226f6961f93ec9d4136e58f6131526ce3baf5438f936a8b8f97f60620705ba",
+    "source_index": 622,
+    "stratum": null,
+    "margin": -0.82659912109375,
+    "correct": false,
+    "policy_chosen_logp": -744.2218017578125,
+    "policy_rejected_logp": -1017.9097290039062
+  },
+  {
+    "prompt_id": "8dc42d779e4044b1b64e056b9e33741556ce5e9bf90d869f3f601640710a151d",
+    "source_index": 1104,
+    "stratum": null,
+    "margin": 0.61248779296875,
+    "correct": true,
+    "policy_chosen_logp": -640.8491821289062,
+    "policy_rejected_logp": -39.337493896484375
+  },
+  {
+    "prompt_id": "35020eff0465c3451f0fe001372cf28508b26fc1494982edaa86f5ea1f2d8e8c",
+    "source_index": 1688,
+    "stratum": null,
+    "margin": -0.278900146484375,
+    "correct": false,
+    "policy_chosen_logp": -537.2908935546875,
+    "policy_rejected_logp": -483.5113830566406
+  },
+  {
+    "prompt_id": "79f28a7f5ffc5b9e61fea695e760611c2c7d6864747c322599caf9b151c25ffa",
+    "source_index": 77,
+    "stratum": null,
+    "margin": -0.79290771484375,
+    "correct": false,
+    "policy_chosen_logp": -374.53009033203125,
+    "policy_rejected_logp": -28.930736541748047
+  },
+  {
+    "prompt_id": "17be97f86118261fbdaa0a98c11620030fefea26efa2d1174a729140a0050f26",
+    "source_index": 1029,
+    "stratum": null,
+    "margin": 0.60528564453125,
+    "correct": true,
+    "policy_chosen_logp": -720.871826171875,
+    "policy_rejected_logp": -602.2109375
+  },
+  {
+    "prompt_id": "a0bdd6e1426288b4d7c63ce82e7a74bbde5ad2fa38246bc9199eb2e475e611b4",
+    "source_index": 499,
+    "stratum": null,
+    "margin": -0.771484375,
+    "correct": false,
+    "policy_chosen_logp": -261.5625305175781,
+    "policy_rejected_logp": -1004.9195556640625
+  },
+  {
+    "prompt_id": "15d5ee958bad8a2ac452ddfbabe48a6a7c1a67d6435ea9072ec314162310a967",
+    "source_index": 200,
+    "stratum": null,
+    "margin": 0.24560165405273438,
+    "correct": true,
+    "policy_chosen_logp": -21.1219425201416,
+    "policy_rejected_logp": -71.97923278808594
+  },
+  {
+    "prompt_id": "ca361d1c9c08a62fed39a1dc98279c8b8c67fa646e283eef740518f6725b9233",
+    "source_index": 1552,
+    "stratum": null,
+    "margin": 0.644561767578125,
+    "correct": true,
+    "policy_chosen_logp": -497.07965087890625,
+    "policy_rejected_logp": -338.85833740234375
+  },
+  {
+    "prompt_id": "d995e3ae06848698448f0310c0956505e70240e048f520449e325f00ed1479a0",
+    "source_index": 936,
+    "stratum": null,
+    "margin": -0.357452392578125,
+    "correct": false,
+    "policy_chosen_logp": -124.60897064208984,
+    "policy_rejected_logp": -427.32623291015625
+  },
+  {
+    "prompt_id": "b3664f46a23569ee90b7b78559e5d26518b0ad4f2ec2c924149940a350d4c50f",
+    "source_index": 1499,
+    "stratum": null,
+    "margin": 0.19952392578125,
+    "correct": true,
+    "policy_chosen_logp": -94.47445678710938,
+    "policy_rejected_logp": -77.05287170410156
+  },
+  {
+    "prompt_id": "5c19a767e13ceb1d0799a2ba246c96aeff85359b7a8c7838c026b86ca1db38e4",
+    "source_index": 1560,
+    "stratum": null,
+    "margin": 0.2699470520019531,
+    "correct": true,
+    "policy_chosen_logp": -73.66218566894531,
+    "policy_rejected_logp": -40.548805236816406
+  },
+  {
+    "prompt_id": "220af37676eb56740d09c2fb61787130a7f5182df356f5ee8bb3bee5a2020a63",
+    "source_index": 774,
+    "stratum": null,
+    "margin": -0.558013916015625,
+    "correct": false,
+    "policy_chosen_logp": -172.9351806640625,
+    "policy_rejected_logp": -6.022402763366699
+  },
+  {
+    "prompt_id": "29f70db6056f69ae970022ab53486cd0c8afbc13fa527b26b738914f116ad459",
+    "source_index": 630,
+    "stratum": null,
+    "margin": -0.659515380859375,
+    "correct": false,
+    "policy_chosen_logp": -356.74737548828125,
+    "policy_rejected_logp": -64.77977752685547
+  },
+  {
+    "prompt_id": "15051e762dab774e7d1a6f0f30698f932b2c635565c55b5d68efeb675f725c21",
+    "source_index": 270,
+    "stratum": null,
+    "margin": -0.0774993896484375,
+    "correct": false,
+    "policy_chosen_logp": -69.48477935791016,
+    "policy_rejected_logp": -219.37026977539062
+  },
+  {
+    "prompt_id": "129aa483848064ce120118e29fd564a96e54ffa4d81c5e85f69c9e304739b10d",
+    "source_index": 1581,
+    "stratum": null,
+    "margin": 1.180084228515625,
+    "correct": true,
+    "policy_chosen_logp": -342.87481689453125,
+    "policy_rejected_logp": -299.9416809082031
+  },
+  {
+    "prompt_id": "be262df45f04ab93b838664a7235f420fc8406c73e0af92eda76f25b52d5ea3b",
+    "source_index": 395,
+    "stratum": null,
+    "margin": 0.177398681640625,
+    "correct": true,
+    "policy_chosen_logp": -367.7967224121094,
+    "policy_rejected_logp": -144.3158416748047
+  },
+  {
+    "prompt_id": "73bad68b8705689e6089d76f7508e9671239cb03d43fc5b34f51be719052fb3a",
+    "source_index": 1147,
+    "stratum": null,
+    "margin": 0.35471343994140625,
+    "correct": true,
+    "policy_chosen_logp": -68.1534423828125,
+    "policy_rejected_logp": -105.45079040527344
+  },
+  {
+    "prompt_id": "a1c9e8c224b0eb22ff2c9f3fc28bee647faeeee4ca8fef813b99b2fda3718dda",
+    "source_index": 1728,
+    "stratum": null,
+    "margin": 1.09454345703125,
+    "correct": true,
+    "policy_chosen_logp": -88.6369857788086,
+    "policy_rejected_logp": -248.24392700195312
+  },
+  {
+    "prompt_id": "7807b6ff8e427c8210496aae6436bf8b421498e9fb183287fde1cb3be2f7fe8a",
+    "source_index": 1826,
+    "stratum": null,
+    "margin": 0.002559661865234375,
+    "correct": true,
+    "policy_chosen_logp": -44.074859619140625,
+    "policy_rejected_logp": -33.289306640625
+  },
+  {
+    "prompt_id": "4841f81014d2c936c1a63a3c43bf98e3ff015ee084056f26d1c1b8c71514ab96",
+    "source_index": 351,
+    "stratum": null,
+    "margin": -0.7061767578125,
+    "correct": false,
+    "policy_chosen_logp": -294.2401123046875,
+    "policy_rejected_logp": -616.9381713867188
+  },
+  {
+    "prompt_id": "da7efb05c9561254cdc8b7cbfdab9c6ef4f1b778adece9cb3307f9eb83790c26",
+    "source_index": 1075,
+    "stratum": null,
+    "margin": 0.2091064453125,
+    "correct": true,
+    "policy_chosen_logp": -637.8849487304688,
+    "policy_rejected_logp": -511.0787048339844
+  },
+  {
+    "prompt_id": "6685ea033af5120dcb8e59db330e5f3b19801676e54c913159e8f164006543a8",
+    "source_index": 101,
+    "stratum": null,
+    "margin": 0.266448974609375,
+    "correct": true,
+    "policy_chosen_logp": -20.3173828125,
+    "policy_rejected_logp": -113.29507446289062
+  },
+  {
+    "prompt_id": "5fe750b9f9e3544656c6af4a0733619a0db0059291c1dab7f9250386daa8ca96",
+    "source_index": 1445,
+    "stratum": null,
+    "margin": 1.16937255859375,
+    "correct": true,
+    "policy_chosen_logp": -88.51898956298828,
+    "policy_rejected_logp": -303.9859619140625
+  },
+  {
+    "prompt_id": "aafd8f6c7458e2a8f1c9f148c76c200b9a9b135337202cff5bb48ba9c917a7f0",
+    "source_index": 1799,
+    "stratum": null,
+    "margin": 0.3920440673828125,
+    "correct": true,
+    "policy_chosen_logp": -2.6853888034820557,
+    "policy_rejected_logp": -223.59205627441406
+  },
+  {
+    "prompt_id": "3d55838e868095eaebc0114ebfd6b83b2f3a3e449688b8a6c98dbc6c130c7673",
+    "source_index": 294,
+    "stratum": null,
+    "margin": -0.2192535400390625,
+    "correct": false,
+    "policy_chosen_logp": -156.26885986328125,
+    "policy_rejected_logp": -79.54629516601562
+  },
+  {
+    "prompt_id": "7fb6a6358507c651e8df5f5bd632242b8a23509a13e8888869dcd187c637267f",
+    "source_index": 1489,
+    "stratum": null,
+    "margin": 0.05718994140625,
+    "correct": true,
+    "policy_chosen_logp": -822.6039428710938,
+    "policy_rejected_logp": -480.02203369140625
+  },
+  {
+    "prompt_id": "cd7e76a4d20296d9f55aa09ccd4eac24e12f0ff834b66423ed20a34e27237c6d",
+    "source_index": 65,
+    "stratum": null,
+    "margin": -0.057369232177734375,
+    "correct": false,
+    "policy_chosen_logp": -74.27008819580078,
+    "policy_rejected_logp": -53.55990982055664
+  },
+  {
+    "prompt_id": "a17de0b93d0fa0647bb76d321ca2c4c4992d694e08e6fc9b52ecd36ba11fec89",
+    "source_index": 1794,
+    "stratum": null,
+    "margin": 0.056549072265625,
+    "correct": true,
+    "policy_chosen_logp": -299.91229248046875,
+    "policy_rejected_logp": -321.8804931640625
+  },
+  {
+    "prompt_id": "ca443c9d85630a105d48ec082be0762fac21302edafd52c0625634d79d32b1fe",
+    "source_index": 1518,
+    "stratum": null,
+    "margin": -0.8477783203125,
+    "correct": false,
+    "policy_chosen_logp": -407.23797607421875,
+    "policy_rejected_logp": -534.3697509765625
+  },
+  {
+    "prompt_id": "f4f4c3cf74765eab1f5e06cf4088dd107b7ddf56e62d8f693485913f37ac8464",
+    "source_index": 508,
+    "stratum": null,
+    "margin": 0.16411972045898438,
+    "correct": true,
+    "policy_chosen_logp": -35.73065948486328,
+    "policy_rejected_logp": -39.98257827758789
+  },
+  {
+    "prompt_id": "93caf967eb5be0e7700fbec9176be10f6d09f64af8c32b691d1740c247f08269",
+    "source_index": 831,
+    "stratum": null,
+    "margin": -0.01645660400390625,
+    "correct": false,
+    "policy_chosen_logp": -102.20361328125,
+    "policy_rejected_logp": -15.449380874633789
+  },
+  {
+    "prompt_id": "243f625ae4554c0dfd2b538100e51db17adaa7e8e81936b1f6fc51696f7fa68b",
+    "source_index": 451,
+    "stratum": null,
+    "margin": 0.296356201171875,
+    "correct": true,
+    "policy_chosen_logp": -83.44459533691406,
+    "policy_rejected_logp": -159.54197692871094
+  },
+  {
+    "prompt_id": "6da92b1b6fc135a6904c71c00dcb956617b5e171ce98e7b4ec0d1a2dd37c2fb0",
+    "source_index": 96,
+    "stratum": null,
+    "margin": -0.25048828125,
+    "correct": false,
+    "policy_chosen_logp": -1231.699951171875,
+    "policy_rejected_logp": -1468.306884765625
+  },
+  {
+    "prompt_id": "56eb7282c8f703ebdb5753ca76496fa3c76b61f70cbf941b9df6ebc3471ba95b",
+    "source_index": 833,
+    "stratum": null,
+    "margin": 1.8846435546875,
+    "correct": true,
+    "policy_chosen_logp": -1058.45166015625,
+    "policy_rejected_logp": -757.917724609375
+  },
+  {
+    "prompt_id": "48c3bf9c2951831c51b6f8c393d618c7b6b7c67a692a9615bc390155109cde1b",
+    "source_index": 1638,
+    "stratum": null,
+    "margin": -0.058868408203125,
+    "correct": false,
+    "policy_chosen_logp": -212.76637268066406,
+    "policy_rejected_logp": -183.2082061767578
+  },
+  {
+    "prompt_id": "f759298865b50c14e75291fc1b5a4f59706ca34d07b313018e7cefc60188203f",
+    "source_index": 1987,
+    "stratum": null,
+    "margin": 0.3130340576171875,
+    "correct": true,
+    "policy_chosen_logp": -145.58367919921875,
+    "policy_rejected_logp": -202.35504150390625
+  },
+  {
+    "prompt_id": "78bc06056b0fb0b54d1d61d894853829b9f3e3aa3820546bd356f84bd2b44a26",
+    "source_index": 881,
+    "stratum": null,
+    "margin": 0.32421875,
+    "correct": true,
+    "policy_chosen_logp": -192.50770568847656,
+    "policy_rejected_logp": -592.411376953125
+  },
+  {
+    "prompt_id": "e328cc982fd207aa419ab2b289c4510d2e95a7988ceccf3fb816d722e271c684",
+    "source_index": 1780,
+    "stratum": null,
+    "margin": 0.578460693359375,
+    "correct": true,
+    "policy_chosen_logp": -164.50320434570312,
+    "policy_rejected_logp": -257.29083251953125
+  },
+  {
+    "prompt_id": "4fc17a34bec82d3ae2783decfc5c03e13be631a45f86306a38ec11e43082f2c5",
+    "source_index": 429,
+    "stratum": null,
+    "margin": -0.013458251953125,
+    "correct": false,
+    "policy_chosen_logp": -483.0101623535156,
+    "policy_rejected_logp": -421.59576416015625
+  },
+  {
+    "prompt_id": "aaaa7d1fd432b9b0b7d686aac4962d96d3a843e0f4d1b5849ae00e9ab1a9c3db",
+    "source_index": 467,
+    "stratum": null,
+    "margin": 0.18268966674804688,
+    "correct": true,
+    "policy_chosen_logp": -100.07276916503906,
+    "policy_rejected_logp": -54.979248046875
+  },
+  {
+    "prompt_id": "9ceea5b1aeedc15a79a010648379410f90cd898e7ba2e1b2b267e849a8b02816",
+    "source_index": 514,
+    "stratum": null,
+    "margin": -0.0046482086181640625,
+    "correct": false,
+    "policy_chosen_logp": -4.333713054656982,
+    "policy_rejected_logp": -6.805610179901123
+  },
+  {
+    "prompt_id": "d975bc30b215b389c364e077b3b0d10c69060fd971caf16f85fca7a05c98103f",
+    "source_index": 1717,
+    "stratum": null,
+    "margin": 0.744293212890625,
+    "correct": true,
+    "policy_chosen_logp": -41.493865966796875,
+    "policy_rejected_logp": -430.4130859375
+  },
+  {
+    "prompt_id": "53065b44bd2b791db6b3b694f12ce4d00174b172fd8176c691c16c3f2c819d6b",
+    "source_index": 724,
+    "stratum": null,
+    "margin": 0.249053955078125,
+    "correct": true,
+    "policy_chosen_logp": -16.632905960083008,
+    "policy_rejected_logp": -80.12400817871094
+  },
+  {
+    "prompt_id": "7ab76d8d6f7b61e97d4dbaed5d155c9cf4fba7c0ff787719e40a67481ba218dd",
+    "source_index": 992,
+    "stratum": null,
+    "margin": 1.005340576171875,
+    "correct": true,
+    "policy_chosen_logp": -728.1746826171875,
+    "policy_rejected_logp": -245.2805938720703
+  },
+  {
+    "prompt_id": "13440ba128b4efe82db8adc1d6f78d233a558d54b3331cb339371062e63a9f7e",
+    "source_index": 1444,
+    "stratum": null,
+    "margin": 0.322296142578125,
+    "correct": true,
+    "policy_chosen_logp": -592.813232421875,
+    "policy_rejected_logp": -398.74658203125
+  },
+  {
+    "prompt_id": "ffd50b8c3b6075591fa4d41cd00eb1fb1ea8fe028003b6ded259310b18846c8c",
+    "source_index": 743,
+    "stratum": null,
+    "margin": 0.1906757354736328,
+    "correct": true,
+    "policy_chosen_logp": -20.955263137817383,
+    "policy_rejected_logp": -51.14148712158203
+  },
+  {
+    "prompt_id": "295d81c7643e12a8817bb6c78b753f5a8009b6a3d9d98441fb023bec8117db72",
+    "source_index": 529,
+    "stratum": null,
+    "margin": -0.30503082275390625,
+    "correct": false,
+    "policy_chosen_logp": -96.83470153808594,
+    "policy_rejected_logp": -72.61470031738281
+  },
+  {
+    "prompt_id": "21b9f7d1aa6c9fb5cc7a3b10b3de906b02d75411837dc7781ca80bbe25eb3e9a",
+    "source_index": 337,
+    "stratum": null,
+    "margin": -0.053069114685058594,
+    "correct": false,
+    "policy_chosen_logp": -14.95370864868164,
+    "policy_rejected_logp": -6.001633167266846
+  },
+  {
+    "prompt_id": "d70ff8d70121e47d497f3b6cbcd88d3d945f601ba866949eec16674d57c3d9e6",
+    "source_index": 223,
+    "stratum": null,
+    "margin": -0.532958984375,
+    "correct": false,
+    "policy_chosen_logp": -432.59381103515625,
+    "policy_rejected_logp": -673.99951171875
+  },
+  {
+    "prompt_id": "b308a31d0770d0cb2bb23870e3d402d845823536ed6b8ff8ee565883c3cf2053",
+    "source_index": 1144,
+    "stratum": null,
+    "margin": 0.445587158203125,
+    "correct": true,
+    "policy_chosen_logp": -79.00017547607422,
+    "policy_rejected_logp": -214.4305419921875
+  },
+  {
+    "prompt_id": "814b350320734fbd619b895fb11f9950352e2bed160d42f0a3bc5a4a443a4f2a",
+    "source_index": 1352,
+    "stratum": null,
+    "margin": -0.013153076171875,
+    "correct": false,
+    "policy_chosen_logp": -6.023382186889648,
+    "policy_rejected_logp": -24.86251449584961
+  },
+  {
+    "prompt_id": "21714744de1fac2c84ad03a2810575082638fdc247eaed43b038d0ef906e83cf",
+    "source_index": 1980,
+    "stratum": null,
+    "margin": -1.22039794921875,
+    "correct": false,
+    "policy_chosen_logp": -605.1087036132812,
+    "policy_rejected_logp": -718.2713012695312
+  },
+  {
+    "prompt_id": "21f5d5d038122239cf01baee9857c2906a60b146f41d5c03b7a20be1331a195e",
+    "source_index": 1561,
+    "stratum": null,
+    "margin": -0.003963679075241089,
+    "correct": false,
+    "policy_chosen_logp": -0.29965025186538696,
+    "policy_rejected_logp": -0.29552966356277466
+  },
+  {
+    "prompt_id": "7eb9cc7112d933ee3bc485835c151ecfc9a52e12e08e5da3b42605ffcf8a007d",
+    "source_index": 1001,
+    "stratum": null,
+    "margin": 0.4024658203125,
+    "correct": true,
+    "policy_chosen_logp": -32.716400146484375,
+    "policy_rejected_logp": -196.20639038085938
+  },
+  {
+    "prompt_id": "4a072fa9c98d92e1cf781d863d0ad290d145e978e8af8db3d8102fdd42e46aa6",
+    "source_index": 999,
+    "stratum": null,
+    "margin": -0.4405517578125,
+    "correct": false,
+    "policy_chosen_logp": -610.6470336914062,
+    "policy_rejected_logp": -518.5836791992188
+  },
+  {
+    "prompt_id": "6ab712edf6d634f68f70c00d8b8bace07e0440f28d289c5bdb2cb95d62eb3897",
+    "source_index": 1622,
+    "stratum": null,
+    "margin": -0.4107666015625,
+    "correct": false,
+    "policy_chosen_logp": -272.75128173828125,
+    "policy_rejected_logp": -330.3033142089844
+  }
+]

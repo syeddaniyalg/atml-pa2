@@ -1,0 +1,124 @@
+{
+  "in_and_out_of_domain": [
+    {
+      "policy": "sft",
+      "gsm_exact_acc": 0.27666666666666667,
+      "gsm_format": 0.4,
+      "gsm_len_mean": 290.74333333333334,
+      "gsm_len_std": 99.62899906932496,
+      "svamp_exact_acc": 0.48,
+      "svamp_format": 0.61,
+      "svamp_len_mean": 168.43,
+      "acc_drop_gsm_to_svamp": -0.2033333333333333,
+      "format_drop_gsm_to_svamp": -0.20999999999999996,
+      "len_change_gsm_to_svamp": -122.31333333333333,
+      "svamp_failure_types": {
+        "format_failure": 36,
+        "correct": 48,
+        "wrong_final": 13,
+        "truncated_no_final": 3
+      },
+      "gsm_failure_types": {
+        "format_failure": 167,
+        "wrong_final": 37,
+        "correct": 83,
+        "truncated_no_final": 13
+      }
+    },
+    {
+      "policy": "rlvr",
+      "gsm_exact_acc": 0.2733333333333333,
+      "gsm_format": 0.39666666666666667,
+      "gsm_len_mean": 289.0933333333333,
+      "gsm_len_std": 97.5309418708864,
+      "gsm_win_rate_vs_sft": 0.5166666666666667,
+      "gsm_verifier_judge_agreement": 0.89,
+      "gsm_judge_follows_verifier_on_discordant": 0.0,
+      "svamp_exact_acc": 0.49,
+      "svamp_format": 0.65,
+      "svamp_len_mean": 167.64,
+      "acc_drop_gsm_to_svamp": -0.21666666666666667,
+      "format_drop_gsm_to_svamp": -0.25333333333333335,
+      "len_change_gsm_to_svamp": -121.45333333333332,
+      "svamp_win_rate_vs_sft": 0.49,
+      "win_rate_drop_gsm_to_svamp": 0.026666666666666727,
+      "svamp_verifier_judge_agreement": 0.76,
+      "svamp_failure_types": {
+        "format_failure": 33,
+        "correct": 49,
+        "wrong_final": 16,
+        "truncated_no_final": 2
+      },
+      "gsm_failure_types": {
+        "format_failure": 168,
+        "wrong_final": 37,
+        "correct": 82,
+        "truncated_no_final": 13
+      }
+    },
+    {
+      "policy": "rlaif",
+      "gsm_exact_acc": 0.27,
+      "gsm_format": 0.3933333333333333,
+      "gsm_len_mean": 290.22,
+      "gsm_len_std": 98.35069021957429,
+      "gsm_win_rate_vs_sft": 0.5066666666666667,
+      "gsm_verifier_judge_agreement": 0.93,
+      "gsm_judge_follows_verifier_on_discordant": 0.16666666666666666,
+      "svamp_exact_acc": 0.5,
+      "svamp_format": 0.62,
+      "svamp_len_mean": 168.42,
+      "acc_drop_gsm_to_svamp": -0.22999999999999998,
+      "format_drop_gsm_to_svamp": -0.22666666666666668,
+      "len_change_gsm_to_svamp": -121.80000000000004,
+      "svamp_win_rate_vs_sft": 0.48,
+      "win_rate_drop_gsm_to_svamp": 0.026666666666666727,
+      "svamp_verifier_judge_agreement": 0.77,
+      "svamp_failure_types": {
+        "correct": 50,
+        "format_failure": 36,
+        "wrong_final": 12,
+        "truncated_no_final": 2
+      },
+      "gsm_failure_types": {
+        "format_failure": 170,
+        "wrong_final": 37,
+        "correct": 81,
+        "truncated_no_final": 12
+      }
+    }
+  ],
+  "diagnostics_by_mechanism": {
+    "exact": {
+      "S_reason": 0.0,
+      "S_outcome": 1.0,
+      "S_outcome_pooled_wrong_final_variants": 1.0,
+      "reason_tie_rate": 1.0,
+      "reason_wrong_rate": 0.0,
+      "outcome_tie_rate": 0.0,
+      "outcome_wrong_rate": 0.0,
+      "filler_preferred_rate": 0.0,
+      "filler_tie_rate": 1.0,
+      "distractor_robustness": 1.0
+    },
+    "ai": {
+      "S_reason": 0.0,
+      "S_outcome": 0.0,
+      "S_outcome_pooled_wrong_final_variants": 0.125,
+      "reason_tie_rate": 1.0,
+      "reason_wrong_rate": 0.0,
+      "outcome_tie_rate": 1.0,
+      "outcome_wrong_rate": 0.0,
+      "filler_preferred_rate": 0.25,
+      "filler_tie_rate": 0.75,
+      "distractor_robustness": 0.25
+    }
+  },
+  "verifier_judge_disagreement_by_pair": {
+    "reasoning_corruption": 0.0,
+    "wrong_final_good_reasoning": 1.0,
+    "persuasive_filler": 0.25,
+    "gold_distractor_wrong_final": 0.75
+  },
+  "inference_cost_note": "RLVR reward = one regex per response (no model call); RLAIF group reward with K responses needs K(K-1)/2 judge calls per prompt (6 for K=4). Judge calls actually made here are cached in results/task5_feedback/judge_cache.json."
+}

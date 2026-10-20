@@ -1,0 +1,113 @@
+{
+  "run_name": "clip_0.05",
+  "completed": true,
+  "adapter_path": "/kaggle/working/atml-pa2/outputs/task2_ppo/clip_0.05",
+  "log_path": "/kaggle/working/atml-pa2/results/task2_ppo/clip_0.05_log.jsonl",
+  "hyperparameters": {
+    "updates": 8,
+    "prompts_per_update": 1,
+    "ppo_epochs": 2,
+    "policy_learning_rate": 3e-06,
+    "value_lora_learning_rate": 0.0001,
+    "value_head_learning_rate": 0.0003,
+    "clip_epsilon": 0.05,
+    "kl_beta": 0.1,
+    "gamma": 1.0,
+    "gae_lambda": 0.95,
+    "value_coef": 0.5,
+    "missing_eos_penalty": 1.0,
+    "max_prompt_length": 256,
+    "max_response_length": 512,
+    "value_train_mode": "lora_head",
+    "seed": 6304
+  },
+  "prompt_schedule": [
+    [
+      "551ab6831d956df99ffe48400ea32b7b85b24a050ddd818da6ca297dcc62b96a"
+    ],
+    [
+      "d7177dcc9e93d8a9ee820fbac3e078de5d71fd3bf59c3ea7d47fdbe5dd95fcca"
+    ],
+    [
+      "3787354bc8d3346073e5c5287296fc4d1c048e0e1a4a1e89f92b484e35708008"
+    ],
+    [
+      "c9004dd028ad614b7b72f02e72e685c06ec6e7f003aa5c903262527f59c7da47"
+    ],
+    [
+      "8b12b2221a7ce4279de709740959a5ff726660dba4d5c73f83c098dbe555066e"
+    ],
+    [
+      "0baed58421e0c4b34311679dcde8612eab453fa3edb7914ef439defd7218adc8"
+    ],
+    [
+      "129ed317b8d70e8aa5ec13e6fda7fea0916231c4a5ffb2fe04ef049699335633"
+    ],
+    [
+      "0a9255048bec13a623f85938e89ffcf39c676cfa94db7912bf58023f6394bfb8"
+    ]
+  ],
+  "wall_clock_s": 44.01938572200015,
+  "peak_vram_gb": 6.927006721496582,
+  "total_generated_tokens": 663,
+  "skipped_nonfinite_steps": 0,
+  "first_half_mean": {
+    "reward_raw": 0.611083984375,
+    "reward_effective": 0.361083984375,
+    "kl_per_token": 0.0010646027558323112,
+    "entropy": 0.654405951499939,
+    "response_length": 139.25,
+    "policy_loss": -0.00014797144831391051,
+    "value_loss": 6.0871966779232025,
+    "clip_fraction": 0.0,
+    "policy_grad_norm": 2.032326180487871,
+    "value_grad_norm": 222.8378882408142
+  },
+  "second_half_mean": {
+    "reward_raw": -0.14398193359375,
+    "reward_effective": -0.14398193359375,
+    "kl_per_token": 0.0007859410634409869,
+    "entropy": 0.8187792375683784,
+    "response_length": 26.5,
+    "policy_loss": -0.00038091583701316267,
+    "value_loss": 5.207829728722572,
+    "clip_fraction": 0.0,
+    "policy_grad_norm": 1.4733845498412848,
+    "value_grad_norm": 169.339741230011
+  },
+  "final_update": {
+    "update": 8,
+    "prompt_ids": [
+      "0a9255048bec13a623f85938e89ffcf39c676cfa94db7912bf58023f6394bfb8"
+    ],
+    "source_index": [
+      55615
+    ],
+    "reward_raw": -0.82568359375,
+    "reward_effective": -0.82568359375,
+    "kl_per_token": 0.003014693269506097,
+    "kl_per_sequence": 0.03919101133942604,
+    "entropy": 1.0227910280227661,
+    "entropy_sampled": 0.8330374360084534,
+    "generated_tokens": 13,
+    "response_length": 13.0,
+    "frac_truncated": 0.0,
+    "policy_loss": -0.0010838806920219213,
+    "value_loss": 5.85300874710083,
+    "value_loss_first_epoch": 6.126307487487793,
+    "value_mse_before_update": 6.083065509796143,
+    "value_explained_variance": -119.164306640625,
+    "mean_value": -1.8097158670425415,
+    "mean_return": -0.8172966837882996,
+    "clip_fraction": 0.0,
+    "clip_fraction_last_epoch": 0.0,
+    "ratio_mean": 0.997439980506897,
+    "policy_grad_norm": 1.9593201279640198,
+    "value_grad_norm": 332.78948974609375,
+    "clip_epsilon": 0.05,
+    "kl_beta": 0.1,
+    "elapsed_s": 43.78817269999854,
+    "peak_vram_gb": 6.927006721496582,
+    "response_preview": " analogs of the same type.\n\nSOLUTION: 3"
+  }
+}

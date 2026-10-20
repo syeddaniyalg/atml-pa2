@@ -1,0 +1,5 @@
+| epsilon | heldout_reward | heldout_kl_per_token | heldout_kl_per_sequence | heldout_entropy | heldout_entropy_sampled | heldout_length_mean | heldout_length_std | stability_updates | stability_reward_first | stability_reward_last | stability_reward_mean | stability_reward_update_std | stability_reward_abs_change_mean | stability_kl_final | stability_grad_norm_max | stability_grad_norm_mean | stability_clip_fraction_mean | stability_value_loss_mean |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0.050 | 1.482 | -0.000 | -0.007 | 1.057 | 0.841 | 300.545 | 249.198 | 8.000 | 2.170 | -0.826 | 0.234 | 1.155 | 1.250 | 0.003 | 6.909 | 1.753 | 0.000 | 5.648 |
+| 0.200 | 1.482 | -0.000 | -0.007 | 1.057 | 0.841 | 300.545 | 249.198 | 8.000 | 2.170 | -0.826 | 0.234 | 1.155 | 1.250 | 0.003 | 6.909 | 1.753 | 0.000 | 5.648 |
+| 0.500 | 1.482 | -0.000 | -0.007 | 1.057 | 0.841 | 300.545 | 249.198 | 8.000 | 2.170 | -0.826 | 0.234 | 1.155 | 1.250 | 0.003 | 6.909 | 1.753 | 0.000 | 5.648 |

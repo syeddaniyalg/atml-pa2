@@ -1,0 +1,122 @@
+{
+  "rows": [
+    {
+      "loss_type": "grpo",
+      "heldout_reward": 1.212850432395935,
+      "heldout_reward_std": 1.4694587058812945,
+      "heldout_kl_per_token": 6.977217778724831e-05,
+      "heldout_kl_per_sequence": 0.018299149068261612,
+      "heldout_entropy": 1.0584227862135192,
+      "heldout_entropy_sampled": 0.8436699226490011,
+      "heldout_length_mean": 262.27,
+      "heldout_length_std": 191.38452680402352,
+      "heldout_frac_truncated": 0.23,
+      "train_reward_mean": 0.4589996337890625,
+      "train_grad_norm_mean": 0.9611674257396885,
+      "train_informative_rate": 0.875,
+      "trend_length_first_half": 153.0,
+      "trend_length_second_half": 38.75,
+      "trend_length_slope_per_update": -32.19642857142856,
+      "trend_mean_frac_truncated": 0.03125,
+      "lencond_n": 31,
+      "lencond_median_length": 13.0,
+      "lencond_corr_length_gradnorm_pearson": -0.3317092054859334,
+      "lencond_corr_length_gradnorm_spearman": -0.2598248093340978,
+      "lencond_mean_gradnorm_short": 2.1158501036053368,
+      "lencond_mean_gradnorm_long": 0.9152060461694428,
+      "lencond_gradnorm_ratio_short_over_long": 2.3118838784568134,
+      "lencond_corr_length_gradnorm_per_abs_adv_spearman": -0.9359438399141587,
+      "lencond_mean_gradnorm_per_abs_adv_short": 3.6782861656240042,
+      "lencond_mean_gradnorm_per_abs_adv_long": 0.8629452010644977,
+      "lencond_mean_length_positive_adv": 151.71428571428572,
+      "lencond_mean_length_negative_adv": 32.0
+    },
+    {
+      "loss_type": "dr_grpo",
+      "heldout_reward": 1.2823876953125,
+      "heldout_reward_std": 1.4586143964212628,
+      "heldout_kl_per_token": 0.0001279436221874677,
+      "heldout_kl_per_sequence": 0.03299026298103854,
+      "heldout_entropy": 1.0577644008690186,
+      "heldout_entropy_sampled": 0.8428245577799756,
+      "heldout_length_mean": 257.85,
+      "heldout_length_std": 186.88554652513926,
+      "heldout_frac_truncated": 0.195,
+      "train_reward_mean": 0.59576416015625,
+      "train_grad_norm_mean": 0.05396094941534102,
+      "train_informative_rate": 0.875,
+      "trend_length_first_half": 153.0,
+      "trend_length_second_half": 38.375,
+      "trend_length_slope_per_update": -32.26190476190474,
+      "trend_mean_frac_truncated": 0.03125,
+      "lencond_n": 31,
+      "lencond_median_length": 13.0,
+      "lencond_corr_length_gradnorm_pearson": 0.5518553169325173,
+      "lencond_corr_length_gradnorm_spearman": 0.7433090774029126,
+      "lencond_mean_gradnorm_short": 0.03320620478107679,
+      "lencond_mean_gradnorm_long": 0.14442576554765746,
+      "lencond_gradnorm_ratio_short_over_long": 0.22991884207890484,
+      "lencond_corr_length_gradnorm_per_abs_adv_spearman": 0.8313725255558959,
+      "lencond_mean_gradnorm_per_abs_adv_short": 0.05268260746184706,
+      "lencond_mean_gradnorm_per_abs_adv_long": 0.16440230134551354,
+      "lencond_mean_length_positive_adv": 162.15384615384616,
+      "lencond_mean_length_negative_adv": 30.428571428571427
+    }
+  ],
+  "detail": {
+    "grpo": {
+      "length_conditioned": {
+        "n": 31,
+        "median_length": 13.0,
+        "corr_length_gradnorm_pearson": -0.3317092054859334,
+        "corr_length_gradnorm_spearman": -0.2598248093340978,
+        "mean_gradnorm_short": 2.1158501036053368,
+        "mean_gradnorm_long": 0.9152060461694428,
+        "gradnorm_ratio_short_over_long": 2.3118838784568134,
+        "corr_length_gradnorm_per_abs_adv_spearman": -0.9359438399141587,
+        "mean_gradnorm_per_abs_adv_short": 3.6782861656240042,
+        "mean_gradnorm_per_abs_adv_long": 0.8629452010644977,
+        "per_token_weight_at_median_length": {
+          "grpo": 0.07692307692307693,
+          "dr_grpo": 0.001953125
+        },
+        "mean_length_positive_adv": 151.71428571428572,
+        "mean_length_negative_adv": 32.0
+      },
+      "length_trend": {
+        "length_first_half": 153.0,
+        "length_second_half": 38.75,
+        "length_slope_per_update": -32.19642857142856,
+        "mean_frac_truncated": 0.03125
+      },
+      "eval_file": "/kaggle/working/atml-pa2/results/task3_grpo/eval_norm_grpo.json"
+    },
+    "dr_grpo": {
+      "length_conditioned": {
+        "n": 31,
+        "median_length": 13.0,
+        "corr_length_gradnorm_pearson": 0.5518553169325173,
+        "corr_length_gradnorm_spearman": 0.7433090774029126,
+        "mean_gradnorm_short": 0.03320620478107679,
+        "mean_gradnorm_long": 0.14442576554765746,
+        "gradnorm_ratio_short_over_long": 0.22991884207890484,
+        "corr_length_gradnorm_per_abs_adv_spearman": 0.8313725255558959,
+        "mean_gradnorm_per_abs_adv_short": 0.05268260746184706,
+        "mean_gradnorm_per_abs_adv_long": 0.16440230134551354,
+        "per_token_weight_at_median_length": {
+          "grpo": 0.07692307692307693,
+          "dr_grpo": 0.001953125
+        },
+        "mean_length_positive_adv": 162.15384615384616,
+        "mean_length_negative_adv": 30.428571428571427
+      },
+      "length_trend": {
+        "length_first_half": 153.0,
+        "length_second_half": 38.375,
+        "length_slope_per_update": -32.26190476190474,
+        "mean_frac_truncated": 0.03125
+      },
+      "eval_file": "/kaggle/working/atml-pa2/results/task3_grpo/eval_norm_dr_grpo.json"
+    }
+  }
+}

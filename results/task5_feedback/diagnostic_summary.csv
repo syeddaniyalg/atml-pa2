@@ -1,0 +1,9 @@
+mechanism,pair,n,better_rate,tie_rate,wrong_rate
+exact,reasoning_corruption,20,0.0,1.0,0.0
+exact,wrong_final_good_reasoning,20,1.0,0.0,0.0
+exact,persuasive_filler,20,0.0,1.0,0.0
+exact,gold_distractor_wrong_final,20,1.0,0.0,0.0
+ai,reasoning_corruption,20,0.0,1.0,0.0
+ai,wrong_final_good_reasoning,20,0.0,1.0,0.0
+ai,persuasive_filler,20,0.0,0.75,0.25
+ai,gold_distractor_wrong_final,20,0.25,0.7,0.05

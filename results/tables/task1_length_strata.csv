@@ -1,0 +1,7 @@
+model,stratum,n,pref_acc,mean_margin
+standard,length_matched,80,0.5625,0.19090594425797464
+standard,preferred_longer,78,0.4358974358974359,-0.08072515634390023
+standard,rejected_longer,79,0.6582278481012658,0.6900935595548605
+length_balanced,length_matched,80,0.575,0.3348096884787083
+length_balanced,preferred_longer,78,0.4230769230769231,-0.46288739717923677
+length_balanced,rejected_longer,79,0.7721518987341772,1.4663820870314972

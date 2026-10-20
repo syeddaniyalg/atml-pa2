@@ -1,0 +1,154 @@
+{
+  "run_name": "standard",
+  "completed": true,
+  "loss_type": "grpo",
+  "adapter_path": "/kaggle/working/atml-pa2/outputs/task3_grpo/standard",
+  "log_path": "/kaggle/working/atml-pa2/results/task3_grpo/standard_log.jsonl",
+  "hyperparameters": {
+    "updates": 20,
+    "prompts_per_update": 1,
+    "policy_epochs": 1,
+    "learning_rate": 5e-06,
+    "clip_epsilon": 0.2,
+    "kl_beta": 0.1,
+    "num_generations": 4,
+    "max_prompt_length": 256,
+    "max_completion_length": 512,
+    "mask_truncated_completions": true,
+    "seed": 6304
+  },
+  "prompt_schedule": [
+    [
+      "551ab6831d956df99ffe48400ea32b7b85b24a050ddd818da6ca297dcc62b96a"
+    ],
+    [
+      "d7177dcc9e93d8a9ee820fbac3e078de5d71fd3bf59c3ea7d47fdbe5dd95fcca"
+    ],
+    [
+      "3787354bc8d3346073e5c5287296fc4d1c048e0e1a4a1e89f92b484e35708008"
+    ],
+    [
+      "c9004dd028ad614b7b72f02e72e685c06ec6e7f003aa5c903262527f59c7da47"
+    ],
+    [
+      "8b12b2221a7ce4279de709740959a5ff726660dba4d5c73f83c098dbe555066e"
+    ],
+    [
+      "0baed58421e0c4b34311679dcde8612eab453fa3edb7914ef439defd7218adc8"
+    ],
+    [
+      "129ed317b8d70e8aa5ec13e6fda7fea0916231c4a5ffb2fe04ef049699335633"
+    ],
+    [
+      "0a9255048bec13a623f85938e89ffcf39c676cfa94db7912bf58023f6394bfb8"
+    ],
+    [
+      "0bee69a85c6af7473fcff02494d622d5112a4cb05625a82f709ed50be78e7fb8"
+    ],
+    [
+      "46d75539b6d8845f3ca8594c64ea6c09ba2ee2b31ca910fe951532ba06b1b95a"
+    ],
+    [
+      "3b28cba2e14147570800673aad96051ab1e387bddc8009970fc8c80410943bd7"
+    ],
+    [
+      "2fb21a674484eb940c62c65fb7607f888a9ecc9aa8803e5a20e0b982da54ba2c"
+    ],
+    [
+      "a632c3178893f54d62a7d1d4c13e23005f00298e6bde3b6dff41d9cee29e41f2"
+    ],
+    [
+      "77f95b607c98caf16d99bd5a258205a616f2df43ce1471eef5b46852e6b2121a"
+    ],
+    [
+      "77a9a1f2a920463bf1dfa1b1be46510b7b02a1fce8e5ab976fd608cb0bd1748d"
+    ],
+    [
+      "16cdc8aac3147a01ce0c2d050bb48f9797c7ffb3f7f38d26da61def290ce2309"
+    ],
+    [
+      "36f7e32bfdc216319dbd47fa57d292c34377ae64a6d26f4aa6c87dbef4c8a7d2"
+    ],
+    [
+      "01a59c9f62057c55ce8194d054fa42c82ca4e3b5db1249366aec15d68879e195"
+    ],
+    [
+      "c2676d2c262f518414f31e52fdc0bd0e92e9cb1c519df9bf5054e20056e3d7fe"
+    ],
+    [
+      "2186c7cb5121a25f0adcc06e7b423dfe68a27f83464604f8fc36920acfd06c76"
+    ]
+  ],
+  "wall_clock_s": 310.04421482900216,
+  "peak_vram_gb": 10.107577323913574,
+  "total_generated_tokens": 15264,
+  "skipped_nonfinite_steps": 0,
+  "collect_grad_stats": false,
+  "first_half_mean": {
+    "reward_mean": 0.2756965637207031,
+    "group_reward_std_mean": 0.845766568183899,
+    "frac_uninformative_groups": 0.1,
+    "kl_per_token": 7.992261744220741e-05,
+    "entropy": 0.901500116288662,
+    "response_length": 114.975,
+    "policy_loss": -0.042059619724750516,
+    "grad_norm": 0.837408077895816,
+    "clip_fraction": 0.0,
+    "frac_truncated": 0.025
+  },
+  "second_half_mean": {
+    "reward_mean": 1.3745574951171875,
+    "group_reward_std_mean": 0.4102355733513832,
+    "frac_uninformative_groups": 0.2,
+    "kl_per_token": 0.00014480549707514002,
+    "entropy": 0.8738061502575875,
+    "response_length": 266.625,
+    "policy_loss": -0.016338547319173814,
+    "grad_norm": 0.14752459302544593,
+    "clip_fraction": 0.0,
+    "frac_truncated": 0.225
+  },
+  "overall_mean": {
+    "reward_mean": 0.8251270294189453,
+    "group_reward_std_mean": 0.6280010707676411,
+    "frac_uninformative_groups": 0.15,
+    "kl_per_token": 0.00011236405725867371,
+    "entropy": 0.8876531332731247,
+    "response_length": 190.8,
+    "policy_loss": -0.029199083521962165,
+    "grad_norm": 0.49246633546063096,
+    "clip_fraction": 0.0,
+    "frac_truncated": 0.125
+  },
+  "final_update": {
+    "update": 20,
+    "loss_type": "grpo",
+    "prompt_ids": [
+      "2186c7cb5121a25f0adcc06e7b423dfe68a27f83464604f8fc36920acfd06c76"
+    ],
+    "source_index": [
+      18768
+    ],
+    "reward_mean": 1.45654296875,
+    "reward_std_overall": 0.47610077261924744,
+    "group_reward_std_mean": 0.47610077261924744,
+    "frac_uninformative_groups": 0.0,
+    "num_groups": 1,
+    "kl_per_token": 0.00026753090787678957,
+    "sampled_kl_k3": 1.4317745808511972e-05,
+    "entropy": 1.1132869720458984,
+    "entropy_sampled": 0.8374400734901428,
+    "generated_tokens": 722,
+    "response_length": 180.5,
+    "frac_truncated": 0.0,
+    "frac_masked_completions": 0.0,
+    "loss": 0.00031215077615343034,
+    "policy_loss": 0.00031071901321411133,
+    "clip_fraction": 0.0,
+    "ratio_mean": 0.9998309016227722,
+    "grad_norm": 0.19056063890457153,
+    "elapsed_s": 309.76584486200227,
+    "peak_vram_gb": 10.107577323913574,
+    "response_preview": "The task involves translating a given Somali sentence into English while preserving its original meaning. Here's how I would approach solving this:\n\n1. **Identify the context and key elements**: The sentence contains religious or Quranic references, so understanding these will be crucial for accurat"
+  }
+}

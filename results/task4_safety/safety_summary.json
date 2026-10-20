@@ -1,0 +1,272 @@
+{
+  "judge_model": "Qwen/Qwen2.5-3B-Instruct",
+  "decoding": "greedy, max_new_tokens=256",
+  "policies": {
+    "sft": {
+      "n_safe": 250,
+      "n_unsafe": 200,
+      "safe_answer_rate": 0.58,
+      "safe_over_refusal_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "safe_inconsistent_label_rate": 0.42,
+      "unsafe_compliance_rate": 0.0,
+      "unsafe_justified_refusal_rate": 0.885,
+      "unsafe_ambiguous_rate": 0.0,
+      "unsafe_inconsistent_label_rate": 0.115,
+      "ambiguous_rate_overall": 0.0,
+      "mean_response_tokens": 108.08,
+      "mean_response_tokens_safe": 135.92,
+      "mean_response_tokens_unsafe": 73.28
+    },
+    "dpo": {
+      "n_safe": 250,
+      "n_unsafe": 200,
+      "safe_answer_rate": 0.56,
+      "safe_over_refusal_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "safe_inconsistent_label_rate": 0.44,
+      "unsafe_compliance_rate": 0.0,
+      "unsafe_justified_refusal_rate": 0.87,
+      "unsafe_ambiguous_rate": 0.0,
+      "unsafe_inconsistent_label_rate": 0.13,
+      "ambiguous_rate_overall": 0.0,
+      "mean_response_tokens": 109.91111111111111,
+      "mean_response_tokens_safe": 135.576,
+      "mean_response_tokens_unsafe": 77.83
+    },
+    "ppo": {
+      "n_safe": 250,
+      "n_unsafe": 200,
+      "safe_answer_rate": 0.576,
+      "safe_over_refusal_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "safe_inconsistent_label_rate": 0.424,
+      "unsafe_compliance_rate": 0.0,
+      "unsafe_justified_refusal_rate": 0.88,
+      "unsafe_ambiguous_rate": 0.0,
+      "unsafe_inconsistent_label_rate": 0.12,
+      "ambiguous_rate_overall": 0.0,
+      "mean_response_tokens": 107.83555555555556,
+      "mean_response_tokens_safe": 136.032,
+      "mean_response_tokens_unsafe": 72.59
+    },
+    "grpo": {
+      "n_safe": 250,
+      "n_unsafe": 200,
+      "safe_answer_rate": 0.584,
+      "safe_over_refusal_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "safe_inconsistent_label_rate": 0.416,
+      "unsafe_compliance_rate": 0.0,
+      "unsafe_justified_refusal_rate": 0.89,
+      "unsafe_ambiguous_rate": 0.0,
+      "unsafe_inconsistent_label_rate": 0.11,
+      "ambiguous_rate_overall": 0.0,
+      "mean_response_tokens": 107.98222222222222,
+      "mean_response_tokens_safe": 136.316,
+      "mean_response_tokens_unsafe": 72.565
+    }
+  },
+  "manual_audit": {
+    "n_audited": 60,
+    "n_unique_prompts": 60,
+    "agreement": 0.7166666666666667,
+    "cohen_kappa": 0.5070082165297245,
+    "judge_ambiguous_rate": 0.0,
+    "manual_ambiguous_rate": 0.016666666666666666,
+    "agreement_by_policy": {
+      "dpo": 0.6875,
+      "grpo": 0.7142857142857143,
+      "ppo": 0.8571428571428571,
+      "sft": 0.625
+    },
+    "agreement_by_prompt_class": {
+      "SAFE": 0.5333333333333333,
+      "UNSAFE": 0.9
+    },
+    "agreement_by_manual_label": {
+      "AMBIGUOUS": 0.0,
+      "JUSTIFIED_REFUSAL": 0.9310344827586207,
+      "OVER_REFUSAL": 0.0,
+      "SAFE_ANSWER": 0.8888888888888888
+    },
+    "mean_judge_confidence_agree": 1.0,
+    "mean_judge_confidence_disagree": 1.0,
+    "confusion_manual_rows_by_ai_cols": {
+      "SAFE_ANSWER": {
+        "SAFE_ANSWER": 16,
+        "JUSTIFIED_REFUSAL": 2,
+        "UNSAFE_COMPLIANCE": 0,
+        "OVER_REFUSAL": 0,
+        "AMBIGUOUS": 0
+      },
+      "JUSTIFIED_REFUSAL": {
+        "SAFE_ANSWER": 2,
+        "JUSTIFIED_REFUSAL": 27,
+        "UNSAFE_COMPLIANCE": 0,
+        "OVER_REFUSAL": 0,
+        "AMBIGUOUS": 0
+      },
+      "UNSAFE_COMPLIANCE": {
+        "SAFE_ANSWER": 0,
+        "JUSTIFIED_REFUSAL": 0,
+        "UNSAFE_COMPLIANCE": 0,
+        "OVER_REFUSAL": 0,
+        "AMBIGUOUS": 0
+      },
+      "OVER_REFUSAL": {
+        "SAFE_ANSWER": 0,
+        "JUSTIFIED_REFUSAL": 12,
+        "UNSAFE_COMPLIANCE": 0,
+        "OVER_REFUSAL": 0,
+        "AMBIGUOUS": 0
+      },
+      "AMBIGUOUS": {
+        "SAFE_ANSWER": 1,
+        "JUSTIFIED_REFUSAL": 0,
+        "UNSAFE_COMPLIANCE": 0,
+        "OVER_REFUSAL": 0,
+        "AMBIGUOUS": 0
+      }
+    },
+    "policy_rates_on_audited_rows": {
+      "dpo": {
+        "ai_labels": {
+          "n_safe": 8,
+          "n_unsafe": 8,
+          "safe_answer_rate": 0.375,
+          "safe_over_refusal_rate": 0.0,
+          "safe_ambiguous_rate": 0.0,
+          "safe_inconsistent_label_rate": 0.625,
+          "unsafe_compliance_rate": 0.0,
+          "unsafe_justified_refusal_rate": 1.0,
+          "unsafe_ambiguous_rate": 0.0,
+          "unsafe_inconsistent_label_rate": 0.0,
+          "ambiguous_rate_overall": 0.0,
+          "mean_response_tokens": 85.875,
+          "mean_response_tokens_safe": 123.625,
+          "mean_response_tokens_unsafe": 48.125
+        },
+        "manual_labels": {
+          "n_safe": 8,
+          "n_unsafe": 8,
+          "safe_answer_rate": 0.375,
+          "safe_over_refusal_rate": 0.625,
+          "safe_ambiguous_rate": 0.0,
+          "safe_inconsistent_label_rate": 0.0,
+          "unsafe_compliance_rate": 0.0,
+          "unsafe_justified_refusal_rate": 1.0,
+          "unsafe_ambiguous_rate": 0.0,
+          "unsafe_inconsistent_label_rate": 0.0,
+          "ambiguous_rate_overall": 0.0,
+          "mean_response_tokens": 85.875,
+          "mean_response_tokens_safe": 123.625,
+          "mean_response_tokens_unsafe": 48.125
+        }
+      },
+      "grpo": {
+        "ai_labels": {
+          "n_safe": 7,
+          "n_unsafe": 7,
+          "safe_answer_rate": 0.5714285714285714,
+          "safe_over_refusal_rate": 0.0,
+          "safe_ambiguous_rate": 0.0,
+          "safe_inconsistent_label_rate": 0.42857142857142855,
+          "unsafe_compliance_rate": 0.0,
+          "unsafe_justified_refusal_rate": 0.8571428571428571,
+          "unsafe_ambiguous_rate": 0.0,
+          "unsafe_inconsistent_label_rate": 0.14285714285714285,
+          "ambiguous_rate_overall": 0.0,
+          "mean_response_tokens": 112.35714285714286,
+          "mean_response_tokens_safe": 163.57142857142858,
+          "mean_response_tokens_unsafe": 61.142857142857146
+        },
+        "manual_labels": {
+          "n_safe": 7,
+          "n_unsafe": 7,
+          "safe_answer_rate": 0.5714285714285714,
+          "safe_over_refusal_rate": 0.42857142857142855,
+          "safe_ambiguous_rate": 0.0,
+          "safe_inconsistent_label_rate": 0.0,
+          "unsafe_compliance_rate": 0.0,
+          "unsafe_justified_refusal_rate": 1.0,
+          "unsafe_ambiguous_rate": 0.0,
+          "unsafe_inconsistent_label_rate": 0.0,
+          "ambiguous_rate_overall": 0.0,
+          "mean_response_tokens": 112.35714285714286,
+          "mean_response_tokens_safe": 163.57142857142858,
+          "mean_response_tokens_unsafe": 61.142857142857146
+        }
+      },
+      "ppo": {
+        "ai_labels": {
+          "n_safe": 7,
+          "n_unsafe": 7,
+          "safe_answer_rate": 0.8571428571428571,
+          "safe_over_refusal_rate": 0.0,
+          "safe_ambiguous_rate": 0.0,
+          "safe_inconsistent_label_rate": 0.14285714285714285,
+          "unsafe_compliance_rate": 0.0,
+          "unsafe_justified_refusal_rate": 0.8571428571428571,
+          "unsafe_ambiguous_rate": 0.0,
+          "unsafe_inconsistent_label_rate": 0.14285714285714285,
+          "ambiguous_rate_overall": 0.0,
+          "mean_response_tokens": 109.0,
+          "mean_response_tokens_safe": 179.71428571428572,
+          "mean_response_tokens_unsafe": 38.285714285714285
+        },
+        "manual_labels": {
+          "n_safe": 7,
+          "n_unsafe": 7,
+          "safe_answer_rate": 0.8571428571428571,
+          "safe_over_refusal_rate": 0.14285714285714285,
+          "safe_ambiguous_rate": 0.0,
+          "safe_inconsistent_label_rate": 0.0,
+          "unsafe_compliance_rate": 0.0,
+          "unsafe_justified_refusal_rate": 1.0,
+          "unsafe_ambiguous_rate": 0.0,
+          "unsafe_inconsistent_label_rate": 0.0,
+          "ambiguous_rate_overall": 0.0,
+          "mean_response_tokens": 109.0,
+          "mean_response_tokens_safe": 179.71428571428572,
+          "mean_response_tokens_unsafe": 38.285714285714285
+        }
+      },
+      "sft": {
+        "ai_labels": {
+          "n_safe": 8,
+          "n_unsafe": 8,
+          "safe_answer_rate": 0.5,
+          "safe_over_refusal_rate": 0.0,
+          "safe_ambiguous_rate": 0.0,
+          "safe_inconsistent_label_rate": 0.5,
+          "unsafe_compliance_rate": 0.0,
+          "unsafe_justified_refusal_rate": 1.0,
+          "unsafe_ambiguous_rate": 0.0,
+          "unsafe_inconsistent_label_rate": 0.0,
+          "ambiguous_rate_overall": 0.0,
+          "mean_response_tokens": 126.625,
+          "mean_response_tokens_safe": 180.0,
+          "mean_response_tokens_unsafe": 73.25
+        },
+        "manual_labels": {
+          "n_safe": 8,
+          "n_unsafe": 8,
+          "safe_answer_rate": 0.625,
+          "safe_over_refusal_rate": 0.25,
+          "safe_ambiguous_rate": 0.125,
+          "safe_inconsistent_label_rate": 0.0,
+          "unsafe_compliance_rate": 0.0,
+          "unsafe_justified_refusal_rate": 0.875,
+          "unsafe_ambiguous_rate": 0.0,
+          "unsafe_inconsistent_label_rate": 0.125,
+          "ambiguous_rate_overall": 0.0625,
+          "mean_response_tokens": 126.625,
+          "mean_response_tokens_safe": 180.0,
+          "mean_response_tokens_unsafe": 73.25
+        }
+      }
+    },
+    "disagreements_file": "D:\\projects\\Assignments\\CS6304\\PA2\\atml-pa2\\results\\task4_safety\\audit_disagreements.csv"
+  }
+}

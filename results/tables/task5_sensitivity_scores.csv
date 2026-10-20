@@ -1,0 +1,3 @@
+mechanism,S_reason,S_outcome,S_outcome_pooled_wrong_final_variants,reason_tie_rate,reason_wrong_rate,outcome_tie_rate,outcome_wrong_rate,filler_preferred_rate,filler_tie_rate,distractor_robustness
+exact,0.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0
+ai,0.0,0.0,0.125,1.0,0.0,1.0,0.0,0.25,0.75,0.25

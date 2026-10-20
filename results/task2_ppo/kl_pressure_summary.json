@@ -1,0 +1,92 @@
+{
+  "rows": [
+    {
+      "kl_beta": 0.0,
+      "heldout_reward": 1.433709716796875,
+      "heldout_reward_std": 1.516404459092789,
+      "heldout_kl_per_token": -1.54902100828578e-05,
+      "heldout_kl_per_sequence": -0.00457193550595548,
+      "heldout_entropy": 1.0520555189325862,
+      "heldout_entropy_sampled": 0.8372000447378811,
+      "heldout_length_mean": 295.15,
+      "heldout_length_std": 243.48052796887066,
+      "heldout_frac_truncated": 0.065,
+      "heldout_corr_reward_length": 0.2265108949381745,
+      "train_updates": 8,
+      "train_reward_first": 2.169921875,
+      "train_reward_last": 1.0390625,
+      "train_reward_mean": 0.466644287109375,
+      "train_reward_update_std": 1.1044955261982745,
+      "train_reward_abs_change_mean": 0.9981166294642857,
+      "train_kl_final": 0.0002242563059553504,
+      "train_grad_norm_max": 6.989128828048706,
+      "train_grad_norm_mean": 1.541643749922514,
+      "train_clip_fraction_mean": 0.0,
+      "train_value_loss_mean": 5.480716347694397
+    },
+    {
+      "kl_beta": 0.1,
+      "heldout_reward": 1.4820359802246095,
+      "heldout_reward_std": 1.4855855054666693,
+      "heldout_kl_per_token": -2.2821688393299812e-05,
+      "heldout_kl_per_sequence": -0.006858944338164292,
+      "heldout_entropy": 1.0570757258752546,
+      "heldout_entropy_sampled": 0.8406533708423091,
+      "heldout_length_mean": 300.545,
+      "heldout_length_std": 249.19794937960464,
+      "heldout_frac_truncated": 0.065,
+      "heldout_corr_reward_length": 0.30125692563652007,
+      "train_updates": 8,
+      "train_reward_first": 2.169921875,
+      "train_reward_last": -0.82568359375,
+      "train_reward_mean": 0.233551025390625,
+      "train_reward_update_std": 1.1547224737498687,
+      "train_reward_abs_change_mean": 1.2498604910714286,
+      "train_kl_final": 0.003014693269506097,
+      "train_grad_norm_max": 6.908945083618164,
+      "train_grad_norm_mean": 1.752855365164578,
+      "train_clip_fraction_mean": 0.0,
+      "train_value_loss_mean": 5.647513203322887
+    },
+    {
+      "kl_beta": 0.2,
+      "heldout_reward": 1.410167808532715,
+      "heldout_reward_std": 1.5245492859664755,
+      "heldout_kl_per_token": -3.1602443154695265e-05,
+      "heldout_kl_per_sequence": -0.009201051324489527,
+      "heldout_entropy": 1.0404914863013524,
+      "heldout_entropy_sampled": 0.8291137935808361,
+      "heldout_length_mean": 291.15,
+      "heldout_length_std": 240.31755553849993,
+      "heldout_frac_truncated": 0.07,
+      "heldout_corr_reward_length": 0.2681169865400999,
+      "train_updates": 8,
+      "train_reward_first": 2.169921875,
+      "train_reward_last": -0.82568359375,
+      "train_reward_mean": 0.233551025390625,
+      "train_reward_update_std": 1.1547224737498687,
+      "train_reward_abs_change_mean": 1.2498604910714286,
+      "train_kl_final": 0.0021939973812550306,
+      "train_grad_norm_max": 7.024212837219238,
+      "train_grad_norm_mean": 1.7725300872698426,
+      "train_clip_fraction_mean": 0.0,
+      "train_value_loss_mean": 5.644564606249332
+    }
+  ],
+  "reference_condition_for_divergence": "kl_0.2",
+  "first_divergence_update": {
+    "kl_0": {
+      "reward": 8,
+      "kl_per_token": 6,
+      "entropy": 8,
+      "response_length": 8
+    },
+    "kl_0.1": {
+      "reward": null,
+      "kl_per_token": 2,
+      "entropy": null,
+      "response_length": null
+    }
+  },
+  "note": "first_divergence_update: first update where the metric differs from the reference fork by >25% of the reference fork's own range; None = never within the fork budget."
+}

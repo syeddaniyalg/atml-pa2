@@ -1,0 +1,118 @@
+{
+  "run_name": "norm_dr_grpo",
+  "completed": true,
+  "loss_type": "dr_grpo",
+  "adapter_path": "/kaggle/working/atml-pa2/outputs/task3_grpo/norm_dr_grpo",
+  "log_path": "/kaggle/working/atml-pa2/results/task3_grpo/norm_dr_grpo_log.jsonl",
+  "hyperparameters": {
+    "updates": 8,
+    "prompts_per_update": 1,
+    "policy_epochs": 1,
+    "learning_rate": 5e-06,
+    "clip_epsilon": 0.2,
+    "kl_beta": 0.1,
+    "num_generations": 4,
+    "max_prompt_length": 256,
+    "max_completion_length": 512,
+    "mask_truncated_completions": true,
+    "seed": 6304
+  },
+  "prompt_schedule": [
+    [
+      "551ab6831d956df99ffe48400ea32b7b85b24a050ddd818da6ca297dcc62b96a"
+    ],
+    [
+      "d7177dcc9e93d8a9ee820fbac3e078de5d71fd3bf59c3ea7d47fdbe5dd95fcca"
+    ],
+    [
+      "3787354bc8d3346073e5c5287296fc4d1c048e0e1a4a1e89f92b484e35708008"
+    ],
+    [
+      "c9004dd028ad614b7b72f02e72e685c06ec6e7f003aa5c903262527f59c7da47"
+    ],
+    [
+      "8b12b2221a7ce4279de709740959a5ff726660dba4d5c73f83c098dbe555066e"
+    ],
+    [
+      "0baed58421e0c4b34311679dcde8612eab453fa3edb7914ef439defd7218adc8"
+    ],
+    [
+      "129ed317b8d70e8aa5ec13e6fda7fea0916231c4a5ffb2fe04ef049699335633"
+    ],
+    [
+      "0a9255048bec13a623f85938e89ffcf39c676cfa94db7912bf58023f6394bfb8"
+    ]
+  ],
+  "wall_clock_s": 84.37539118899804,
+  "peak_vram_gb": 9.95860481262207,
+  "total_generated_tokens": 3062,
+  "skipped_nonfinite_steps": 0,
+  "collect_grad_stats": true,
+  "first_half_mean": {
+    "reward_mean": 1.005950927734375,
+    "group_reward_std_mean": 0.7711355537176132,
+    "frac_uninformative_groups": 0.0,
+    "kl_per_token": -8.920529580791481e-05,
+    "entropy": 0.8858963996171951,
+    "response_length": 153.0,
+    "policy_loss": -0.12573722284287214,
+    "grad_norm": 0.05924463411793113,
+    "clip_fraction": 0.0,
+    "frac_truncated": 0.0625
+  },
+  "second_half_mean": {
+    "reward_mean": 0.185577392578125,
+    "group_reward_std_mean": 0.7595389932394028,
+    "frac_uninformative_groups": 0.25,
+    "kl_per_token": 4.0195904148276895e-05,
+    "entropy": 0.7836684957146645,
+    "response_length": 38.375,
+    "policy_loss": -0.07079478562809527,
+    "grad_norm": 0.04867726471275091,
+    "clip_fraction": 0.0,
+    "frac_truncated": 0.0
+  },
+  "overall_mean": {
+    "reward_mean": 0.59576416015625,
+    "group_reward_std_mean": 0.765337273478508,
+    "frac_uninformative_groups": 0.125,
+    "kl_per_token": -2.4504695829818957e-05,
+    "entropy": 0.8347824476659298,
+    "response_length": 95.6875,
+    "policy_loss": -0.0982660042354837,
+    "grad_norm": 0.05396094941534102,
+    "clip_fraction": 0.0,
+    "frac_truncated": 0.03125
+  },
+  "final_update": {
+    "update": 8,
+    "loss_type": "dr_grpo",
+    "prompt_ids": [
+      "0a9255048bec13a623f85938e89ffcf39c676cfa94db7912bf58023f6394bfb8"
+    ],
+    "source_index": [
+      55615
+    ],
+    "reward_mean": -0.487060546875,
+    "reward_std_overall": 1.1669636964797974,
+    "group_reward_std_mean": 1.1669636964797974,
+    "frac_uninformative_groups": 0.0,
+    "num_groups": 1,
+    "kl_per_token": 0.00038711735396645963,
+    "sampled_kl_k3": 8.799085662758444e-06,
+    "entropy": 1.3457010984420776,
+    "entropy_sampled": 0.91525799036026,
+    "generated_tokens": 298,
+    "response_length": 74.5,
+    "frac_truncated": 0.0,
+    "frac_masked_completions": 0.0,
+    "loss": -0.21701277792453766,
+    "policy_loss": -0.2170136570930481,
+    "clip_fraction": 0.0,
+    "ratio_mean": 0.9995385408401489,
+    "grad_norm": 0.08920415490865707,
+    "elapsed_s": 84.16342465599882,
+    "peak_vram_gb": 9.95860481262207,
+    "response_preview": " analogs.\n\nSOLUTION: 4"
+  }
+}

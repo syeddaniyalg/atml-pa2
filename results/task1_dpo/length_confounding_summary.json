@@ -1,0 +1,149 @@
+{
+  "dataset_profile": {
+    "standard_train": {
+      "n": 1500,
+      "frac_chosen_longer_tokens": 0.5626666666666666,
+      "frac_chosen_shorter_tokens": 0.422,
+      "mean_token_diff_chosen_minus_rejected": 42.45,
+      "median_token_diff": 18.0,
+      "mean_word_diff_chosen_minus_rejected": 29.431333333333335,
+      "corr_score_gap_vs_token_diff": 0.04140954529978782
+    },
+    "length_balanced_train": {
+      "n": 1500,
+      "frac_chosen_longer_tokens": 0.49133333333333334,
+      "frac_chosen_shorter_tokens": 0.486,
+      "mean_token_diff_chosen_minus_rejected": 5.163333333333333,
+      "median_token_diff": 0.0,
+      "mean_word_diff_chosen_minus_rejected": 2.522666666666667,
+      "corr_score_gap_vs_token_diff": 0.05133840846018385,
+      "stratum_counts": {
+        "rejected_longer": 500,
+        "preferred_longer": 500,
+        "length_matched": 500
+      }
+    },
+    "length_stratified_eval": {
+      "n": 246,
+      "frac_chosen_longer_tokens": 0.483739837398374,
+      "frac_chosen_shorter_tokens": 0.5,
+      "mean_token_diff_chosen_minus_rejected": 2.6951219512195124,
+      "median_token_diff": -0.5,
+      "mean_word_diff_chosen_minus_rejected": -1.483739837398374,
+      "corr_score_gap_vs_token_diff": -0.001542256527379516,
+      "stratum_counts": {
+        "rejected_longer": 82,
+        "preferred_longer": 82,
+        "length_matched": 82
+      }
+    }
+  },
+  "models": {
+    "standard": {
+      "adapter": "outputs/task1_dpo/standard",
+      "overall_accuracy_stratified_set": 0.5527426160337553,
+      "by_stratum": {
+        "length_matched": {
+          "n": 80,
+          "preference_accuracy": 0.5625,
+          "mean_margin": 0.19090594425797464
+        },
+        "preferred_longer": {
+          "n": 78,
+          "preference_accuracy": 0.4358974358974359,
+          "mean_margin": -0.08072515634390023
+        },
+        "rejected_longer": {
+          "n": 79,
+          "preference_accuracy": 0.6582278481012658,
+          "mean_margin": 0.6900935595548605
+        }
+      },
+      "standard_heldout_accuracy": 0.6310344827586207,
+      "generated_length": {
+        "mean": 169.96,
+        "std": 98.97897958657687,
+        "median": 229.5,
+        "q25": 64.75,
+        "q75": 256.0,
+        "iqr": 191.25
+      },
+      "reward_mean": 0.9365625508626302,
+      "kl_per_token": 0.0003180498104428919,
+      "word_limit": {
+        "n_prompts": 10,
+        "n_parsed_limits": 10,
+        "compliance_rate": 0.4,
+        "response_words": {
+          "mean": 44.6,
+          "std": 20.00099997500125,
+          "median": 39.0,
+          "q25": 30.25,
+          "q75": 49.75,
+          "iqr": 19.5
+        },
+        "response_tokens": {
+          "mean": 52.5,
+          "std": 22.352852167005445,
+          "median": 48.0,
+          "q25": 33.75,
+          "q75": 62.25,
+          "iqr": 28.5
+        }
+      }
+    },
+    "length_balanced": {
+      "adapter": "outputs/task1_dpo/length_balanced",
+      "overall_accuracy_stratified_set": 0.5907172995780591,
+      "by_stratum": {
+        "length_matched": {
+          "n": 80,
+          "preference_accuracy": 0.575,
+          "mean_margin": 0.3348096884787083
+        },
+        "preferred_longer": {
+          "n": 78,
+          "preference_accuracy": 0.4230769230769231,
+          "mean_margin": -0.46288739717923677
+        },
+        "rejected_longer": {
+          "n": 79,
+          "preference_accuracy": 0.7721518987341772,
+          "mean_margin": 1.4663820870314972
+        }
+      },
+      "standard_heldout_accuracy": 0.6172413793103448,
+      "generated_length": {
+        "mean": 168.56666666666666,
+        "std": 99.27133971539263,
+        "median": 234.0,
+        "q25": 69.5,
+        "q75": 256.0,
+        "iqr": 186.5
+      },
+      "reward_mean": 0.9918526268005371,
+      "kl_per_token": 0.0027985542186615823,
+      "word_limit": {
+        "n_prompts": 10,
+        "n_parsed_limits": 10,
+        "compliance_rate": 0.3,
+        "response_words": {
+          "mean": 45.4,
+          "std": 20.621348161553357,
+          "median": 39.0,
+          "q25": 31.25,
+          "q75": 50.75,
+          "iqr": 19.5
+        },
+        "response_tokens": {
+          "mean": 53.4,
+          "std": 22.952995447217774,
+          "median": 48.0,
+          "q25": 35.25,
+          "q75": 65.25,
+          "iqr": 30.0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,459 @@
+{
+  "difficulty_rule": "rank prompts by mean reward of their 8 cached completions; tertiles hard/medium/easy",
+  "prompt_difficulty": {
+    "671": {
+      "bin": "hard",
+      "mean_reward": -1.45556640625
+    },
+    "495": {
+      "bin": "hard",
+      "mean_reward": -1.42041015625
+    },
+    "457": {
+      "bin": "hard",
+      "mean_reward": -0.85198974609375
+    },
+    "961": {
+      "bin": "hard",
+      "mean_reward": -0.1944580078125
+    },
+    "953": {
+      "bin": "hard",
+      "mean_reward": 0.73388671875
+    },
+    "175": {
+      "bin": "hard",
+      "mean_reward": 0.7420654296875
+    },
+    "936": {
+      "bin": "hard",
+      "mean_reward": 0.8939208984375
+    },
+    "280": {
+      "bin": "hard",
+      "mean_reward": 1.2734375
+    },
+    "254": {
+      "bin": "medium",
+      "mean_reward": 1.3321533203125
+    },
+    "796": {
+      "bin": "medium",
+      "mean_reward": 1.81658935546875
+    },
+    "510": {
+      "bin": "medium",
+      "mean_reward": 1.86572265625
+    },
+    "873": {
+      "bin": "medium",
+      "mean_reward": 2.1845703125
+    },
+    "436": {
+      "bin": "medium",
+      "mean_reward": 2.212890625
+    },
+    "981": {
+      "bin": "medium",
+      "mean_reward": 2.2646484375
+    },
+    "124": {
+      "bin": "medium",
+      "mean_reward": 2.375
+    },
+    "922": {
+      "bin": "medium",
+      "mean_reward": 2.4169921875
+    },
+    "263": {
+      "bin": "easy",
+      "mean_reward": 2.4296875
+    },
+    "185": {
+      "bin": "easy",
+      "mean_reward": 2.4599609375
+    },
+    "832": {
+      "bin": "easy",
+      "mean_reward": 2.65625
+    },
+    "942": {
+      "bin": "easy",
+      "mean_reward": 2.6875
+    },
+    "184": {
+      "bin": "easy",
+      "mean_reward": 2.966796875
+    },
+    "463": {
+      "bin": "easy",
+      "mean_reward": 3.00390625
+    },
+    "755": {
+      "bin": "easy",
+      "mean_reward": 3.072265625
+    },
+    "507": {
+      "bin": "easy",
+      "mean_reward": 3.220703125
+    }
+  },
+  "n_partitions": 50,
+  "by_k": {
+    "2": {
+      "overall": {
+        "informative_group_rate": {
+          "mean": 0.9504166666666669,
+          "std_over_partitions": 0.008730136183232083
+        },
+        "uninformative_group_rate": {
+          "mean": 0.04958333333333333,
+          "std_over_partitions": 0.00873013618323207
+        },
+        "mean_within_group_std": {
+          "mean": 0.39157918294270827,
+          "std_over_partitions": 0.024315874318607687
+        },
+        "var_centered_reward": {
+          "mean": 0.32793709869186083,
+          "std_over_partitions": 0.03969561432311675
+        },
+        "var_normalized_advantage": {
+          "mean": 0.9504166666666669,
+          "std_over_partitions": 0.008730136183232083
+        },
+        "mean_abs_normalized_advantage": {
+          "mean": 0.9504166666666669,
+          "std_over_partitions": 0.008730136183232083
+        },
+        "num_groups": 96,
+        "num_completions": 192
+      },
+      "by_difficulty": {
+        "easy": {
+          "informative_group_rate": {
+            "mean": 0.99125,
+            "std_over_partitions": 0.016583123951777
+          },
+          "uninformative_group_rate": {
+            "mean": 0.00875,
+            "std_over_partitions": 0.016583123951777
+          },
+          "mean_within_group_std": {
+            "mean": 0.3183837890625,
+            "std_over_partitions": 0.031008781235359648
+          },
+          "var_centered_reward": {
+            "mean": 0.2130862808227539,
+            "std_over_partitions": 0.03720758236380565
+          },
+          "var_normalized_advantage": {
+            "mean": 0.99125,
+            "std_over_partitions": 0.016583123951777
+          },
+          "mean_abs_normalized_advantage": {
+            "mean": 0.99125,
+            "std_over_partitions": 0.016583123951777
+          },
+          "num_groups": 32,
+          "num_completions": 64
+        },
+        "hard": {
+          "informative_group_rate": {
+            "mean": 0.87125,
+            "std_over_partitions": 0.01015504800579495
+          },
+          "uninformative_group_rate": {
+            "mean": 0.12875,
+            "std_over_partitions": 0.010155048005794951
+          },
+          "mean_within_group_std": {
+            "mean": 0.4830972290039062,
+            "std_over_partitions": 0.053430492631139644
+          },
+          "var_centered_reward": {
+            "mean": 0.5091490591317416,
+            "std_over_partitions": 0.1140916162572342
+          },
+          "var_normalized_advantage": {
+            "mean": 0.87125,
+            "std_over_partitions": 0.01015504800579495
+          },
+          "mean_abs_normalized_advantage": {
+            "mean": 0.87125,
+            "std_over_partitions": 0.01015504800579495
+          },
+          "num_groups": 32,
+          "num_completions": 64
+        },
+        "medium": {
+          "informative_group_rate": {
+            "mean": 0.98875,
+            "std_over_partitions": 0.01741048534648015
+          },
+          "uninformative_group_rate": {
+            "mean": 0.01125,
+            "std_over_partitions": 0.01741048534648015
+          },
+          "mean_within_group_std": {
+            "mean": 0.3732565307617188,
+            "std_over_partitions": 0.04355008936674669
+          },
+          "var_centered_reward": {
+            "mean": 0.2615759561210871,
+            "std_over_partitions": 0.053539677792482046
+          },
+          "var_normalized_advantage": {
+            "mean": 0.98875,
+            "std_over_partitions": 0.01741048534648015
+          },
+          "mean_abs_normalized_advantage": {
+            "mean": 0.98875,
+            "std_over_partitions": 0.01741048534648015
+          },
+          "num_groups": 32,
+          "num_completions": 64
+        }
+      }
+    },
+    "4": {
+      "overall": {
+        "informative_group_rate": {
+          "mean": 0.9583333333333335,
+          "std_over_partitions": 1.1102230246251565e-16
+        },
+        "uninformative_group_rate": {
+          "mean": 0.04166666666666666,
+          "std_over_partitions": 6.938893903907228e-18
+        },
+        "mean_within_group_std": {
+          "mean": 0.5508422515686937,
+          "std_over_partitions": 0.017079668933895453
+        },
+        "var_centered_reward": {
+          "mean": 0.48095788153509295,
+          "std_over_partitions": 0.03427243554250032
+        },
+        "var_normalized_advantage": {
+          "mean": 0.9583333333333335,
+          "std_over_partitions": 1.1102230246251565e-16
+        },
+        "mean_abs_normalized_advantage": {
+          "mean": 0.8381130111552801,
+          "std_over_partitions": 0.00787986712577267
+        },
+        "num_groups": 48,
+        "num_completions": 192
+      },
+      "by_difficulty": {
+        "easy": {
+          "informative_group_rate": {
+            "mean": 1.0,
+            "std_over_partitions": 0.0
+          },
+          "uninformative_group_rate": {
+            "mean": 0.0,
+            "std_over_partitions": 0.0
+          },
+          "mean_within_group_std": {
+            "mean": 0.44993278790091173,
+            "std_over_partitions": 0.020137205782785172
+          },
+          "var_centered_reward": {
+            "mean": 0.30511348724365234,
+            "std_over_partitions": 0.028572960698272882
+          },
+          "var_normalized_advantage": {
+            "mean": 1.0,
+            "std_over_partitions": 2.2204460492503132e-17
+          },
+          "mean_abs_normalized_advantage": {
+            "mean": 0.878490304362619,
+            "std_over_partitions": 0.01677595312026135
+          },
+          "num_groups": 16,
+          "num_completions": 64
+        },
+        "hard": {
+          "informative_group_rate": {
+            "mean": 0.875,
+            "std_over_partitions": 0.0
+          },
+          "uninformative_group_rate": {
+            "mean": 0.125,
+            "std_over_partitions": 0.0
+          },
+          "mean_within_group_std": {
+            "mean": 0.6798942974879881,
+            "std_over_partitions": 0.034652299377447356
+          },
+          "var_centered_reward": {
+            "mean": 0.7560478965565562,
+            "std_over_partitions": 0.08691603730691136
+          },
+          "var_normalized_advantage": {
+            "mean": 0.875,
+            "std_over_partitions": 5.20740757162067e-17
+          },
+          "mean_abs_normalized_advantage": {
+            "mean": 0.7671689168064653,
+            "std_over_partitions": 0.009781349257665715
+          },
+          "num_groups": 16,
+          "num_completions": 64
+        },
+        "medium": {
+          "informative_group_rate": {
+            "mean": 1.0,
+            "std_over_partitions": 0.0
+          },
+          "uninformative_group_rate": {
+            "mean": 0.0,
+            "std_over_partitions": 0.0
+          },
+          "mean_within_group_std": {
+            "mean": 0.5226996693171815,
+            "std_over_partitions": 0.02341923075097313
+          },
+          "var_centered_reward": {
+            "mean": 0.3817122608050704,
+            "std_over_partitions": 0.030080160486831372
+          },
+          "var_normalized_advantage": {
+            "mean": 1.0,
+            "std_over_partitions": 2.7194799110210366e-17
+          },
+          "mean_abs_normalized_advantage": {
+            "mean": 0.8686798122967565,
+            "std_over_partitions": 0.012438901535598129
+          },
+          "num_groups": 16,
+          "num_completions": 64
+        }
+      }
+    },
+    "8": {
+      "overall": {
+        "informative_group_rate": {
+          "mean": 0.9583333333333334,
+          "std_over_partitions": 0.0
+        },
+        "uninformative_group_rate": {
+          "mean": 0.041666666666666664,
+          "std_over_partitions": 0.0
+        },
+        "mean_within_group_std": {
+          "mean": 0.6190544134665206,
+          "std_over_partitions": 0.0
+        },
+        "var_centered_reward": {
+          "mean": 0.5598951438441873,
+          "std_over_partitions": 0.0
+        },
+        "var_normalized_advantage": {
+          "mean": 0.9583333333333334,
+          "std_over_partitions": 0.0
+        },
+        "mean_abs_normalized_advantage": {
+          "mean": 0.7939299067531383,
+          "std_over_partitions": 0.0
+        },
+        "num_groups": 24,
+        "num_completions": 192
+      },
+      "by_difficulty": {
+        "easy": {
+          "informative_group_rate": {
+            "mean": 1.0,
+            "std_over_partitions": 0.0
+          },
+          "uninformative_group_rate": {
+            "mean": 0.0,
+            "std_over_partitions": 0.0
+          },
+          "mean_within_group_std": {
+            "mean": 0.49477231789421244,
+            "std_over_partitions": 0.0
+          },
+          "var_centered_reward": {
+            "mean": 0.34587228298187256,
+            "std_over_partitions": 0.0
+          },
+          "var_normalized_advantage": {
+            "mean": 1.0,
+            "std_over_partitions": 0.0
+          },
+          "mean_abs_normalized_advantage": {
+            "mean": 0.8327568608719299,
+            "std_over_partitions": 0.0
+          },
+          "num_groups": 8,
+          "num_completions": 64
+        },
+        "hard": {
+          "informative_group_rate": {
+            "mean": 0.875,
+            "std_over_partitions": 0.0
+          },
+          "uninformative_group_rate": {
+            "mean": 0.125,
+            "std_over_partitions": 0.0
+          },
+          "mean_within_group_std": {
+            "mean": 0.7633688437029319,
+            "std_over_partitions": 0.0
+          },
+          "var_centered_reward": {
+            "mean": 0.8869009069167078,
+            "std_over_partitions": 0.0
+          },
+          "var_normalized_advantage": {
+            "mean": 0.875,
+            "std_over_partitions": 0.0
+          },
+          "mean_abs_normalized_advantage": {
+            "mean": 0.7564118609997221,
+            "std_over_partitions": 0.0
+          },
+          "num_groups": 8,
+          "num_completions": 64
+        },
+        "medium": {
+          "informative_group_rate": {
+            "mean": 1.0,
+            "std_over_partitions": 0.0
+          },
+          "uninformative_group_rate": {
+            "mean": 0.0,
+            "std_over_partitions": 0.0
+          },
+          "mean_within_group_std": {
+            "mean": 0.5990220788024174,
+            "std_over_partitions": 0.0
+          },
+          "var_centered_reward": {
+            "mean": 0.44691224163398147,
+            "std_over_partitions": 0.0
+          },
+          "var_normalized_advantage": {
+            "mean": 1.0,
+            "std_over_partitions": 0.0
+          },
+          "mean_abs_normalized_advantage": {
+            "mean": 0.7926209983877627,
+            "std_over_partitions": 0.0
+          },
+          "num_groups": 8,
+          "num_completions": 64
+        }
+      }
+    }
+  },
+  "cache": {
+    "prompts": 24,
+    "completions": 192,
+    "frac_clipped_at_max": 0.15104166666666666,
+    "reward_min": -3.8125,
+    "reward_max": 3.96875
+  }
+}

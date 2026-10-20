@@ -1,0 +1,71 @@
+{
+  "judge_model": "Qwen/Qwen2.5-3B-Instruct",
+  "decoding": "greedy, max_new_tokens=256",
+  "policies": {
+    "sft": {
+      "n_safe": 250,
+      "n_unsafe": 200,
+      "safe_answer_rate": 0.58,
+      "safe_over_refusal_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "safe_inconsistent_label_rate": 0.42,
+      "unsafe_compliance_rate": 0.0,
+      "unsafe_justified_refusal_rate": 0.885,
+      "unsafe_ambiguous_rate": 0.0,
+      "unsafe_inconsistent_label_rate": 0.115,
+      "ambiguous_rate_overall": 0.0,
+      "mean_response_tokens": 108.08,
+      "mean_response_tokens_safe": 135.92,
+      "mean_response_tokens_unsafe": 73.28
+    },
+    "dpo": {
+      "n_safe": 250,
+      "n_unsafe": 200,
+      "safe_answer_rate": 0.56,
+      "safe_over_refusal_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "safe_inconsistent_label_rate": 0.44,
+      "unsafe_compliance_rate": 0.0,
+      "unsafe_justified_refusal_rate": 0.87,
+      "unsafe_ambiguous_rate": 0.0,
+      "unsafe_inconsistent_label_rate": 0.13,
+      "ambiguous_rate_overall": 0.0,
+      "mean_response_tokens": 109.91111111111111,
+      "mean_response_tokens_safe": 135.576,
+      "mean_response_tokens_unsafe": 77.83
+    },
+    "ppo": {
+      "n_safe": 250,
+      "n_unsafe": 200,
+      "safe_answer_rate": 0.576,
+      "safe_over_refusal_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "safe_inconsistent_label_rate": 0.424,
+      "unsafe_compliance_rate": 0.0,
+      "unsafe_justified_refusal_rate": 0.88,
+      "unsafe_ambiguous_rate": 0.0,
+      "unsafe_inconsistent_label_rate": 0.12,
+      "ambiguous_rate_overall": 0.0,
+      "mean_response_tokens": 107.83555555555556,
+      "mean_response_tokens_safe": 136.032,
+      "mean_response_tokens_unsafe": 72.59
+    },
+    "grpo": {
+      "n_safe": 250,
+      "n_unsafe": 200,
+      "safe_answer_rate": 0.584,
+      "safe_over_refusal_rate": 0.0,
+      "safe_ambiguous_rate": 0.0,
+      "safe_inconsistent_label_rate": 0.416,
+      "unsafe_compliance_rate": 0.0,
+      "unsafe_justified_refusal_rate": 0.89,
+      "unsafe_ambiguous_rate": 0.0,
+      "unsafe_inconsistent_label_rate": 0.11,
+      "ambiguous_rate_overall": 0.0,
+      "mean_response_tokens": 107.98222222222222,
+      "mean_response_tokens_safe": 136.316,
+      "mean_response_tokens_unsafe": 72.565
+    }
+  },
+  "manual_audit": null
+}

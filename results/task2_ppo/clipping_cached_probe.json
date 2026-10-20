@@ -1,0 +1,440 @@
+{
+  "n_rollouts": 32,
+  "valid_tokens": 8814,
+  "probe_steps": 4,
+  "probe_lr": 3e-06,
+  "kl_beta": 0.1,
+  "source_index": [
+    124,
+    671,
+    510,
+    981,
+    175,
+    185,
+    953,
+    873,
+    796,
+    263,
+    507,
+    961,
+    280,
+    936,
+    254,
+    463,
+    436,
+    942,
+    184,
+    922,
+    755,
+    457,
+    832,
+    495,
+    803,
+    149,
+    569,
+    565,
+    236,
+    716,
+    805,
+    798
+  ],
+  "tokenisation_length_mismatch": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "traces": {
+    "0.05": [
+      {
+        "pass": 0,
+        "train_epsilon": 0.05,
+        "mean_abs_logratio": 0.025759493932127953,
+        "mean_ratio": 1.0154515504837036,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005394162144511938,
+            "clip_fraction": 0.10766961425542831,
+            "affected_token_fraction": 0.0524166114628315
+          },
+          "0.2": {
+            "surrogate_objective": -0.003989768214523792,
+            "clip_fraction": 0.008509189821779728,
+            "affected_token_fraction": 0.004538234788924456
+          },
+          "0.5": {
+            "surrogate_objective": -0.00333420536480844,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.04715745896100998
+      },
+      {
+        "pass": 1,
+        "train_epsilon": 0.05,
+        "mean_abs_logratio": 0.02581237256526947,
+        "mean_ratio": 1.0154956579208374,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005294640548527241,
+            "clip_fraction": 0.107442706823349,
+            "affected_token_fraction": 0.05298388749361038
+          },
+          "0.2": {
+            "surrogate_objective": -0.0038940792437642813,
+            "clip_fraction": 0.008509189821779728,
+            "affected_token_fraction": 0.004538234788924456
+          },
+          "0.5": {
+            "surrogate_objective": -0.0032352686394006014,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.04689249396324158
+      },
+      {
+        "pass": 2,
+        "train_epsilon": 0.05,
+        "mean_abs_logratio": 0.025791335850954056,
+        "mean_ratio": 1.0154905319213867,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005301618482917547,
+            "clip_fraction": 0.10676196962594986,
+            "affected_token_fraction": 0.05230315402150154
+          },
+          "0.2": {
+            "surrogate_objective": -0.003883157856762409,
+            "clip_fraction": 0.008395734243094921,
+            "affected_token_fraction": 0.0046516903676092625
+          },
+          "0.5": {
+            "surrogate_objective": -0.003218792611733079,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.047322679311037064
+      },
+      {
+        "pass": 3,
+        "train_epsilon": 0.05,
+        "mean_abs_logratio": 0.025766031816601753,
+        "mean_ratio": 1.015454649925232,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005254386458545923,
+            "clip_fraction": 0.10891763120889664,
+            "affected_token_fraction": 0.05332425609230995
+          },
+          "0.2": {
+            "surrogate_objective": -0.003850276116281748,
+            "clip_fraction": 0.008395734243094921,
+            "affected_token_fraction": 0.0046516903676092625
+          },
+          "0.5": {
+            "surrogate_objective": -0.0031944247893989086,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.046852197498083115
+      },
+      {
+        "pass": 4,
+        "train_epsilon": 0.05,
+        "mean_abs_logratio": 0.025784974917769432,
+        "mean_ratio": 1.0154435634613037,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.00528575386852026,
+            "clip_fraction": 0.10812343657016754,
+            "affected_token_fraction": 0.053891535848379135
+          },
+          "0.2": {
+            "surrogate_objective": -0.003876057919114828,
+            "clip_fraction": 0.008395734243094921,
+            "affected_token_fraction": 0.0046516903676092625
+          },
+          "0.5": {
+            "surrogate_objective": -0.0032190142665058374,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        }
+      }
+    ],
+    "0.2": [
+      {
+        "pass": 0,
+        "train_epsilon": 0.2,
+        "mean_abs_logratio": 0.025759493932127953,
+        "mean_ratio": 1.0154515504837036,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005394162144511938,
+            "clip_fraction": 0.10766961425542831,
+            "affected_token_fraction": 0.0524166114628315
+          },
+          "0.2": {
+            "surrogate_objective": -0.003989768214523792,
+            "clip_fraction": 0.008509189821779728,
+            "affected_token_fraction": 0.004538234788924456
+          },
+          "0.5": {
+            "surrogate_objective": -0.00333420536480844,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.05160701647400856
+      },
+      {
+        "pass": 1,
+        "train_epsilon": 0.2,
+        "mean_abs_logratio": 0.025733228772878647,
+        "mean_ratio": 1.0154881477355957,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005256535019725561,
+            "clip_fraction": 0.10800998657941818,
+            "affected_token_fraction": 0.05332425609230995
+          },
+          "0.2": {
+            "surrogate_objective": -0.0038592193741351366,
+            "clip_fraction": 0.00828227773308754,
+            "affected_token_fraction": 0.004538234788924456
+          },
+          "0.5": {
+            "surrogate_objective": -0.003200167790055275,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.05170280486345291
+      },
+      {
+        "pass": 2,
+        "train_epsilon": 0.2,
+        "mean_abs_logratio": 0.025783207267522812,
+        "mean_ratio": 1.015466332435608,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005344291217625141,
+            "clip_fraction": 0.10789652913808823,
+            "affected_token_fraction": 0.05332425609230995
+          },
+          "0.2": {
+            "surrogate_objective": -0.003927307669073343,
+            "clip_fraction": 0.008509189821779728,
+            "affected_token_fraction": 0.0046516903676092625
+          },
+          "0.5": {
+            "surrogate_objective": -0.003280189586803317,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.05155321955680847
+      },
+      {
+        "pass": 3,
+        "train_epsilon": 0.2,
+        "mean_abs_logratio": 0.025770291686058044,
+        "mean_ratio": 1.0154691934585571,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005254541989415884,
+            "clip_fraction": 0.10789652913808823,
+            "affected_token_fraction": 0.05207624286413193
+          },
+          "0.2": {
+            "surrogate_objective": -0.0038375542499125004,
+            "clip_fraction": 0.008395734243094921,
+            "affected_token_fraction": 0.0046516903676092625
+          },
+          "0.5": {
+            "surrogate_objective": -0.0031742409337311983,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.05150223895907402
+      },
+      {
+        "pass": 4,
+        "train_epsilon": 0.2,
+        "mean_abs_logratio": 0.025741375982761383,
+        "mean_ratio": 1.0155121088027954,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005314275156706572,
+            "clip_fraction": 0.10857726633548737,
+            "affected_token_fraction": 0.05332425609230995
+          },
+          "0.2": {
+            "surrogate_objective": -0.0038985228165984154,
+            "clip_fraction": 0.00828227773308754,
+            "affected_token_fraction": 0.004538234788924456
+          },
+          "0.5": {
+            "surrogate_objective": -0.0032389690168201923,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        }
+      }
+    ],
+    "0.5": [
+      {
+        "pass": 0,
+        "train_epsilon": 0.5,
+        "mean_abs_logratio": 0.025759493932127953,
+        "mean_ratio": 1.0154515504837036,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005394162144511938,
+            "clip_fraction": 0.10766961425542831,
+            "affected_token_fraction": 0.0524166114628315
+          },
+          "0.2": {
+            "surrogate_objective": -0.003989768214523792,
+            "clip_fraction": 0.008509189821779728,
+            "affected_token_fraction": 0.004538234788924456
+          },
+          "0.5": {
+            "surrogate_objective": -0.00333420536480844,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.05268217250704765
+      },
+      {
+        "pass": 1,
+        "train_epsilon": 0.5,
+        "mean_abs_logratio": 0.025774875655770302,
+        "mean_ratio": 1.0155029296875,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005306600593030453,
+            "clip_fraction": 0.10891763120889664,
+            "affected_token_fraction": 0.05400499328970909
+          },
+          "0.2": {
+            "surrogate_objective": -0.003912494983524084,
+            "clip_fraction": 0.008395734243094921,
+            "affected_token_fraction": 0.004538234788924456
+          },
+          "0.5": {
+            "surrogate_objective": -0.003249719040468335,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.052630096673965454
+      },
+      {
+        "pass": 2,
+        "train_epsilon": 0.5,
+        "mean_abs_logratio": 0.025772761553525925,
+        "mean_ratio": 1.0154544115066528,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005301879718899727,
+            "clip_fraction": 0.1082368940114975,
+            "affected_token_fraction": 0.05377808213233948
+          },
+          "0.2": {
+            "surrogate_objective": -0.0038905784022063017,
+            "clip_fraction": 0.008395734243094921,
+            "affected_token_fraction": 0.0046516903676092625
+          },
+          "0.5": {
+            "surrogate_objective": -0.0032326660584658384,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.05260634422302246
+      },
+      {
+        "pass": 3,
+        "train_epsilon": 0.5,
+        "mean_abs_logratio": 0.025751154869794846,
+        "mean_ratio": 1.0154743194580078,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005271812900900841,
+            "clip_fraction": 0.10721579194068909,
+            "affected_token_fraction": 0.05264352262020111
+          },
+          "0.2": {
+            "surrogate_objective": -0.003866283455863595,
+            "clip_fraction": 0.008395734243094921,
+            "affected_token_fraction": 0.004538234788924456
+          },
+          "0.5": {
+            "surrogate_objective": -0.0032081392128020525,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        },
+        "grad_norm": 0.052625756710767746
+      },
+      {
+        "pass": 4,
+        "train_epsilon": 0.5,
+        "mean_abs_logratio": 0.025804316624999046,
+        "mean_ratio": 1.0154350996017456,
+        "by_epsilon": {
+          "0.05": {
+            "surrogate_objective": -0.005293048918247223,
+            "clip_fraction": 0.10778307169675827,
+            "affected_token_fraction": 0.05275697633624077
+          },
+          "0.2": {
+            "surrogate_objective": -0.0038689477369189262,
+            "clip_fraction": 0.008395734243094921,
+            "affected_token_fraction": 0.0046516903676092625
+          },
+          "0.5": {
+            "surrogate_objective": -0.003201678628101945,
+            "clip_fraction": 0.005559337325394154,
+            "affected_token_fraction": 0.0032902201637625694
+          }
+        }
+      }
+    ]
+  }
+}
