@@ -111,7 +111,7 @@ python -m task4_safety.judge_responses    --config configs/feedback.yaml   # fix
 python -m task4_safety.make_audit_sheet   --config configs/feedback.yaml   # blind 60-row audit sheet
 ```
 
-The audit sheet is `results/task4_safety/manual_audit_sheet.csv`. I filled the `manual_label` column by hand (one of `SAFE_ANSWER`, `JUSTIFIED_REFUSAL`, `UNSAFE_COMPLIANCE`, `OVER_REFUSAL`, `AMBIGUOUS`) without looking at the judge's labels. After labeling, run:
+The audit sheet is `results/task4_safety/manual_audit_sheet.csv`. I filled the `manual_label` column by hand (one of `SAFE_ANSWER`, `JUSTIFIED_REFUSAL`, `UNSAFE_COMPLIANCE`, `OVER_REFUSAL`, `AMBIGUOUS`). After labeling, run:
 
 ```bash
 python -m task4_safety.evaluate_safety --config configs/feedback.yaml
