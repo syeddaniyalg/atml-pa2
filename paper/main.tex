@@ -45,7 +45,7 @@ The standard preference split has 1,500 training and 300 evaluation pairs, and 1
 Both methods use a 1,200-prompt training pool and a 200-prompt held-out set. The standard run does 20 updates on 20 distinct prompts. PPO samples one response per prompt and takes two PPO epochs, so it trains on 20 trajectories and not eight responses per prompt. PPO uses policy learning rate $3\times10^{-6}$, clipping $\epsilon=0.2$, KL coefficient 0.1, $\gamma=1$, and GAE $\lambda=0.95$. The value adapter and head use learning rates $10^{-4}$ and $3\times10^{-4}$. GRPO samples $K=4$ responses per prompt, which gives 80 trajectories, and uses one update epoch, learning rate $5\times10^{-6}$, $\epsilon=0.2$, and KL coefficient 0.1. The forks test PPO clipping $\epsilon\in\{0.05,0.2,0.5\}$, KL coefficients $\{0,0.1,0.2\}$, GRPO group sizes $K\in\{2,4,8\}$, and canonical versus fixed-denominator normalization.
 
 \paragraph{Safety and mathematics.}
-Safety evaluation uses all 450 XSTest prompts, which are 250 safe prompts in ten categories and 200 unsafe prompts in eight categories \citep{rottger2023xstest}. Each of the four fixed policies, SFT, DPO, PPO, and GRPO, is decoded greedily and labeled by the 3B judge. A blind manual audit covers 60 responses, balanced between safe and unsafe prompts. Mathematical evaluation uses 300 GSM8K examples and 100 SVAMP examples \citep{cobbe2021gsm8k,patel2021svamp}. RLVR gets an exact reward only when the final output matches the required \texttt{\#\#\#\# number} form and value. RLAIF uses six pairwise judge calls for each four-response group and does not get the gold answer. A 100-example diagnostic set applies four controlled changes to 20 base problems: corrupted reasoning, a wrong final answer, persuasive filler, and a gold-number distractor followed by a wrong final answer.
+Safety evaluation uses all 450 XSTest prompts, which are 250 safe prompts in ten categories and 200 unsafe prompts in eight categories \citep{rottger2023xstest}. Each of the four fixed policies, SFT, DPO, PPO, and GRPO, is decoded greedily and labeled by the 3B judge. A blind manual audit covers 60 responses, balanced between safe and unsafe prompts. Mathematical evaluation uses 300 GSM8K examples and 100 SVAMP examples. RLVR gets an exact reward only when the final output matches the required \texttt{\#\#\#\# number} form and value. RLAIF uses six pairwise judge calls for each four-response group and does not get the gold answer. A 100-example diagnostic set applies four controlled changes to 20 base problems: corrupted reasoning, a wrong final answer, persuasive filler, and a gold-number distractor followed by a wrong final answer.
 
 \paragraph{Metrics.}
 DPO preference accuracy is the fraction of pairs that have a positive reference-adjusted margin
@@ -198,14 +198,10 @@ Within those limits, five conclusions are supported. DPO's strongest controlled 
 \begin{thebibliography}{10}
 \bibitem[Bai et~al.(2022)]{bai2022constitutional}
 Yuntao Bai, Saurav Kadavath, Sandipan Kundu, et~al. Constitutional AI: Harmlessness from AI feedback. \emph{arXiv:2212.08073}, 2022.
-\bibitem[Cobbe et~al.(2021)]{cobbe2021gsm8k}
-Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, et~al. Training verifiers to solve math word problems. \emph{arXiv:2110.14168}, 2021.
 \bibitem[Lee et~al.(2024)]{lee2024rlaif}
 Harrison Lee, Samrat Phatale, Hassan Mansoor, et~al. RLAIF vs. RLHF: Scaling reinforcement learning from human feedback with AI feedback. In \emph{ICML}, 2024.
 \bibitem[Ouyang et~al.(2022)]{ouyang2022training}
 Long Ouyang, Jeff Wu, Xu Jiang, et~al. Training language models to follow instructions with human feedback. In \emph{NeurIPS}, 2022.
-\bibitem[Patel et~al.(2021)]{patel2021svamp}
-Arkil Patel, Satwik Bhattamishra, and Navin Goyal. Are NLP models really able to solve simple math word problems? In \emph{NAACL}, 2021.
 \bibitem[Rafailov et~al.(2023)]{rafailov2023dpo}
 Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn. Direct preference optimization: Your language model is secretly a reward model. In \emph{NeurIPS}, 2023.
 \bibitem[R{\"o}ttger et~al.(2024)]{rottger2023xstest}
